@@ -1,0 +1,17 @@
+
+    <div class="container-fluid">
+        <div class="row bg-light h-100 ">
+            <div class="col-md-12">
+                <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center">
+                    <h3>Forget Password</h3>
+                    <form [formGroup]="forgetForm" *ngIf="forgetForm" >
+                        <input type="email" autocomplete="on" maxlength="60" placeholder="Email" formControlName="email" class="form-control">
+                        <div class="d-flex justify-content-between pt-2 p-1">
+                            <button data-tw-merge="" (click)="onSubmit()" class="btn btn-primary">Forget</button>
+                            <button data-tw-merge="" (click)="signin()" class="btn btn-primary">Sign in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
