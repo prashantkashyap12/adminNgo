@@ -1,21 +1,40 @@
 <div style="height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px;">
 
-    <h5>Blog Form</h5>
-    <form action="" class="p-2">
+    <form action="" class="p-2" [formGroup]="blogForm">
         <div class="row">
-            <div class="col-md-4">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Enter Name">
+            <div class="col-md-3">
+                <label for="name">Date</label>
+                <input type="Date" formControlName="date" id="name" placeholder="Select Date" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="name">Heading</label>
+                <input type="text" formControlName="linkText1" id="name" placeholder="Enter Heading"  class="form-control">
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-md-3">
+                <label for="name">Right</label>
+                <input type="text" formControlName="rights" id="name" placeholder="Enter rights" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="name">Type Service</label>
+                <input type="text" formControlName="type" id="name" placeholder="Enter service type"  class="form-control">
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-md-6">
+                <label for="name">Set Image</label>
+                <input type="file" formControlName="imgPath" id="name" placeholder="Select Image .JPG, .PNG" class="form-control">
             </div>
         </div>
     </form>
 
 
-    <div style="position: fixed; bottom: 20px;left: 205px;background-color: rgb(240, 240, 240); width:100%; border-radius: 20px; padding:10px;">
-        <button class="btn btn-secondary shadow-sm">Submit</button>
-        <button class="btn btn-light mx-2 shadow-sm">Delete</button>
-        <button class="btn btn-light mx-2 shadow-sm">All List</button>
-        <button class="btn btn-light mx-2 shadow-sm">New Entry</button>
+    <div style="position: fixed; bottom: 20px;left: 205px;background-color: rgb(240, 240, 240);  border-radius: 20px; padding:10px;">
+        <button (click)="onSubmit()" class="btn btn-secondary shadow-sm">Submit</button>
+        <button (click)="delet()" class="btn btn-light mx-2 shadow-sm">Delete</button>
+        <button (click)="allot()" class="btn btn-light mx-2 shadow-sm">All List</button>
+        <button (click)="fresh()" class="btn btn-light mx-2 shadow-sm">New Entry</button>
     </div>
 
 </div>
