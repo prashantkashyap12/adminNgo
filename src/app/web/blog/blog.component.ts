@@ -3,13 +3,15 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import moment from 'moment';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BlogService } from '../service/blog.service';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css',
-  imports: [ReactiveFormsModule, FormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, FormsModule, HttpClientModule, AutocompleteLibModule, CommonModule],
   providers:[BlogService]
 })
 export class BlogComponent implements OnInit {
@@ -18,7 +20,27 @@ export class BlogComponent implements OnInit {
   ngOnInit(){
    this.init(); 
   }
+
+  updateAct:any=true;
+  showList:any=false;
   blogForm!:FormGroup;
+  keyword="name";
+  data:any = [
+    {name:'India', id:1},
+    {name:'Japan', id:2}
+  ]
+
+  selectEvent(data:any){
+    console.log(data + "A");
+    this.updateAct = false;
+  }
+
+  onChangeSearch(data:any){
+    console.log(data+ "b");
+  }
+  onFocused(data:any){
+    console.log(data+ "c");
+  }
 
   init(){
     this.blogForm = this._fb.group({
@@ -52,7 +74,11 @@ export class BlogComponent implements OnInit {
       return;
     }
     let model2 = this.isValid;
-    // console.log(model);
+    if(this.updateAct){
+      // Save Record
+    }else{
+      // update Record
+    }
     // let result  = this._blog.addBlogLs().subscribe(res=>{
       // console.log(res)
     // });
@@ -61,11 +87,15 @@ export class BlogComponent implements OnInit {
   delet(){
   }
   allot(){
+    this.showList= !this.showList;
   }
 
 
   fresh(){   // Done
     this.init();
+    this.updateAct = true;
+    this.showList = false
+
   }
 
 
