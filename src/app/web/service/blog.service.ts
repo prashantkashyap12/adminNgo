@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, model } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,15 +10,50 @@ export class BlogService {
 
   constructor(private _http:HttpClient) {   }
   
-
-  // Get Result
-  async bloglis():Promise<any>{
-    let url = this.url+"";
-    let res = await this._http.get(url).toPromise(); 
+// Blog List Add <Model>
+async bloglisAdd(Model:any):Promise<any>{
+ try{
+    let url = this.url+"blogAdd";
+    let res = await this._http.post(url, Model).toPromise(); 
     return res;
+  }catch(err){
+    console.log(err)
+    throw err;
   }
+}
+// Blog List View 
+async bloglisView():Promise<any>{
+  let url = this.url+"blogList";
+  let res = await this._http.get(url).toPromise(); 
+  return res;
+}
+// Blog List Delete <blogTran>
+ bloglisDelete(id:any):Observable<any>{
+  let url = this.url+"blogDel";
+  return this._http.delete(url,id);
+}
+// Blog List Update <BlogTran + Model>
+ async bloglisUpdate(model:any):Promise<any>{
+  let url = this.url+"blogUpdate";
+  let res = await this._http.delete(url,model);
+  return res;
+}
 
-  // save List
+
+// Blog Details Add <BlogTran + Model_2>
+ async blogDetailsAdd(model:any):Promise<any>{
+  let url = this.url+"blogDetUpdate";
+  let res = await this._http.delete(url, model);
+  return res;
+}
+// Blog Details List 
+ async blogDetailsUpdate(model:any):Promise<any>{
+  let url = this.url+"blogDetList";
+  let res = await this._http.delete(url, model);
+  return res;
+}
+
+
   
   
   

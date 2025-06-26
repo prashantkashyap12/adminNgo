@@ -19,27 +19,39 @@ export class BlogComponent implements OnInit {
   constructor(private _fb:FormBuilder, private _blog:BlogService){}
   ngOnInit(){
    this.init(); 
+
+   this.blogListView()
   }
 
   updateAct:any=true;
   showList:any=false;
   blogForm!:FormGroup;
-  keyword="name";
-  data:any = [
-    {name:'India', id:1},
-    {name:'Japan', id:2}
-  ]
+  keyword="linkText1";
+  blogTran:any;
+  data:any = [  ]
+  IFromFile:File | null = null;
 
   selectEvent(data:any){
-    console.log(data + "A");
     this.updateAct = false;
+
+    this.datapatch(data);
+  }
+  datapatch(data:any){
+    console.log(data);
+    this.blogTran = data.blogTran;
+    this.blogForm.get("date")?.patchValue(moment(data.date).format("YYYY-MM-DD")); 
+    // this.blogForm.get("imgPath")?.patchValue(data.imgPath);
+    this.blogForm.get("linkText1")?.patchValue(data.linkText1);
+    this.blogForm.get("rights")?.patchValue(data.rights);
+    this.blogForm.get("type")?.patchValue(data.type);
   }
 
+
   onChangeSearch(data:any){
-    console.log(data+ "b");
+    console.log(data, "b");
   }
   onFocused(data:any){
-    console.log(data+ "c");
+    console.log(data, "c");
   }
 
   init(){
@@ -66,6 +78,16 @@ export class BlogComponent implements OnInit {
     }
   }
 
+  blogListView(){
+    this._blog.bloglisView()
+    .then(res=>{
+      if(res.state = true){
+        this.data = res.result;
+      }
+    }).catch(error=>{
+
+    })
+  }
 
 
   onSubmit(){
@@ -73,9 +95,15 @@ export class BlogComponent implements OnInit {
       alert("Form is Invalid");
       return;
     }
-    let model2 = this.isValid;
+    let dataLs = this.isValid();
     if(this.updateAct){
-      // Save Record
+      this._blog.bloglisAdd(dataLs).then(res=>{
+        if(res.state){
+          console.log(res);
+        }
+      }).catch(err=>{
+        console.log(err);
+      })
     }else{
       // update Record
     }
@@ -85,9 +113,15 @@ export class BlogComponent implements OnInit {
   }
 
   delet(){
+    this._blog.bloglisDelete(this.blogTran).subscribe(res=>{
+      if(res.state){
+        alert("Toster = Record Hasbeen Deleted");
+      }
+    })
   }
   allot(){
     this.showList= !this.showList;
+    // set focus on search bar
   }
 
 
