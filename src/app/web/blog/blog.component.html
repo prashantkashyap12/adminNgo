@@ -26,7 +26,7 @@
             <div class="row pt-2">
                 <div class="col-md-12">
                     <label for="name">Set Image</label>
-                    <input type="file" formControlName="imgPath" id="name" placeholder="Select Image .JPG, .PNG" class="form-control">
+                    <input type="file" formControlName="imgPath" id="name" placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-control">
                 </div>
             </div>
         </form>

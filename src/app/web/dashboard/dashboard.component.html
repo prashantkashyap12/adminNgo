@@ -1,1 +1,4 @@
-<p>dashboard works!</p>
+<form action="" [formGroup]="formModel" class="d-flex flex-column w-25 mx-auto h">
+    <input type="file" formControlName="email" placeholder="File" value="fileval" (change)="onFileChange($event)" class="form-control mb-3">
+    <button (click)="onSubmit()">Save</button>
+</form>

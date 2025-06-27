@@ -19,7 +19,6 @@ export class BlogComponent implements OnInit {
   constructor(private _fb:FormBuilder, private _blog:BlogService){}
   ngOnInit(){
    this.init(); 
-
    this.blogListView()
   }
 
@@ -33,7 +32,6 @@ export class BlogComponent implements OnInit {
 
   selectEvent(data:any){
     this.updateAct = false;
-
     this.datapatch(data);
   }
   datapatch(data:any){
@@ -60,7 +58,7 @@ export class BlogComponent implements OnInit {
       linkText1:['', [Validators.required]],
       rights:['', [Validators.required]],
       type:['', [Validators.required]],
-      imgPath:['', [Validators.required]],
+      imgPath:[null, [Validators.required]],
       link:'BlogDetails',
       linkText2:'Read More'
     })
@@ -72,7 +70,7 @@ export class BlogComponent implements OnInit {
       linkText1:this.blogForm.value.linkText1 ?? '',
       rights:this.blogForm.value.rights ?? '',
       type:this.blogForm.value.type ?? '',
-      imgPath:this.blogForm.value.imgPath ?? '',
+      imgPath:this.blogForm.value.imgPath ?? null,
       link:'BlogDetails',
       linkText2:'BlogDetails'
     }
@@ -85,17 +83,37 @@ export class BlogComponent implements OnInit {
         this.data = res.result;
       }
     }).catch(error=>{
-
+      console.log(error);
     })
   }
 
+  fileRec:any;
+  fileUpdate(event:any){
+    if(event.target.files && event.target.files.length > 0){
+      const file = event.target.files[0];
+      this.fileRec = file;
+    }
+  }
 
   onSubmit(){
     if(this.blogForm.invalid){
       alert("Form is Invalid");
       return;
     }
-    let dataLs = this.isValid();
+
+    console.log(this.blogForm.value);
+    console.log(this.fileRec);
+    // let dataLs = this.isValid();
+    const dataLs = new FormData();
+    console.log();
+    dataLs.append("date", this.blogForm.value.date);
+    dataLs.append("linkText1", this.blogForm.value.linkText1);
+    dataLs.append("rights", this.blogForm.value.rights);
+    dataLs.append("type", this.blogForm.value.type);
+    dataLs.append("imgPath", this.fileRec as File);
+    dataLs.append("link", 'BlogDetails');
+    dataLs.append("linkText2", 'Read More');
+
     if(this.updateAct){
       this._blog.bloglisAdd(dataLs).then(res=>{
         if(res.state){
@@ -105,11 +123,7 @@ export class BlogComponent implements OnInit {
         console.log(err);
       })
     }else{
-      // update Record
     }
-    // let result  = this._blog.addBlogLs().subscribe(res=>{
-      // console.log(res)
-    // });
   }
 
   delet(){
