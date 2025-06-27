@@ -38,7 +38,7 @@ export class BlogComponent implements OnInit {
     console.log(data);
     this.blogTran = data.blogTran;
     this.blogForm.get("date")?.patchValue(moment(data.date).format("YYYY-MM-DD")); 
-    // this.blogForm.get("imgPath")?.patchValue(data.imgPath);
+    this.blogForm.get("imgPath")?.patchValue(data.imgPath);
     this.blogForm.get("linkText1")?.patchValue(data.linkText1);
     this.blogForm.get("rights")?.patchValue(data.rights);
     this.blogForm.get("type")?.patchValue(data.type);
@@ -101,9 +101,6 @@ export class BlogComponent implements OnInit {
       return;
     }
 
-    console.log(this.blogForm.value);
-    console.log(this.fileRec);
-    // let dataLs = this.isValid();
     const dataLs = new FormData();
     console.log();
     dataLs.append("date", this.blogForm.value.date);
@@ -113,7 +110,7 @@ export class BlogComponent implements OnInit {
     dataLs.append("imgPath", this.fileRec as File);
     dataLs.append("link", 'BlogDetails');
     dataLs.append("linkText2", 'Read More');
-
+    dataLs.append("BlogTran", this.updateAct ? '0' : this.blogTran);
     if(this.updateAct){
       this._blog.bloglisAdd(dataLs).then(res=>{
         if(res.state){
@@ -123,6 +120,13 @@ export class BlogComponent implements OnInit {
         console.log(err);
       })
     }else{
+      this._blog.bloglisUpdate(dataLs).then(res=>{
+        if(res.state){
+          console.log("updated")
+        }else{
+          console.log("Not Updated")
+        }
+      })
     }
   }
 
@@ -135,7 +139,6 @@ export class BlogComponent implements OnInit {
   }
   allot(){
     this.showList= !this.showList;
-    // set focus on search bar
   }
 
 
@@ -143,7 +146,6 @@ export class BlogComponent implements OnInit {
     this.init();
     this.updateAct = true;
     this.showList = false
-
   }
 
 

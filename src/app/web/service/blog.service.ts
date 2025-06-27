@@ -21,21 +21,24 @@ async bloglisAdd(Model:any):Promise<any>{
     throw err;
   }
 }
+
+
 // Blog List View 
 async bloglisView():Promise<any>{
   let url = this.url+"blogList";
   let res = await this._http.get(url).toPromise(); 
   return res;
 }
+
 // Blog List Delete <blogTran>
- bloglisDelete(id:any):Observable<any>{
+ bloglisDelete(BlogTran:any):Observable<any>{
   let url = this.url+"blogDel";
-  return this._http.delete(url,id);
+  return this._http.post(url,BlogTran);
 }
 // Blog List Update <BlogTran + Model>
  async bloglisUpdate(model:any):Promise<any>{
   let url = this.url+"blogUpdate";
-  let res = await this._http.delete(url,model);
+  let res = await this._http.post(url,model);
   return res;
 }
 
