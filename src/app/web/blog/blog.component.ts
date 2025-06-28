@@ -29,19 +29,27 @@ export class BlogComponent implements OnInit {
   blogTran:any;
   data:any = [  ]
   IFromFile:File | null = null;
+  imagePreview:any = null;
 
   selectEvent(data:any){
     this.updateAct = false;
     this.datapatch(data);
   }
+
   datapatch(data:any){
-    console.log(data);
     this.blogTran = data.blogTran;
-    this.blogForm.get("date")?.patchValue(moment(data.date).format("YYYY-MM-DD")); 
-    this.blogForm.get("imgPath")?.patchValue(data.imgPath);
-    this.blogForm.get("linkText1")?.patchValue(data.linkText1);
-    this.blogForm.get("rights")?.patchValue(data.rights);
-    this.blogForm.get("type")?.patchValue(data.type);
+    console.log(this.blogTran);
+    this.imagePreview = data.imgPath;
+    console.log(this.imagePreview, "datafil");
+    this.blogForm.patchValue({
+      date:moment(data.date).format('YYYY-MM-DD'),
+      linkText1:data.linkText1? data.linkText1 : '',
+      rights:data.rights,
+      type:data.type,
+      imgPath:data.imgPath,
+      link:'BlogDetails',
+      linkText2:'Read More'
+    })
   }
 
 
@@ -96,35 +104,34 @@ export class BlogComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.blogForm.invalid){
-      alert("Form is Invalid");
-      return;
-    }
-
+    
     const dataLs = new FormData();
-    console.log();
-    dataLs.append("date", this.blogForm.value.date);
-    dataLs.append("linkText1", this.blogForm.value.linkText1);
-    dataLs.append("rights", this.blogForm.value.rights);
-    dataLs.append("type", this.blogForm.value.type);
-    dataLs.append("imgPath", this.fileRec as File);
+    dataLs.append("date", this.blogForm.value.date ? moment(this.blogForm.value.date).format('YYYY-MM-DD') : '');
+    dataLs.append("linkText1", this.blogForm.value.linkText1? this.blogForm.value.linkText1 : '');
+    dataLs.append("rights", this.blogForm.value.rights? this.blogForm.value.rights : '');
+    dataLs.append("type", this.blogForm.value.type ? this.blogForm.value.type : '');
+    dataLs.append("imgPath", this.fileRec as File ? this.fileRec : null);
     dataLs.append("link", 'BlogDetails');
     dataLs.append("linkText2", 'Read More');
-    dataLs.append("BlogTran", this.updateAct ? '0' : this.blogTran);
     if(this.updateAct){
       this._blog.bloglisAdd(dataLs).then(res=>{
         if(res.state){
-          console.log(res);
+        alert(res.message1);
+        this.fresh();
+        this.allot();
         }
       }).catch(err=>{
         console.log(err);
       })
-    }else{
+    }
+    else{
+      for(const key of (dataLs as any).keys()){
+        console.log(key, dataLs.get(key));
+      }
+      dataLs.append("BlogTran",this.blogTran);
       this._blog.bloglisUpdate(dataLs).then(res=>{
         if(res.state){
-          console.log("updated")
-        }else{
-          console.log("Not Updated")
+          console.log("updated");
         }
       })
     }
@@ -134,6 +141,7 @@ export class BlogComponent implements OnInit {
     this._blog.bloglisDelete(this.blogTran).subscribe(res=>{
       if(res.state){
         alert("Toster = Record Hasbeen Deleted");
+        this._blog.bloglisView()
       }
     })
   }

@@ -5,29 +5,32 @@
          <form action="" class="p-2" [formGroup]="blogForm">
             <div class="row">
                 <div class="col-md-6">
-                    <label for="name">Date</label>
+                    <label>Date</label>
                     <input type="Date" formControlName="date" id="name" placeholder="Select Date" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label for="name">Heading</label>
-                    <input type="text" formControlName="linkText1" id="name" placeholder="Enter Heading"  class="form-control">
+                    <label>Heading</label>
+                    <input type="text" formControlName="linkText1" placeholder="Enter Heading"  class="form-control">
                 </div>
             </div>
             <div class="row pt-2">
                 <div class="col-md-6">
-                    <label for="name">Right</label>
-                    <input type="text" formControlName="rights" id="name" placeholder="Enter rights" class="form-control">
+                    <label>Right</label>
+                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label for="name">Type Service</label>
-                    <input type="text" formControlName="type" id="name" placeholder="Enter service type"  class="form-control">
+                    <label>Type Service</label>
+                    <input type="text" formControlName="type"  placeholder="Enter service type"  class="form-control">
                 </div>
             </div>
             <div class="row pt-2">
                 <div class="col-md-12">
-                    <label for="name">Set Image</label>
-                    <input type="file" formControlName="imgPath" id="name" placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-control">
+                    <label>Set Image</label>
+                    <input type="file" formControlName="imgPath"  placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-control">
                 </div>
+                
+                <img *ngIf="imagePreview" [src]="imagePreview" alt="Image_Preview" height="100">
+            
             </div>
         </form>
      </div>
@@ -50,6 +53,7 @@
             <div [innerHTML]="notFound"></div>
             </ng-template>
         </div>
+        <!-- <pre>{{ blogForm.value | json }}</pre> -->
      </div>
    </div>
 
