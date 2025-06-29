@@ -1,0 +1,135 @@
+<div style="min-height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px; padding-bottom:3em">
+
+   <div class="row">
+     <div class="col-md-9">
+         <form action="" class="p-2" [formGroup]="blogDetails">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="ng-autocomplete pt-4" [ngClass]="showList?'d-block':'d-none'">
+                        <ng-autocomplete 
+                        [data]="data"
+                        [searchKeyword]="keyword"
+                        placeholder="Find Save Record..."
+                        (selected)='selectEvent($event)'
+                        [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+                        </ng-template>
+                        <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            
+            <div [ngStyle]="{ 'display': this.isVisible ? 'block' : 'none' }">
+                <div class="row pt-2">
+                    <div class="col-md-12">
+                        <label for="">Blog List Heading</label>
+                        <input type="text" [value]="blogListHding" disabled class="form-control">
+                    </div>
+                </div>
+                <div class="row pt-2">
+                <div class="col-md-4">
+                    <label>Img</label>
+                    <input type="file" formControlName="Img" placeholder="Select Date" class="form-control"  (change)="imgPath1($event)">
+                </div>
+                <div class="col-md-4">
+                    <label>Rights</label>
+                    <input type="text" formControlName="Rights" placeholder="Enter Rights"  class="form-control" >
+                </div>
+                <div class="col-md-4">
+                    <label>Type</label>
+                    <input type="text" formControlName="type"  placeholder="Enter Type" class="form-control">
+                </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-md-4">
+                        <label>Head</label>
+                        <input type="text" formControlName="Head"  placeholder="Enter Head Type"  class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Pera1</label>
+                        <input type="text" formControlName="Pera1"  placeholder="Enter Pera1 Type"  class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Pera2</label>
+                        <input type="text" formControlName="Pera2"  placeholder="Enter Pera2 Type"  class="form-control">
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-md-6">
+                        <label>Blockquate</label>
+                        <input type="text" formControlName="blockquate"  placeholder="Enter Blockquate Type"  class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Pera3</label>
+                        <input type="text" formControlName="Pera3"  placeholder="Enter Pera-3 Type"  class="form-control">
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-md-6">
+                        <label>BlogImg1</label>
+                        <input type="file" formContrcolName="BlogImg1" placeholder="Select Date" class="form-control" (change)="imgPath2($event)">
+                    </div>
+                    <div class="cal-md-6">
+                        <label>BlogImg2</label>
+                        <input type="file" formContrcolName="BlogImg2" placeholder="Select Date" class="form-control" (change)="imgPath3($event)">
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-md-6">
+                        <label>Pera4</label>
+                        <input type="text" formControlName="Pera4"  placeholder="Enter Pera4..." class="form-control">
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-md-3">
+                        <label>FB-Link</label>
+                        <input type="text" formControlName="FbLink"  placeholder="Enter Hyper Links" class="form-control">
+                    </div>            
+                    <div class="col-md-3">
+                        <label>Twitter Link</label>
+                        <input type="text" formControlName="TwLink"  placeholder="Enter Hyper Links" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Linked Link</label>
+                        <input type="text" formControlName="LinkLink"  placeholder="Enter Hyper Links" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Insta Link</label>
+                        <input type="text" formControlName="InstLink"  placeholder="Enter Hyper Links" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+     </div>
+      <div class="col-md-3" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
+        <div class="row pt-2">
+            <label>Image</label>
+            <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
+        </div>
+        <div class="row pt-2">
+            <label>BlogImg1</label>
+             <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
+
+        </div>
+        <div class="row pt-2">
+            <label>BlogImg2</label>
+            <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
+        </div>
+     </div>
+   </div>
+
+    <div class="d-flex justify-content-between w-75" style="position:fixed; bottom: 20px;left: 205px;background-color: rgb(240, 240, 240);  border-radius: 20px; padding:10px;">
+        <div>
+            <button (click)="onSubmit()" class="btn shadow-sm" [ngClass]="updateAct?'btn-secondary':'btn-success'">{{updateAct?'Submit':'Update'}}</button>
+            <button (click)="allot()" class="btn btn-light mx-2 shadow-sm">All List</button>
+            <button (click)="clear()" class="btn btn-light mx-2 shadow-sm">Clear</button>
+        </div>
+    </div>
+
+</div>

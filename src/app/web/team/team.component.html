@@ -2,32 +2,21 @@
 
    <div class="row">
      <div class="col-md-8">
-         <form action="" class="p-2" [formGroup]="blogForm">
-            <div class="row">
-                <div class="col-md-6">
-                    <label>Date</label>
-                    <input type="Date" formControlName="date" id="name" placeholder="Select Date" class="form-control">
-                </div>
-                <div class="col-md-6">
-                    <label>Heading</label>
-                    <input type="text" formControlName="linkText1" placeholder="Enter Heading"  class="form-control">
-                </div>
-            </div>
+         <form action="" class="p-2" [formGroup]="TeamForm">
             <div class="row pt-2">
                 <div class="col-md-6">
-                    <label>Right</label>
-                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-control">
+                    <label>imgPath</label>
+                    <input type="text" formControlName="imgPath" placeholder="Enter imgPath" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label>Type Service</label>
-                    <input type="text" formControlName="type"  placeholder="Enter service type"  class="form-control">
+                    <label>name</label>
+                    <input type="text" formControlName="name" placeholder="Enter name" class="form-control">
                 </div>
-            </div>
-            <div class="row pt-2">
-                <div class="col-md-12">
-                    <label>Set Image</label>
-                    <input type="file" formControlName="imgPath"  placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-control">
-                </div>            
+                <div class="col-md-6">
+                    <label>position</label>
+                    <input type="text" formControlName="position" placeholder="Enter position" class="form-control">
+                </div>
+ 
             </div>
         </form>
      </div>
@@ -62,5 +51,4 @@
         </div>
        
     </div>
-
 </div>

@@ -2,32 +2,41 @@
 
    <div class="row">
      <div class="col-md-8">
-         <form action="" class="p-2" [formGroup]="blogForm">
+         <form action="" class="p-2" [formGroup]="DonateForm">
             <div class="row">
                 <div class="col-md-6">
-                    <label>Date</label>
-                    <input type="Date" formControlName="date" id="name" placeholder="Select Date" class="form-control">
+                    <label>imgPath</label>
+                    <input type="text" formControlName="imgPath" placeholder="Enter imgPath" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label>Heading</label>
-                    <input type="text" formControlName="linkText1" placeholder="Enter Heading"  class="form-control">
-                </div>
-            </div>
-            <div class="row pt-2">
-                <div class="col-md-6">
-                    <label>Right</label>
-                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-control">
+                    <label>categ</label>
+                    <input type="text" formControlName="categ" placeholder="Enter categ" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label>Type Service</label>
-                    <input type="text" formControlName="type"  placeholder="Enter service type"  class="form-control">
+                    <label>rais</label>
+                    <input type="text" formControlName="rais" placeholder="Enter rais" class="form-control">
                 </div>
-            </div>
-            <div class="row pt-2">
-                <div class="col-md-12">
-                    <label>Set Image</label>
-                    <input type="file" formControlName="imgPath"  placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-control">
-                </div>            
+                <div class="col-md-6">
+                    <label>goal</label>
+                    <input type="text" formControlName="goal" placeholder="Enter goal" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>heading</label>
+                    <input type="text" formControlName="heading" placeholder="Enter heading" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>para</label>
+                    <input type="text" formControlName="para" placeholder="Enter para" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>progress</label>
+                    <input type="text" formControlName="progress" placeholder="Enter progress" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>link</label>
+                    <input type="text" formControlName="link" placeholder="Enter link" class="form-control">
+                </div>
+
             </div>
         </form>
      </div>
@@ -62,5 +71,4 @@
         </div>
        
     </div>
-
 </div>

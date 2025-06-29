@@ -28,15 +28,15 @@
                 <h3>User Register</h3>
                 <form *ngIf="userSignup" [formGroup]="userSignup" id="form1">
                     <div class="intro-x mt-8">
-                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="name" formControlName="name" placeholder="First Name">
-                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="email" formControlName="email" placeholder="Email">
+                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="name" formControlName="name" placeholder="First Name" class="mt-2 form-control">
+                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="email" formControlName="email" placeholder="Email" class="mt-2 form-control">
                         <div *ngIf="userSignup.get('email')?.touched && userSignup.get('email')?.invalid" class="text-red-500 text-sm mt-1">
                             <div *ngIf="userSignup.get('email')?.errors?.['required']">Email is required.</div>
                             <div *ngIf="userSignup.get('email')?.errors?.['email']">Please enter a valid email address.</div>
                         </div>
-                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="contact" formControlName="contact" placeholder="contact">
-                        <input class="form-control" autocomplete="on" maxlength="60" type="password" id="password" formControlName="password" placeholder="Password">
-                        <input class="form-control" autocomplete="on" maxlength="60" type="password" formControlName="rePassword"  data-tw-merge="" type="text" placeholder="Password Confirmation">
+                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="contact" formControlName="contact" placeholder="contact" class="mt-2 form-control">
+                        <input class="form-control" autocomplete="on" maxlength="60" type="password" id="password" formControlName="password" placeholder="Password" class="mt-2 form-control">
+                        <input class="form-control" autocomplete="on" maxlength="60" type="password" formControlName="rePassword"  data-tw-merge="" type="text" placeholder="Password Confirmation" class="mt-2 form-control">
                     </div>
                     <div class="d-flex justify-center justify-content-between pt-2 p-1">
                         <button type="submit" (click)="onSubmit()" class="btn btn-primary">Register</button>

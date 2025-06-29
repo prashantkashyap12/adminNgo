@@ -2,7 +2,7 @@
 
    <div class="row">
      <div class="col-md-8">
-         <form action="" class="p-2" [formGroup]="blogForm">
+         <form action="" class="p-2" [formGroup]="EventLsForm">
             <div class="row">
                 <div class="col-md-6">
                     <label>Date</label>
@@ -10,24 +10,38 @@
                 </div>
                 <div class="col-md-6">
                     <label>Heading</label>
-                    <input type="text" formControlName="linkText1" placeholder="Enter Heading"  class="form-control">
+                    <input type="text" formControlName="heading" placeholder="Enter Heading"  class="form-control">
                 </div>
             </div>
             <div class="row pt-2">
                 <div class="col-md-6">
-                    <label>Right</label>
-                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-control">
+                    <label>Pera</label>
+                    <input type="text" formControlName="pera"  placeholder="Enter rights" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label>Type Service</label>
-                    <input type="text" formControlName="type"  placeholder="Enter service type"  class="form-control">
+                    <label>Place</label>
+                    <input type="text" formControlName="place"  placeholder="Enter service type"  class="form-control">
                 </div>
             </div>
             <div class="row pt-2">
-                <div class="col-md-12">
+                <div class="col-md-6">
+                    <label>Address</label>
+                    <input type="text" formControlName="address"  placeholder="Enter service type"  class="form-control">
+                </div>
+                <div class="col-md-6">
                     <label>Set Image</label>
                     <input type="file" formControlName="imgPath"  placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-control">
-                </div>            
+                </div> 
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-6">
+                    <label>Link</label>
+                    <input type="text" formControlName="link"  placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>linkText</label>
+                    <input type="text" formControlName="linkText"  placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-control">
+                </div>
             </div>
         </form>
      </div>
@@ -62,5 +76,4 @@
         </div>
        
     </div>
-
 </div>

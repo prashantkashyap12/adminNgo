@@ -1,0 +1,158 @@
+<div style="min-height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px; padding-bottom:3em">
+
+   <div class="row">
+     <div class="col-md-9">
+         <form action="" class="p-2" [formGroup]="donateDetails">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="ng-autocomplete pt-4" [ngClass]="showList?'d-block':'d-none'">
+                        <ng-autocomplete 
+                        [data]="data"
+                        [searchKeyword]="keyword"
+                        placeholder="Find Save Record..."
+                        (selected)='selectEvent($event)'
+                        [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+                        </ng-template>
+                        <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            
+            <div [ngStyle]="{ 'display': this.isVisible ? 'block' : 'none' }">
+                <div class="row pt-2">
+                    <div class="col-md-6">
+                        <label>img</label>
+                        <input type="text" formControlName="img" placeholder="Enter img" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>colAmt</label>
+                        <input type="text" formControlName="colAmt" placeholder="Enter colAmt" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>raised</label>
+                        <input type="text" formControlName="raised" placeholder="Enter raised" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>progres</label>
+                        <input type="text" formControlName="progres" placeholder="Enter progres" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>notes</label>
+                        <input type="text" formControlName="notes" placeholder="Enter notes" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>fix_amt1</label>
+                        <input type="text" formControlName="fix_amt1" placeholder="Enter fix_amt1" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>fix_amt2</label>
+                        <input type="text" formControlName="fix_amt2" placeholder="Enter fix_amt2" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>fix_amt3</label>
+                        <input type="text" formControlName="fix_amt3" placeholder="Enter fix_amt3" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>fix_amt4</label>
+                        <input type="text" formControlName="fix_amt4" placeholder="Enter fix_amt4" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>fix_amt5</label>
+                        <input type="text" formControlName="fix_amt5" placeholder="Enter fix_amt5" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryPera</label>
+                        <input type="text" formControlName="sumryPera" placeholder="Enter sumryPera" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryLi1</label>
+                        <input type="text" formControlName="sumryLi1" placeholder="Enter sumryLi1" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryLi2</label>
+                        <input type="text" formControlName="sumryLi2" placeholder="Enter sumryLi2" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryLi3</label>
+                        <input type="text" formControlName="sumryLi3" placeholder="Enter sumryLi3" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryLi4</label>
+                        <input type="text" formControlName="sumryLi4" placeholder="Enter sumryLi4" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryLi5</label>
+                        <input type="text" formControlName="sumryLi5" placeholder="Enter sumryLi5" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryLi6</label>
+                        <input type="text" formControlName="sumryLi6" placeholder="Enter sumryLi6" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryLi7</label>
+                        <input type="text" formControlName="sumryLi7" placeholder="Enter sumryLi7" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>sumryLi8</label>
+                        <input type="text" formControlName="sumryLi8" placeholder="Enter sumryLi8" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>smr_img1</label>
+                        <input type="text" formControlName="smr_img1" placeholder="Enter smr_img1" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>smr_img2</label>
+                        <input type="text" formControlName="smr_img2" placeholder="Enter smr_img2" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>smr_pra1</label>
+                        <input type="text" formControlName="smr_pra1" placeholder="Enter smr_pra1" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>smr_blockqt</label>
+                        <input type="text" formControlName="smr_blockqt" placeholder="Enter smr_blockqt" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label>smr_pra2</label>
+                        <input type="text" formControlName="smr_pra2" placeholder="Enter smr_pra2" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+     </div>
+      <div class="col-md-3" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
+        <div class="row pt-2">
+            <label>Image</label>
+            <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
+
+        </div>
+        <div class="row pt-2">
+            <label>BlogImg1</label>
+             <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
+
+        </div>
+        <div class="row pt-2">
+            <label>BlogImg2</label>
+            <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
+
+        </div>
+     </div>
+   </div>
+
+
+    <div class="d-flex justify-content-between w-75" style="position:fixed; bottom: 20px;left: 205px;background-color: rgb(240, 240, 240);  border-radius: 20px; padding:10px;">
+        <div>
+            <button (click)="onSubmit()" class="btn shadow-sm" [ngClass]="updateAct?'btn-secondary':'btn-success'">{{updateAct?'Submit':'Update'}}</button>
+            <button (click)="allot()" class="btn btn-light mx-2 shadow-sm">All List</button>
+            <button (click)="clear()" class="btn btn-light mx-2 shadow-sm">Clear</button>
+        </div>
+    </div>
+
+</div>

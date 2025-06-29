@@ -1,0 +1,141 @@
+<div style="min-height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px; padding-bottom:3em">
+
+   <div class="row">
+     <div class="col-md-9">
+         <form class="p-2" [formGroup]="EventDetails">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="ng-autocomplete pt-4" [ngClass]="showList?'d-block':'d-none'">
+                        <ng-autocomplete 
+                        [data]="data"
+                        [searchKeyword]="keyword"
+                        placeholder="Find Save Record..."
+                        (selected)='selectEvent($event)'
+                        [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+                        </ng-template>
+                        <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            
+            <div [ngStyle]="{ 'display': this.isVisible ? 'block' : 'none' }">
+                <div class="row pt-2">
+                   <div class="col-md-6">
+                    <label>Image</label>
+                    <input type="file" formControlName="img" placeholder="Enter img" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Dadicat</label>
+                    <input type="text" formControlName="dadicat" placeholder="Enter dadicat" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Head1</label>
+                    <input type="text" formControlName="head1" placeholder="Enter head1" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Pera</label>
+                    <input type="text" formControlName="pera11" placeholder="Enter pera11" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Pera</label>
+                    <input type="text" formControlName="pera12" placeholder="Enter pera12" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Head</label>
+                    <input type="text" formControlName="head2" placeholder="Enter head2" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Pera</label>
+                    <input type="text" formControlName="pera22" placeholder="Enter pera22" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>List 1</label>
+                    <input type="text" formControlName="li1" placeholder="Enter li1" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>List 2</label>
+                    <input type="text" formControlName="li2" placeholder="Enter li2" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>List 3</label>
+                    <input type="text" formControlName="li3" placeholder="Enter li3" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>List 4</label>
+                    <input type="text" formControlName="li4" placeholder="Enter li4" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>List 5</label>
+                    <input type="text" formControlName="li5" placeholder="Enter li5" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Other Head</label>
+                    <input type="text" formControlName="otherHead" placeholder="Enter otherHead" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Part 1</label>
+                    <input type="text" formControlName="parti1" placeholder="Enter parti1" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Part 2</label>
+                    <input type="text" formControlName="parti12" placeholder="Enter parti12" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Part 3</label>
+                    <input type="text" formControlName="parti13" placeholder="Enter parti13" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Part 4</label>
+                    <input type="text" formControlName="parti14" placeholder="Enter parti14" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Part 5</label>
+                    <input type="text" formControlName="parti15" placeholder="Enter parti15" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Part 6</label>
+                    <input type="text" formControlName="parti16" placeholder="Enter parti16" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Part 7</label>
+                    <input type="text" formControlName="parti17" placeholder="Enter parti17" class="form-control">
+                </div>
+            </div>
+            </div>
+        </form>
+      </div>
+      <div class="col-md-3" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
+        <div class="row pt-2">
+            <label>Image</label>
+            <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
+
+        </div>
+        <div class="row pt-2">
+            <label>BlogImg1</label>
+             <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
+
+        </div>
+        <div class="row pt-2">
+            <label>BlogImg2</label>
+            <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
+
+        </div>
+     </div>
+   </div>
+
+
+    <div class="d-flex justify-content-between w-75" style="position:fixed; bottom: 20px;left: 205px;background-color: rgb(240, 240, 240);  border-radius: 20px; padding:10px;">
+        <div>
+            <button (click)="onSubmit()" class="btn shadow-sm" [ngClass]="updateAct?'btn-secondary':'btn-success'">{{updateAct?'Submit':'Update'}}</button>
+            <button (click)="allot()" class="btn btn-light mx-2 shadow-sm">All List</button>
+            <button (click)="clear()" class="btn btn-light mx-2 shadow-sm">Clear</button>
+        </div>
+    </div>
+
+</div>

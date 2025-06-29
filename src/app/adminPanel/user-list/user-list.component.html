@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-11 m-auto pt-2 ">
+            <div class="">
+                <h4>Auth List</h4>
+
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>password</th>
+                        <th>OTP</th>
+                        <th>Auth-Permission</th>
+                        <th>Is_Verified</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let team of data, index as i">
+                        <td>{{team.id}}</td>
+                        <td>{{team.name}}</td>
+                        <td>{{team.email}}</td>
+                        <td>{{team.contact}}</td>
+                        <td>{{team.password}}</td>
+                        <td>{{team.otp}}</td>
+                        <td>{{team.role}}</td>
+                        <td>{{team.isVerified}}</td>
+                        <td>
+                            <span (click)="edit(team)">Edit</span> <br> 
+                            <span (click)="del(team.email)">Delete</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

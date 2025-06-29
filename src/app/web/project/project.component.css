@@ -1,0 +1,17 @@
+/* NG _ AUTO Complete -- OPEN */
+  .ng-autocomplete {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0px 10px 15px -3px rgba(188, 113, 0, 0.3);
+  }
+  .ng-autocomplete {
+    position: relative;
+  }
+  .ng-autocomplete .autocomplete-container {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 100% !important;
+    transform: translateY(-4px);
+    z-index: 9999;
+  }
+/* NG _ AUTO Complete -- CLOSE */

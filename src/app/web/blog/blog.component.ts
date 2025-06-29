@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BlogService } from '../service/blog.service';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { CommonModule } from '@angular/common';
-
+import { url } from '../interface/api_config';
 @Component({
   selector: 'app-blog',
   standalone: true,
@@ -16,11 +16,14 @@ import { CommonModule } from '@angular/common';
 })
 export class BlogComponent implements OnInit {
 
+
+
   constructor(private _fb:FormBuilder, private _blog:BlogService){}
   ngOnInit(){
    this.init(); 
    this.blogListView()
   }
+    private baseUrl = new url().value;
 
   updateAct:any=true;
   showList:any=false;
@@ -39,7 +42,7 @@ export class BlogComponent implements OnInit {
   datapatch(data:any){
     this.blogTran = data.blogTran;
     console.log(this.blogTran);
-    this.imagePreview = data.imgPath;
+    this.imagePreview = this.baseUrl+data.imgPath;
     console.log(this.imagePreview, "datafil");
     this.blogForm.patchValue({
       date:moment(data.date).format('YYYY-MM-DD'),
@@ -53,12 +56,7 @@ export class BlogComponent implements OnInit {
   }
 
 
-  onChangeSearch(data:any){
-    console.log(data, "b");
-  }
-  onFocused(data:any){
-    console.log(data, "c");
-  }
+
 
   init(){
     this.blogForm = this._fb.group({
@@ -119,6 +117,8 @@ export class BlogComponent implements OnInit {
         alert(res.message1);
         this.fresh();
         this.allot();
+        this.showList = false
+        this.blogListView()
         }
       }).catch(err=>{
         console.log(err);
@@ -128,10 +128,10 @@ export class BlogComponent implements OnInit {
       for(const key of (dataLs as any).keys()){
         console.log(key, dataLs.get(key));
       }
-      dataLs.append("BlogTran",this.blogTran);
+      dataLs.append("blogid",this.blogTran);
       this._blog.bloglisUpdate(dataLs).then(res=>{
         if(res.state){
-          console.log("updated");
+          alert("updated");
         }
       })
     }
@@ -141,21 +141,18 @@ export class BlogComponent implements OnInit {
     this._blog.bloglisDelete(this.blogTran).subscribe(res=>{
       if(res.state){
         alert("Toster = Record Hasbeen Deleted");
-        this._blog.bloglisView()
+        this.blogListView()
+        this.fresh()
       }
     })
   }
   allot(){
     this.showList= !this.showList;
   }
-
-
   fresh(){   // Done
     this.init();
     this.updateAct = true;
     this.showList = false
+    this.imagePreview = "";
   }
-
-
-
 }

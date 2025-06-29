@@ -20,8 +20,8 @@
                 <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center">
                     <h3>User Register</h3>
                     <form [formGroup]="signupForm" *ngIf="signupForm" class="flex-column d-flex">
-                        <input type="text" placeholder="Enter Email Value" formControlName="email" maxlength="50">
-                        <input type="password" placeholder="Enter Password Value" formControlName="password" maxlength="50">
+                        <input type="text" placeholder="Enter Email Value" formControlName="email" maxlength="50" class="form-control">
+                        <input type="password" placeholder="Enter Password Value" formControlName="password" maxlength="50" class="form-control mt-2">
                         <a style="cursor: pointer;" (click)="routForgt()">Forgot Password?</a>
                         <div class="d-flex p-1 pt-2 d-felx justify-content-between">
                             <button (click)="onSubmit()" class="btn btn-primary">Login</button>
