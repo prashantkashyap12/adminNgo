@@ -13,7 +13,14 @@ export class BlogService {
 
   constructor(private _http:HttpClient) {   }
   
-// Blog List Add <Model>
+// Blog List View 
+async bloglisView():Promise<any>{
+  let url = this.url+"blogList";
+  let res = await this._http.get(url).toPromise(); 
+  return res;
+}
+
+// Add List =
 async bloglisAdd(Model:any):Promise<any>{
  try{
     let url = this.url+"blogAdd";
@@ -24,12 +31,7 @@ async bloglisAdd(Model:any):Promise<any>{
     throw err;
   }
 }
-// Blog List View 
-async bloglisView():Promise<any>{
-  let url = this.url+"blogList";
-  let res = await this._http.get(url).toPromise(); 
-  return res;
-}
+
 // Blog List Delete <blogTran>
  bloglisDelete(BlogTranVal:any):Observable<any>{
   let url = this.url+`blogDel?blogTran=${BlogTranVal}`;

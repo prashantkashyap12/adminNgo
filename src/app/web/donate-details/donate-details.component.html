@@ -28,7 +28,7 @@
                 <div class="row pt-2">
                     <div class="col-md-6">
                         <label>img</label>
-                        <input type="text" formControlName="img" placeholder="Enter img" class="form-control">
+                        <input type="file" formControlName="img" (change)="check1($event)" placeholder="Enter img" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>colAmt</label>
@@ -104,11 +104,11 @@
                     </div>
                     <div class="col-md-6">
                         <label>smr_img1</label>
-                        <input type="text" formControlName="smr_img1" placeholder="Enter smr_img1" class="form-control">
+                        <input type="file" formControlName="smr_img1" (change)="check2($event)" placeholder="Enter smr_img1" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>smr_img2</label>
-                        <input type="text" formControlName="smr_img2" placeholder="Enter smr_img2" class="form-control">
+                        <input type="file" formControlName="smr_img2" (change)="check3($event)" placeholder="Enter smr_img2" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>smr_pra1</label>

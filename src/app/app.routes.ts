@@ -17,7 +17,7 @@ import { TeamComponent } from './web/team/team.component';
 
 export const routes: Routes = [
 
-    { path:'', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path:'', redirectTo: 'donateDetails', pathMatch: 'full' },
     {path:'login', component:LoginComponent},
     {path:'signup', component:SignupComponent},
     {path:'verify', component:VarifyComponent},
@@ -40,6 +40,5 @@ export const routes: Routes = [
     {path:'UserList', component:UserListComponent},
 
     {path:'team_manager', component:TeamComponent}
-
 
 ];

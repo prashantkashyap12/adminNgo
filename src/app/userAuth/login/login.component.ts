@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit{
 
-
   constructor(private _router:Router, private _auth:AuthserviceService, private _fb:FormBuilder){}
   ngOnInit(): void {
     this.Init();

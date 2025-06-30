@@ -1,12 +1,9 @@
 @if (isVisible) {
-    <!-- Wrapper for layout -->
     <div class="body-wrapper d-flex">
         
-        <!-- Sidebar -->
         <div class="sidebar d-flex flex-column">
             <ul class="nav flex-column px-3 ">
                 <li class="px-1 py-2"><b>Web Panel</b></li>
-
                 <li class="nav-item bg-white rounded mb-1 shadow-sm">
                     <a class="nav-link text-secondary" routerLink="/blog">Blog</a>
                 </li>
@@ -49,10 +46,8 @@
 
         </div>
 
-        <!-- Content Area -->
         <div class="main-content flex-grow-1">
 
-            <!-- Scrollable Navbar -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top navbar-scroll">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">MyApp Logo</a>
@@ -65,7 +60,6 @@
                 </div>
             </nav>
 
-            <!-- Main Router View -->
             <div class="">
                 <router-outlet></router-outlet>
             </div>
@@ -76,3 +70,5 @@
 @if (!isVisible) {
     <router-outlet></router-outlet>
 }
+
+

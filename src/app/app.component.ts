@@ -14,10 +14,7 @@ export class AppComponent {
   isBrowser:boolean = true;
 
   constructor(private _router:Router){}
-  ngOnInit(){
-    
-  }
-  
+
   ngAfterViewInit(){
     var valueToken;
     if (this.isBrowser) {
