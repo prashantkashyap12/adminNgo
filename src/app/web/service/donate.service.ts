@@ -53,8 +53,8 @@ export class DonateService {
   }
 
    // Get Donation Details
-  getDonationDetails(): Observable<any> {
-    let url = `${this.baseUrl}ListDonateDetails`;
+  getDonationDetails(DonationTran:any): Observable<any> {
+    let url = `${this.baseUrl}getDonateDetails?doantTran=${DonationTran}`;
     let res = this._http.get(url);
     return res
   }

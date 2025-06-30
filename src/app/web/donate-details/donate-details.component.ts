@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, viewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { url } from '../interface/api_config';
@@ -15,6 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './donate-details.component.css'
 })
 export class DonateDetailsComponent {
+
+  @ViewChild('img1') img1A!:ElementRef;
+  @ViewChild('smrImg1') smrImg1!:ElementRef;
+  @ViewChild('smrImg2') smrImg2!:ElementRef;
 
   constructor(private _fb:FormBuilder, private _donate:DonateService){}
   ngOnInit(){
@@ -34,11 +38,11 @@ export class DonateDetailsComponent {
   showList:boolean=true
   blogListHding:any="";
   data:any = []
-  keyword="SumryPera";
+  keyword="Heading";
   doanteKey:any;
   Init(){
     this.donateDetails = this._fb.group({
-      img: ['', [Validators.required]],
+      img: [null],
       colAmt: ['', [Validators.required]],
       raised: ['', [Validators.required]],
       progres: ['', [Validators.required]],
@@ -57,8 +61,8 @@ export class DonateDetailsComponent {
       sumryLi6: ['', [Validators.required]],
       sumryLi7: ['', [Validators.required]],
       sumryLi8: ['', [Validators.required]],
-      smr_img1: ['', [Validators.required]],
-      smr_img2: ['', [Validators.required]],
+      smr_img1: [null],
+      smr_img2: [null],
       smr_pra1: ['', [Validators.required]],
       smr_blockqt: ['', [Validators.required]],
       smr_pra2: ['', [Validators.required]],
@@ -91,71 +95,84 @@ export class DonateDetailsComponent {
   }
 
   selectEvent(evt:any){
-    this.datapatch(evt);
+    this.isVisible = true
+     this._donate.getDonationDetails(evt.DonationTran).subscribe(res=>{
+      let resp = res.result[0]
+      this.datapatch(resp)
+    })
   }
   datapatch(evt:any){
 
     this.doanteKey = evt.DonationTran;
-    this.imagePreview1 =  evt.Img;
-    this.imagePreview2 = evt.SmrImg1;
-    this.imagePreview3 = evt.SmrImg2;
-
+    this.imagePreview1 = this.baseUrl+evt.Img !=null ? this.baseUrl+evt.Img:'Image not Marked';
+    this.imagePreview2 = this.baseUrl+evt.SmrImg1 !=null ? this.baseUrl+evt.SmrImg1:'Image not Marked';
+    this.imagePreview3 = this.baseUrl+evt.SmrImg2 !=null ? this.baseUrl+evt.SmrImg2:'Image not Marked';
     this.donateDetails.patchValue({
-      colAmt: evt.colAmt,
-      raised: evt.raised,
-      progres: evt.progres,
-      notes: evt.notes,
-      fix_amt1: evt.fix_amt1,
-      fix_amt2: evt.fix_amt2,
-      fix_amt3: evt.fix_amt3,
-      fix_amt4: evt.fix_amt4,
-      fix_amt5: evt.fix_amt5,
-      sumryPera: evt.sumryPera,
-      sumryLi1: evt.sumryLi1,
-      sumryLi2: evt.sumryLi2,
-      sumryLi3: evt.sumryLi3,
-      sumryLi4: evt.sumryLi4,
-      sumryLi5: evt.sumryLi5,
-      sumryLi6: evt.sumryLi6,
-      sumryLi7: evt.sumryLi7,
-      sumryLi8: evt.sumryLi8,
-      smr_img1: evt.smr_img1,
-      smr_img2: evt.smr_img2,
-      smr_pra1: evt.smr_pra1,
-      smr_blockqt: evt.smr_blockqt,
-      smr_pra2: evt.smr_pra2
+      colAmt: evt.ColAmt,
+      raised: evt.Raised,
+      progres: evt.Progres,
+      notes: evt.Notes,
+      fix_amt1: evt.FixAmt1,
+      fix_amt2: evt.FixAmt2,
+      fix_amt3: evt.FixAmt3,
+      fix_amt4: evt.FixAmt4,
+      fix_amt5: evt.FixAmt5,
+      sumryPera: evt.SumryPera,
+      sumryLi1: evt.SumryLi1,
+      sumryLi2: evt.SumryLi2,
+      sumryLi3: evt.SumryLi3,
+      sumryLi4: evt.SumryLi4,
+      sumryLi5: evt.SumryLi5,
+      sumryLi6: evt.SumryLi6,
+      sumryLi7: evt.SumryLi7,
+      sumryLi8: evt.SumryLi8,
+      smr_pra1: evt.SmrPra1,
+      smr_blockqt: evt.SmrBlockqt,
+      smr_pra2: evt.SmrPra2,
     });
+
+    this.img1A.nativeElement.value = evt.Img;
+    this.smrImg1.nativeElement.value = evt.Img;
+    this.smrImg2.nativeElement.value = evt.Img;
+
+    // img:evt.Img,
+    //   smr_img1: evt.SmrImg1,
+    //   smr_img2: evt.SmrImg2
+
+    this.donateDetails.get('')
+
+
   }
   
   onSubmit(){
     let Fd = new FormData();
-    Fd.append('Img', this.img1)
-    Fd.append('ColAmt', this.donateDetails.get('colAmt')?.value);
-    Fd.append('Raised', this.donateDetails.get('raised')?.value);
-    Fd.append('Progres', this.donateDetails.get('progres')?.value);
-    Fd.append('Notes', this.donateDetails.get('notes')?.value);
-    Fd.append('FixAmt1', this.donateDetails.get('fix_amt1')?.value);
-    Fd.append('FixAmt2', this.donateDetails.get('fix_amt2')?.value);
-    Fd.append('FixAmt3', this.donateDetails.get('fix_amt3')?.value);
-    Fd.append('FixAmt4', this.donateDetails.get('fix_amt4')?.value);
-    Fd.append('FixAmt5', this.donateDetails.get('fix_amt5')?.value);
-    Fd.append('SumryPera', this.donateDetails.get('sumryPera')?.value);
-    Fd.append('SumryLi1', this.donateDetails.get('sumryLi1')?.value);
-    Fd.append('SumryLi2', this.donateDetails.get('sumryLi2')?.value);
-    Fd.append('SumryLi3', this.donateDetails.get('sumryLi3')?.value);
-    Fd.append('SumryLi4', this.donateDetails.get('sumryLi4')?.value);
-    Fd.append('SumryLi5', this.donateDetails.get('sumryLi5')?.value);
-    Fd.append('SumryLi6', this.donateDetails.get('sumryLi6')?.value);
-    Fd.append('SumryLi7', this.donateDetails.get('sumryLi7')?.value);
-    Fd.append('SumryLi8', this.donateDetails.get('sumryLi8')?.value);
-    Fd.append('SmrImg1',this.img2);
-    Fd.append('SmrImg2',this.img3);
-    Fd.append('SmrPra1', this.donateDetails.get('smr_pra1')?.value);
-    Fd.append('SmrBlockqt', this.donateDetails.get('smr_blockqt')?.value);
-    Fd.append('SmrPra2', this.donateDetails.get('smr_pra2')?.value);
-    Fd.append('DonationTran', this.doanteKey)
+    Fd.append('img', this.img1 as File)
+    Fd.append('colAmt', this.donateDetails.get('colAmt')?.value);
+    Fd.append('raised', this.donateDetails.get('raised')?.value);
+    Fd.append('progres', this.donateDetails.get('progres')?.value);
+    Fd.append('notes', this.donateDetails.get('notes')?.value);
+    Fd.append('fix_amt1', this.donateDetails.get('fix_amt1')?.value);
+    Fd.append('fix_amt2', this.donateDetails.get('fix_amt2')?.value);
+    Fd.append('fix_amt3', this.donateDetails.get('fix_amt3')?.value);
+    Fd.append('fix_amt4', this.donateDetails.get('fix_amt4')?.value);
+    Fd.append('fix_amt5', this.donateDetails.get('fix_amt5')?.value);
+    Fd.append('sumryPera', this.donateDetails.get('sumryPera')?.value);
+    Fd.append('sumryLi1', this.donateDetails.get('sumryLi1')?.value);
+    Fd.append('sumryLi2', this.donateDetails.get('sumryLi2')?.value);
+    Fd.append('sumryLi3', this.donateDetails.get('sumryLi3')?.value);
+    Fd.append('sumryLi4', this.donateDetails.get('sumryLi4')?.value);
+    Fd.append('sumryLi5', this.donateDetails.get('sumryLi5')?.value);
+    Fd.append('sumryLi6', this.donateDetails.get('sumryLi6')?.value);
+    Fd.append('sumryLi7', this.donateDetails.get('sumryLi7')?.value);
+    Fd.append('sumryLi8', this.donateDetails.get('sumryLi8')?.value);
+    Fd.append('smr_img1',this.img2 as File);
+    Fd.append('smr_img2',this.img3 as File);
+    Fd.append('smr_pra1', this.donateDetails.get('smr_pra1')?.value);
+    Fd.append('smr_blockqt', this.donateDetails.get('smr_blockqt')?.value);
+    Fd.append('smr_pra2', this.donateDetails.get('smr_pra2')?.value);
+    Fd.append('donationTran', this.doanteKey)
 
-    for(let data of (Fd as any).Keys()){
+    for(const data of (Fd as any).keys()){
       console.log(data, Fd.get(data));
     }
     this._donate.updateListDetails(Fd).subscribe(res=>{
@@ -167,10 +184,10 @@ export class DonateDetailsComponent {
   }
 
   allot(){
-    this._donate.getDonationDetails().subscribe(res => {
-      this.data = res.list;
+    this._donate.getList().subscribe(res => {
+      this.data = res.res;
       this.showList = true;
-      this.isVisible = true;
+      this.isVisible = false;
       this.updateAct = false;
     }, err => {
       console.error(err);
@@ -179,6 +196,7 @@ export class DonateDetailsComponent {
   
   clear(){
     this.Init();
+    this.isVisible = false
   }
   
 }

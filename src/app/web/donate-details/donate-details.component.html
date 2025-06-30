@@ -15,7 +15,7 @@
                         [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
                         </ng-autocomplete>
                         <ng-template #itemTemplate let-item>
-                        <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+                        <a [innerHTML]="item.Heading">{{item.heading}}</a>
                         </ng-template>
                         <ng-template #notFoundTemplate let-notFound>
                         <div [innerHTML]="notFound"></div>
@@ -28,7 +28,7 @@
                 <div class="row pt-2">
                     <div class="col-md-6">
                         <label>img</label>
-                        <input type="file" formControlName="img" (change)="check1($event)" placeholder="Enter img" class="form-control">
+                        <input type="file" #img1 formControlName="img" (change)="check1($event)" placeholder="Enter img" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>colAmt</label>
@@ -104,11 +104,11 @@
                     </div>
                     <div class="col-md-6">
                         <label>smr_img1</label>
-                        <input type="file" formControlName="smr_img1" (change)="check2($event)" placeholder="Enter smr_img1" class="form-control">
+                        <input type="file" formControlName="smr_img1" #smrImg1 (change)="check2($event)" placeholder="Enter smr_img1" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>smr_img2</label>
-                        <input type="file" formControlName="smr_img2" (change)="check3($event)" placeholder="Enter smr_img2" class="form-control">
+                        <input type="file" formControlName="smr_img2" #smrImg2 (change)="check3($event)" placeholder="Enter smr_img2" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>smr_pra1</label>
