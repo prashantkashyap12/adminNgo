@@ -17,7 +17,7 @@ import { TeamComponent } from './web/team/team.component';
 
 export const routes: Routes = [
 
-    { path:'', redirectTo: 'donateDetails', pathMatch: 'full' },
+  { path: '', redirectTo: 'projectDetails', pathMatch: 'full' },
     {path:'login', component:LoginComponent},
     {path:'signup', component:SignupComponent},
     {path:'verify', component:VarifyComponent},
@@ -25,20 +25,23 @@ export const routes: Routes = [
 
     {path:'dashboard', component:DashboardComponent},
     
+    // Done
     {path:'blog', component:BlogComponent},
     {path:'BlogDetails', component:BlogDetailsComponent},
     
+    // Waiting
     {path:'project', component:ProjectComponent},
     {path:'projectDetails', component:ProjectDetailsComponent},
 
+    // Done
     {path:'event', component:EventsComponent},
     {path:'eventDetails', component:EventDetailsComponent},
-
+    
+    // Done 
     {path:'donate', component:DonateComponent},
     {path:'donateDetails',component:DonateDetailsComponent},
 
     {path:'UserList', component:UserListComponent},
-
     {path:'team_manager', component:TeamComponent}
 
 ];

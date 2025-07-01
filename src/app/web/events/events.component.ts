@@ -4,32 +4,34 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { url } from '../interface/api_config';
+import { EventService } from '../service/event.service';
 
 @Component({
   selector: 'app-events',
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule, AutocompleteLibModule, HttpClientModule, CommonModule],
+  providers: [EventService],
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
 })
 export class EventsComponent {
 
-    constructor(private _fb:FormBuilder){}
+    constructor(private _fb:FormBuilder, private _evtServ:EventService){}
     ngOnInit(){
       this.Init()
+      this.allot();
     }
-
 
     private baseUrl = new url().value;
     EventLsForm!:FormGroup;
-    keyword="linkText1";
-    data:any = [  ]
+    keyword="Heading";
+    data:any = [ ]
 
   
     showList:boolean = true;
     updateAct:boolean = true;
     imagePreview:any = null;
-    ProjTran:any;
+    EvtTran:any;
   
     Init(){
       this.EventLsForm = this._fb.group({
@@ -38,24 +40,102 @@ export class EventsComponent {
         pera: ['', [Validators.required]],
         place: ['', [Validators.required]],
         address: ['', [Validators.required]],
-        imgPath: ['', [Validators.required]],
+        imgPath: [null],
         link: ['', [Validators.required]],
         linkText: ['', [Validators.required]]
       })
     }
   
-    // autoComplete 
+    // Autocomplete Select and Patch data with form 
     selectEvent(data:any){
+      this.updateAct = false;
+      this.EvtTran = data.EventTran;
+      this.imagePreview = this.baseUrl + data.ImgPath;
+      this.EventLsForm.patchValue({
+        date: data.Date,
+        heading: data.Heading,
+        pera: data.Para,
+        place: data.Place,
+        address: data.Address,
+        link: data.Link,
+        linkText: data.LinkText,
+        imgPath: data.ImgPath
+      })
     }
     
-    fileUpdate(file:any){}
+
+    // get IFromFile set with
+    IFromFile:any;
+    fileUpdate(file:any){
+      if(file.target.files.length == 1){
+        this.IFromFile = file.target.files[0];
+      }
+    }
   
     onSubmit(){
-      console.log(this.EventLsForm.value);
+      if(this.EventLsForm.valid){
+        let formData = new FormData();
+        formData.append('date', this.EventLsForm.value.date);
+        formData.append('heading', this.EventLsForm.value.heading);
+        formData.append('pera', this.EventLsForm.value.pera);
+        formData.append('place', this.EventLsForm.value.place);
+        formData.append('address', this.EventLsForm.value.address);
+        formData.append('imgPath', this.IFromFile as File);
+        formData.append('link', this.EventLsForm.value.link);
+        formData.append('linkText', this.EventLsForm.value.linkText);
+
+        if(this.updateAct){
+          // Add Event
+          this._evtServ.AddEventList(formData).subscribe(res=>{
+            if(res.state){
+              alert('Event Added Successfully');
+              this.Init();
+              this.allot();
+            }
+          })
+        }else{
+          // Update Event
+          formData.append('eventTran', this.EvtTran);
+          this._evtServ.updateEventList(formData).subscribe(res=>{
+            if(res.state){
+              alert('Event Updated Successfully');
+              this.Init();
+              this.allot();
+              this.updateAct = true;
+              this.imagePreview = null;
+            }
+          })
+        }
+      }else{
+        alert('Please Fill All Required Fields');
+      }
+    } 
+
+    // Done
+    delet(){
+      this._evtServ.deleteEventList(this.EvtTran).subscribe(res=>{
+        if(res.status == 200){
+          this.allot();
+          this.Init();
+          this.updateAct = true;
+          alert('Event Deleted Successfully');
+        }
+      })
     }
-    delet(){}
-    allot(){}
-    fresh(){}
+
+    // get Event List
+    allot(){
+      this._evtServ.getEventList().subscribe(res=>{
+        this.data = res.result;
+      })
+    }
+
+
+    fresh(){
+      this.Init();
+      this.updateAct = true;
+
+    }
   
 
 }

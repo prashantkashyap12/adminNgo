@@ -15,7 +15,7 @@
                         [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
                         </ng-autocomplete>
                         <ng-template #itemTemplate let-item>
-                        <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+                          <a [innerHTML]="item.Head">{{item.Head}}</a>
                         </ng-template>
                         <ng-template #notFoundTemplate let-notFound>
                         <div [innerHTML]="notFound"></div>
@@ -28,15 +28,15 @@
                 <div class="row pt-2">
                     <div class="col-md-6">
                         <label>img1</label>
-                        <input type="text" formControlName="img1" placeholder="Enter img1" class="form-control">
+                        <input type="file" formControlName="img1" placeholder="Enter img1" (change)="imgIform1($event)" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>img2</label>
-                        <input type="text" formControlName="img2" placeholder="Enter img2" class="form-control">
+                        <input type="file" formControlName="img2" placeholder="Enter img2" (change)="imgIform2($event)" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>img3</label>
-                        <input type="text" formControlName="img3" placeholder="Enter img3" class="form-control">
+                        <input type="file" formControlName="img3" placeholder="Enter img3" (change)="imgIform3($event)" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label>head1</label>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-md-6">
                         <label>date</label>
-                        <input type="text" formControlName="date" placeholder="Enter date" class="form-control">
+                        <input type="date" formControlName="date" placeholder="Enter date" class="form-control">
                     </div>
                 </div>
             </div>
