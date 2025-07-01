@@ -17,7 +17,9 @@ import { TeamComponent } from './web/team/team.component';
 
 export const routes: Routes = [
 
-  { path: '', redirectTo: 'projectDetails', pathMatch: 'full' },
+  { path: '', redirectTo: 'team_manager', pathMatch: 'full' },
+
+    // Done
     {path:'login', component:LoginComponent},
     {path:'signup', component:SignupComponent},
     {path:'verify', component:VarifyComponent},
@@ -29,7 +31,7 @@ export const routes: Routes = [
     {path:'blog', component:BlogComponent},
     {path:'BlogDetails', component:BlogDetailsComponent},
     
-    // Waiting
+    // Done
     {path:'project', component:ProjectComponent},
     {path:'projectDetails', component:ProjectDetailsComponent},
 
@@ -41,6 +43,7 @@ export const routes: Routes = [
     {path:'donate', component:DonateComponent},
     {path:'donateDetails',component:DonateDetailsComponent},
 
+    // Done
     {path:'UserList', component:UserListComponent},
     {path:'team_manager', component:TeamComponent}
 

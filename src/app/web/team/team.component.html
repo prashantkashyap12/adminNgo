@@ -6,7 +6,7 @@
             <div class="row pt-2">
                 <div class="col-md-6">
                     <label>imgPath</label>
-                    <input type="text" formControlName="imgPath" placeholder="Enter imgPath" class="form-control">
+                    <input type="file" (change)="fileUpdate($event)" formControlName="imgPath" placeholder="Enter imgPath" class="form-control">
                 </div>
                 <div class="col-md-6">
                     <label>name</label>
@@ -31,7 +31,7 @@
             [notFoundTemplate]="notFoundTemplate">                                 
             </ng-autocomplete>
             <ng-template #itemTemplate let-item>
-            <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+            <a [innerHTML]="item.Name">{{item.Name}}</a>
             </ng-template>
             <ng-template #notFoundTemplate let-notFound>
             <div [innerHTML]="notFound"></div>

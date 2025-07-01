@@ -15,27 +15,27 @@ export class AppComponent {
 
   constructor(private _router:Router){}
 
-  // ngAfterViewInit(){
-  //   var valueToken;
-  //   if (this.isBrowser) {
-  //     valueToken = sessionStorage.getItem("token");
-  //     console.log(valueToken)
-  //   }
-  //   this.isVisible = valueToken == null ? false : true;
-  //   this.navigate();
-  // }
+  ngAfterViewInit(){
+    var valueToken;
+    if (this.isBrowser) {
+      valueToken = sessionStorage.getItem("token");
+      console.log(valueToken)
+    }
+    this.isVisible = valueToken == null ? false : true;
+    this.navigate();
+  }
 
-  // navigate(){
-  //   if(this.isVisible){
-  //     this._router.navigate(['/dashboard']);
-  //   }else{
-  //     this._router.navigate(['/login']);
-  //   }
-  // }
-  // logout(){
-  //   sessionStorage.clear();
-  //   window.location.reload();
-  // }
+  navigate(){
+    if(this.isVisible){
+      this._router.navigate(['/dashboard']);
+    }else{
+      this._router.navigate(['/login']);
+    }
+  }
+  logout(){
+    sessionStorage.clear();
+    window.location.reload();
+  }
 }
 
 
