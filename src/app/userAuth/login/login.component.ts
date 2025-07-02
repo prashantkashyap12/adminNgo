@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit{
         sessionStorage.setItem('token', res.token);
         location.reload();        
       }else{
-        console.log(res);
+        alert(res.message);
       }
     })
   }

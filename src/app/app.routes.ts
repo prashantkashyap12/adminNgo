@@ -14,6 +14,11 @@ import { EventDetailsComponent } from './web/event-details/event-details.compone
 import { DonateComponent } from './web/donate/donate.component';
 import { DonateDetailsComponent } from './web/donate-details/donate-details.component';
 import { TeamComponent } from './web/team/team.component';
+import { CommingEventComponent } from './UserPanel/comming-event/comming-event.component';
+import { TaskComponent } from './UserPanel/task/task.component';
+import { ReportComponent } from './UserPanel/report/report.component';
+import { TeamMangComponent } from './UserPanel/team-mang/team-mang.component';
+import { DonateRecordComponent } from './UserPanel/donate-record/donate-record.component';
 
 export const routes: Routes = [
 
@@ -45,6 +50,14 @@ export const routes: Routes = [
 
     // Done
     {path:'UserList', component:UserListComponent},
-    {path:'team_manager', component:TeamComponent}
+    {path:'team_manager', component:TeamComponent},
+
+    // waiting for User panel
+    {path:'userTask',component:TaskComponent},
+    {path:'Donation',component:DonateRecordComponent},
+    {path:'Report',component:ReportComponent},
+    {path:'UpcommingEvent', component:CommingEventComponent},
+    {path:'teamslab',component:TeamMangComponent},
+
 
 ];
