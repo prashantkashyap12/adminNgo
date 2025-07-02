@@ -19,10 +19,11 @@ import { TaskComponent } from './UserPanel/task/task.component';
 import { ReportComponent } from './UserPanel/report/report.component';
 import { TeamMangComponent } from './UserPanel/team-mang/team-mang.component';
 import { DonateRecordComponent } from './UserPanel/donate-record/donate-record.component';
+import { DocBuilderComponent } from './web/doc-builder/doc-builder.component';
 
 export const routes: Routes = [
 
-  { path: '', redirectTo: 'team_manager', pathMatch: 'full' },
+  { path: '', redirectTo: 'docBuilder', pathMatch: 'full' },
 
     // Done
     {path:'login', component:LoginComponent},
@@ -50,7 +51,11 @@ export const routes: Routes = [
 
     // Done
     {path:'UserList', component:UserListComponent},
-    {path:'team_manager', component:TeamComponent},
+    {path:'team_manager', component:TeamComponent}, 
+
+    // waiting
+    {path:'docBuilder',component:DocBuilderComponent},
+    // {path:'',component:}
 
     // waiting for User panel
     {path:'userTask',component:TaskComponent},

@@ -89,9 +89,10 @@ export class VarifyComponent implements OnInit {
     const model = this.datamodel();
     this._auth.varify(model).subscribe(res=>{
       if(res.state==true){
+        alert("Password set successfully")
         this._router.navigate(['/login']);
       }else{
-        console.log(res);
+        alert(res.Message)
       }
     })
 

@@ -39,17 +39,19 @@ export class AppComponent {
       const issuedAt = 1751453677;
       const expiresAt = 1751454277;
       this.duration = expiresAt - issuedAt; 
-      setTimeout(()=>{
-        let resp = window.confirm("Do you want to continue working");
-        if(resp==true){
-          this.duration = 1000
-        }else{
-          this.logout();
-        }
-      },this.duration);
+      if(this.duration < 10){
+        setTimeout(()=>{
+          let resp = window.confirm("Do you want to continue working");
+          if(resp==true){
+            this.duration = 1000
+          }else{
+            this.logout();
+          }
+        },this.duration);
+      }
 
       // Menu parsal
-      if(decodedToken['role'] !== 'admin') {
+      if(decodedToken['role'] !== 'user') {
         this.isUser = true;
         this.isAdmin = false;
       } else {
@@ -60,11 +62,11 @@ export class AppComponent {
   }
 
   navigate(){
-    if(this.isVisible){
-      this._router.navigate(['/dashboard']);
-    }else{
-      this._router.navigate(['/login']);
-    }
+    // if(this.isVisible){
+    //   this._router.navigate(['/dashboard']);
+    // }else{
+    //   this._router.navigate(['/login']);
+    // }
   }
   logout(){
     sessionStorage.clear();

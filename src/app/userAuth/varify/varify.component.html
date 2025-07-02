@@ -17,7 +17,7 @@
                 <h3>Verify</h3>
                 <form *ngIf="userVerify" [formGroup]="userVerify" class="d-flex flex-column">
                     <input autocomplete="on" maxlength="60" type="text" id="email" formControlName="email" [value]="email" readonly>
-                    <input autocomplete="on" maxlength="60" type="password" id="name" formControlName="password" [value]="password">
+                    <input autocomplete="on" maxlength="60" type="password" id="name" formControlName="password" placeholder="Enter New Password" [value]="password">
                     <input autocomplete="on" maxlength="60" type="text" placeholder="Enter OTP" formControlName="otp">
                     <span>OTP Valid - {{minStr}}:{{secStr}}</span>
                     <button (click)="onSubmit()" class="btn btn-primary">Verify</button>

@@ -41,6 +41,7 @@ export class ForgetComponent implements OnInit {
       let model = this.modelValidation();
       this._auth.forget(model).subscribe(res => {
         if(res.state == true){
+          alert("OTP Sent on your Email");
           sessionStorage.setItem('email', this.forgetForm.value.email);
           sessionStorage.setItem('password', this.forgetForm.value.password ?? '000000');
           this._router.navigate(['/verify']);

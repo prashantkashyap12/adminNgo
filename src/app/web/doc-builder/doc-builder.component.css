@@ -1,0 +1,9 @@
+.tempDesign{
+    width: 100%;
+    border:1px solid #000;
+    display: flex;
+    justify-content: center;
+}
+.tempDesign > img{
+    width: 400px;
+}
