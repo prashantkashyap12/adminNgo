@@ -96,6 +96,7 @@ export class DonateDetailsComponent {
 
   selectEvent(evt:any){
     this.isVisible = true
+    this.doanteKey = evt.DonationTran;
      this._donate.getDonationDetails(evt.DonationTran).subscribe(res=>{
       let resp = res.result[0]
       this.datapatch(resp)
@@ -103,7 +104,6 @@ export class DonateDetailsComponent {
   }
   datapatch(evt:any){
 
-    this.doanteKey = evt.DonationTran;
     this.imagePreview1 = this.baseUrl+evt.Img !=null ? this.baseUrl+evt.Img:'Image not Marked';
     this.imagePreview2 = this.baseUrl+evt.SmrImg1 !=null ? this.baseUrl+evt.SmrImg1:'Image not Marked';
     this.imagePreview3 = this.baseUrl+evt.SmrImg2 !=null ? this.baseUrl+evt.SmrImg2:'Image not Marked';
@@ -139,7 +139,6 @@ export class DonateDetailsComponent {
     //   smr_img1: evt.SmrImg1,
     //   smr_img2: evt.SmrImg2
 
-    this.donateDetails.get('')
 
 
   }
@@ -176,10 +175,12 @@ export class DonateDetailsComponent {
       console.log(data, Fd.get(data));
     }
     this._donate.updateListDetails(Fd).subscribe(res=>{
-      this.showList = true;
-        this.clear();
-        this.allot();
-        alert("Record Updated");
+      if(res.state){
+        this.showList = true;
+          alert("Record Updated");
+          this.clear();
+          this.allot();
+      }
     })
   }
 
@@ -196,7 +197,10 @@ export class DonateDetailsComponent {
   
   clear(){
     this.Init();
-    this.isVisible = false
+    this.isVisible = false;
+    this.img1 =null;
+    this.img2 =null;
+    this.img3 =null;
   }
   
 }

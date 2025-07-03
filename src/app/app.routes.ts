@@ -20,10 +20,11 @@ import { ReportComponent } from './UserPanel/report/report.component';
 import { TeamMangComponent } from './UserPanel/team-mang/team-mang.component';
 import { DonateRecordComponent } from './UserPanel/donate-record/donate-record.component';
 import { DocBuilderComponent } from './web/doc-builder/doc-builder.component';
+import { NotFoundComponent } from './web/not-found/not-found.component';
 
 export const routes: Routes = [
 
-  { path: '', redirectTo: 'docBuilder', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
     // Done
     {path:'login', component:LoginComponent},
@@ -63,6 +64,7 @@ export const routes: Routes = [
     {path:'Report',component:ReportComponent},
     {path:'UpcommingEvent', component:CommingEventComponent},
     {path:'teamslab',component:TeamMangComponent},
+    { path: '**', component: NotFoundComponent }
 
 
 ];

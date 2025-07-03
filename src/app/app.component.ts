@@ -62,11 +62,11 @@ export class AppComponent {
   }
 
   navigate(){
-    // if(this.isVisible){
-    //   this._router.navigate(['/dashboard']);
-    // }else{
-    //   this._router.navigate(['/login']);
-    // }
+    if(this.isVisible){
+      this._router.navigate(['/dashboard']);
+    }else{
+      this._router.navigate(['/login']);
+    }
   }
   logout(){
     sessionStorage.clear();

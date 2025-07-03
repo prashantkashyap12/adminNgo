@@ -20,6 +20,7 @@ export class EventDetailsComponent {
   ngOnInit(){
     this.Init();
     this.allot();
+    this.isVisible = false
   }
 
     private baseUrl = new url().value;
@@ -67,6 +68,7 @@ export class EventDetailsComponent {
 
 
     selectEvent(evt:any){
+      this.isVisible = true;
       this.eventListHding = evt.Heading;
       this.eventTran = evt.EventTran;
       this._evtServ.eventDetailsList(evt.EventTran).subscribe(res=>{
@@ -135,8 +137,7 @@ export class EventDetailsComponent {
         this._evtServ.eventDetailsAdd(formData).subscribe(res=>{
           if(res.status){
             alert("Event Details Added Successfully");
-            this.Init();
-            this.allot();
+            this.ngOnInit();
             this.imagePreview1 = null;
           }
         })
@@ -148,6 +149,8 @@ export class EventDetailsComponent {
       })
     }
 
-    clear(){}
+    clear(){
+      this.isVisible = false
+    }
 
 }

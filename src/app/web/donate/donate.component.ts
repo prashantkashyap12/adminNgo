@@ -91,10 +91,12 @@ export class DonateComponent {
 
     if (this.updateAct) {
       this._dontSer.addList(fmdata).subscribe(res => {
-        this.showList = true;
-        this.fresh();
-        this.allot();
-        alert("Record Added");
+        if(res.state){
+          alert("Record Added");
+          this.showList = true;
+          this.fresh();
+          this.allot();
+        }
       })
     } else {
       fmdata.append('DonationTran', this.donationTran);
@@ -113,7 +115,7 @@ export class DonateComponent {
       this.fresh();
       this.allot()
       this.imagePreview = null;
-      console.log("Record Deleted")
+      alert("Record Deleted");
     })
   }
 
@@ -127,7 +129,6 @@ export class DonateComponent {
   fresh() {
     this.Init();
     this.updateAct = true
+    this.imagePreview = null  
   }
-  
-
 }
