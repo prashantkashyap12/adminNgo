@@ -11,7 +11,7 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 })
 export class DocBuilderComponent {
 
-  docShow:boolean = true;
+  docShow:boolean = false;
   data:any =[]
   keyword="";
   selectEvent(data:any){

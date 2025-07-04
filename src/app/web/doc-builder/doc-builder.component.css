@@ -7,3 +7,76 @@
 .tempDesign > img{
     width: 400px;
 }
+
+/*  */
+.tempDesign{
+    position: relative;
+}
+.conent{
+    color: #000;
+    font-size: 9px;
+    text-align: left;
+    width: 100%;
+}
+.conent > .hd1{
+    position: absolute;
+    top: 187px;
+    left: 136px;
+}
+.conent > .hd2{
+    position: absolute;
+    top: 209px;
+    left: 160px;
+    text-align: start;
+}
+
+.conent > .hd3{
+    position: absolute;
+    top: 226px;
+    left: 10pc;
+}
+
+.conent > .subject{
+    position: absolute;
+    top: 244px;
+    left: 160px;
+}
+.conent > .main_p1 { 
+    position: absolute;
+    top: 285px;
+    left: 8pc;
+ }
+.conent > .main_p2 { 
+    position: absolute; 
+    left: 8pc;
+    top: 19pc;
+    width: 268px;
+    text-align: justify;
+}
+.conent > .mainLs { 
+    position: absolute; 
+    left: 104px;
+    top: 22.3pc;
+}
+.conent > .main_p3 { 
+    position: absolute; 
+    left: 8pc;
+    top: 25.5pc;
+    width: 271px;
+    text-align: justify;
+}
+.conent > .main_p4 { 
+    position: absolute;
+    top: 28.5pc;
+    left: 8pc; 
+}
+.conent .main_p5{
+    position: absolute; 
+    
+}
+.conent > .footer { 
+    position: absolute; 
+    left: 6pc;
+    top: 30.5pc;
+    list-style: none;
+}
