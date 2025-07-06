@@ -48,10 +48,14 @@ export class LoginComponent implements OnInit{
     let model = this.Ismodel();
     this._auth.signIn(model).subscribe(res=>{
       if(res.state == true){
-        location.reload();        
+        sessionStorage.setItem('userId', res.data.userId);
+        sessionStorage.setItem('Name', res.data.name);
         sessionStorage.setItem('email', this.signupForm.value.email);
         sessionStorage.setItem('password', this.signupForm.value.password);
         sessionStorage.setItem('token', res.token);
+        sessionStorage.setItem('contact', res.data.contact);
+        sessionStorage.setItem('expiryDate', res.data.expiryDate);
+        location.reload();
       }else{
         alert(res.message);
       }

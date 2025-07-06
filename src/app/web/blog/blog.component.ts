@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BlogService } from '../service/blog.service';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { CommonModule } from '@angular/common';
-import { url } from '../interface/api_config';
+import { url } from '../../interface/api_config';
 @Component({
   selector: 'app-blog',
   standalone: true,

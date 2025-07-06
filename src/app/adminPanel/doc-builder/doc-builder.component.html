@@ -57,7 +57,7 @@
             [notFoundTemplate]="notFoundTemplate">                                 
             </ng-autocomplete>
             <ng-template #itemTemplate let-item>
-            <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+            <a [innerHTML]="item.Name">{{item.Name}}</a>
             </ng-template>
             <ng-template #notFoundTemplate let-notFound>
             <div [innerHTML]="notFound"></div>

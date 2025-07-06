@@ -15,16 +15,15 @@ import { DonateComponent } from './web/donate/donate.component';
 import { DonateDetailsComponent } from './web/donate-details/donate-details.component';
 import { TeamComponent } from './web/team/team.component';
 import { CommingEventComponent } from './UserPanel/comming-event/comming-event.component';
-import { TaskComponent } from './UserPanel/task/task.component';
-import { ReportComponent } from './UserPanel/report/report.component';
-import { TeamMangComponent } from './UserPanel/team-mang/team-mang.component';
-import { DonateRecordComponent } from './UserPanel/donate-record/donate-record.component';
-import { DocBuilderComponent } from './web/doc-builder/doc-builder.component';
-import { NotFoundComponent } from './web/not-found/not-found.component';
+import { DocBuilderComponent } from './adminPanel/doc-builder/doc-builder.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfileCompleteComponent } from './UserPanel/profile-complete/profile-complete.component';
 
 export const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  
+  {path:'dashboard', component:DashboardComponent},
 
     // Done
     {path:'login', component:LoginComponent},
@@ -32,38 +31,28 @@ export const routes: Routes = [
     {path:'verify', component:VarifyComponent},
     {path:'forget', component:ForgetComponent},
 
-    {path:'dashboard', component:DashboardComponent},
     
-    // Done
+    // Admin Web - Done
     {path:'blog', component:BlogComponent},
     {path:'BlogDetails', component:BlogDetailsComponent},
-    
-    // Done
     {path:'project', component:ProjectComponent},
     {path:'projectDetails', component:ProjectDetailsComponent},
-
-    // Done
     {path:'event', component:EventsComponent},
     {path:'eventDetails', component:EventDetailsComponent},
-    
-    // Done 
     {path:'donate', component:DonateComponent},
     {path:'donateDetails',component:DonateDetailsComponent},
-
-    // Done
-    {path:'UserList', component:UserListComponent},
     {path:'team_manager', component:TeamComponent}, 
 
-    // waiting
+    // Admin Panel- working
+    //...
     {path:'docBuilder',component:DocBuilderComponent},
-    // {path:'',component:}
+    {path:'UserList', component:UserListComponent},
 
-    // waiting for User panel
-    {path:'userTask',component:TaskComponent},
-    {path:'Donation',component:DonateRecordComponent},
-    {path:'Report',component:ReportComponent},
+    
+    // User - working
+    {path:'ProfileUpdate',component:ProfileCompleteComponent},
     {path:'UpcommingEvent', component:CommingEventComponent},
-    {path:'teamslab',component:TeamMangComponent},
+
     { path: '**', component: NotFoundComponent }
 
 

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, model } from '@angular/core';
 import { Observable } from 'rxjs';
-import { url } from '../interface/api_config';
+import { url } from '../../interface/api_config';
+import { CommonService } from '../../common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class BlogService {
   private baseUrl = new url().value
   url =this.baseUrl;
 
-  constructor(private _http:HttpClient) {   }
+  constructor(private _http:HttpClient, private _common:CommonService) {   }
   
 // Blog List View 
 async bloglisView():Promise<any>{

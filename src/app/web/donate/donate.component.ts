@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
-import { url } from '../interface/api_config';
+import { url } from '../../interface/api_config';
 import { DonateService } from '../service/donate.service';
 
 @Component({

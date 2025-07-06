@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, viewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
-import { url } from '../interface/api_config';
+import { url } from '../../interface/api_config';
 import { DonateService } from '../service/donate.service';
 import { HttpClientModule } from '@angular/common/http';
 

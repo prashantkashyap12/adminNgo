@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { HttpClientModule } from '@angular/common/http';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { CommonModule } from '@angular/common';
-import { url } from '../interface/api_config';
+import { url } from '../../interface/api_config';
 
 @Component({
   selector: 'app-blog-details',

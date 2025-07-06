@@ -1,6 +1,7 @@
 @if (isVisible) {
     <div class="body-wrapper d-flex">
         <div class="sidebar d-flex flex-column">
+            <!-- Web Panels -->
             <ul class="nav flex-column px-3" *ngIf="isAdmin">
                 <li class="px-1 py-2"><b>Web Panel</b></li>
                 <li class="nav-item bg-white rounded mb-1 shadow-sm">
@@ -33,35 +34,47 @@
                 <li class="nav-item bg-white rounded mb-1 shadow-sm">
                     <a class="nav-link text-secondary" routerLink="/team_manager">Team Manager</a>
                 </li>
-                <li class="nav-item bg-white rounded mb-1 shadow-sm">
-                    <a class="nav-link text-secondary" routerLink="/UserList">Users</a>
-                </li>
-                <li class="nav-item bg-white rounded mb-1 shadow-sm">
-                    <a class="nav-link text-secondary" routerLink="/docBuilder">Doc Builder</a>
-                </li>
             </ul>
+
+            <!-- User Panel -->
             <ul class="nav flex-column px-3" *ngIf="isUser">
                 <li class="px-1 py-2"><b>User Panel</b></li>
                 <li class="nav-item bg-white rounded mb-1 shadow-sm">
-                    <a class="nav-link text-secondary" routerLink="/dashboard">Dashboard</a>
+                    <a class="nav-link text-secondary" routerLink="/ProfileUpdate">Complete Profile</a>
                 </li>
                 <li class="nav-item bg-white rounded mb-1 shadow-sm">
-                    <a class="nav-link text-secondary" routerLink="/userTask">Task</a>
-                </li>
-                <li class="nav-item bg-white rounded mb-1 shadow-sm">
-                    <a class="nav-link text-secondary" routerLink="/Donation">Donation</a>
-                </li>
-                <li class="nav-item bg-white rounded mb-1 shadow-sm">
-                    <a class="nav-link text-secondary" routerLink="/Report">Report</a>
-                </li>
-                <li class="nav-item bg-white rounded mb-1 shadow-sm">
-                    <a class="nav-link text-secondary" routerLink="/UpcommingEvent">Upcomming Event</a>
-                </li>
-                <li class="nav-item bg-white rounded mb-1 shadow-sm">
-                    <a class="nav-link text-secondary" routerLink="/teamslab">Team</a>
+                    <a class="nav-link text-secondary" routerLink="/UpcommingEvent">Comming Event</a>
                 </li>
             </ul>
-            <div class="p-2"></div>
+            
+            <!-- admin panel -->
+            <ul class="nav flex-column px-3" *ngIf="isAdmin">
+                <li class="px-1 py-2"><b>Admin Panel</b></li>
+                <li class="nav-item bg-white rounded mb-1 shadow-sm">
+                    <a class="nav-link text-secondary" routerLink="/dashboard">Dashboard</a>
+                </li>
+                <!-- <li class="nav-item bg-white rounded mb-1 shadow-sm">
+                    <a class="nav-link text-secondary" routerLink="/Donation">Donation</a>
+                </li> -->
+                <!-- <li class="nav-item bg-white rounded mb-1 shadow-sm">
+                    <a class="nav-link text-secondary" routerLink="/report">Report</a>
+                </li> -->
+                <!-- <li class="nav-item bg-white rounded mb-1 shadow-sm">
+                    <a class="nav-link text-secondary" routerLink="/teamslab">Team</a>
+                </li> -->
+                <!-- <li class="nav-item bg-white rounded mb-1 shadow-sm">
+                    <a class="nav-link text-secondary" routerLink="/userTask">Schedule Task</a>
+                </li> -->
+                <!-- <li class="nav-item bg-white rounded mb-1 shadow-sm">
+                    <a class="nav-link text-secondary" routerLink="/CreateEvent">Create Event</a>
+                </li> -->
+                <li class="nav-item bg-white rounded mb-1 shadow-sm">
+                    <a class="nav-link text-secondary" routerLink="/docBuilder">Doc Builder</a>
+                </li>
+                <li class="nav-item bg-white rounded mb-1 shadow-sm">
+                    <a class="nav-link text-secondary" routerLink="/UserList">Users Record</a>
+                </li>
+            </ul>
         </div>
 
         <div class="main-content flex-grow-1">

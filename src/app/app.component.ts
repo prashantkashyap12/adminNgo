@@ -51,10 +51,10 @@ export class AppComponent {
       }
 
       // Menu parsal
-      if(decodedToken['role'] !== 'user') {
-        this.isUser = true;
-        this.isAdmin = false;
-      } else {
+      if(decodedToken['role'] === 'user') {
+        this.isUser = false;
+        this.isAdmin = true;
+      }else if(decodedToken['role'] === 'admin'){
         this.isUser = false;
         this.isAdmin = true;
       }
@@ -63,7 +63,7 @@ export class AppComponent {
 
   navigate(){
     if(this.isVisible){
-      this._router.navigate(['/docBuilder']);
+      this._router.navigate(['/ProfileUpdate']);
     }else{
       this._router.navigate(['/login']);
     }
@@ -76,3 +76,4 @@ export class AppComponent {
 
 
 // tejemef733@calorpg.com
+// ng build --configuration production --base-href=/
