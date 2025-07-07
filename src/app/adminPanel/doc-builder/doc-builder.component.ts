@@ -1,36 +1,61 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { DocBuilderService } from '../service/doc-builder.service';
-
+import { url } from '../../interface/api_config';
 @Component({
   selector: 'app-doc-builder',
   standalone: true,
-  imports: [AutocompleteLibModule, CommonModule, HttpClientModule],
+  imports: [AutocompleteLibModule, CommonModule, HttpClientModule, DatePipe],
   providers:[DocBuilderService],
   templateUrl: './doc-builder.component.html',
   styleUrl: './doc-builder.component.css'
 })
 export class DocBuilderComponent {
 
+  private baseUrl = new url().value
   constructor(private _docBuildServ:DocBuilderService){}
   ngOnInit(){
     this.allot()
   }
 
-  docShow:boolean = false;
+  docShow:boolean = true;
   data:any =[]
   keyword="Name";
+
+  // show
+  IsVisible:any =false;
+  // data
+  Name:any;
+  Post:any; 
+  contact:any;
+  UId:any
+  ProfileImg:any;
+
+  address:any;
+  date:any;
+  level:any;
   selectEvent(data:any){
-    if(data=="IdCard"){
-      // patch interpolations
+    this.IsVisible = true
+    if(this.docShow){
+      this.ProfileImg = this.baseUrl + data.ProfileImg
+      this.Name = data.Name;
+      this.Post = data.designation;
+      this.contact = data.Contact;
+      this.UId = data.userId
     }
-    if(data=="OfferLetter"){
-      // patch interpolations
+    if(this.docShow){
+      this.address = data.AddressFull;
+      this.date = data.ExpiryDate;
+      this.level = data.join_cat;
     }
   }
 
+
+  print1(){
+    window.print()
+  }
 
   sendToUser(data:any){
     if(data=='IdCard'){

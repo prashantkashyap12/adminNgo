@@ -1,43 +1,49 @@
 <div class="container">
     <div class="row">
-        <div class="col-10">
-            <div class="w-50 m-auto" *ngIf="!docShow">
+        <div class="col-10" *ngIf="IsVisible">
+            <div class="w-50 m-auto" *ngIf="!docShow" >
                 <div class="tempDesign">
                     <img src="../../../assets/offerLetter.png" alt="" class="w-100 h-100">
-
                     <div class="conent">
                         <p class="hd1">To,</p>
-                        <p class="hd2">Shri/Smt. ________________________</p>
-                        <p class="hd3">Address: __________________________</p>
+                        <p class="hd2">Shri/Smt. __{{Name}}__</p>
+                        <p class="hd3">Address: _{{address}}_</p>
                         <p class="subject">Subject: Regarding the position at -<br>Helping Hand Sanstha</p>
-                        <p class="main_p1">Respected Mr./Ms. __________________________,</p>
+                        <p class="main_p1">Respected Mr./Ms. _{{Name}}_,</p>
                         <p class="main_p2">We are pleased to inform you that you are hereby appointed for voluntary service at the Helping Hand Sanstha's ___________ branch for the following position:</p>
                         <ul class="mainLs">
-                            <li>Designation: ____________________</li>
-                            <li>Level: State / District / Block / Wing (Women/Youth/Environment)</li>
-                            <li>Date of Appointment: __ / __ / 20__</li>
+                            <li>Designation: _{{Post}}_</li>
+                            <li>Level: {{level}}</li>
+                            <li>Date of Appointment: {{date | date:'dd'}}/{{date | date:'MM'}}/  {{date | date:'yyyy'}}</li>
                         </ul>
                         <p class="main_p3">Your appointment is completely honorary/voluntary, and the organization reserves the right to amend or terminate it at any time without prior notice.</p>
                         <p class="main_p4">Our best wishes are with you.</p>
                         <p class="main_p5">Sincerely,</p>
                         <ul class="footer">
-                            <li>Name: ________________</li>
-                            <li>Designation: President / General Secretary</li><br>
+                            <li>Name: {{Name}}_</li>
+                            <li>Designation: {{Post}}</li><br>
                             <li>Seal: ________________</li>
                         </ul>
                     </div>
 
                 </div>
                 <div class="p-2">
-                    <button class="btn btn-success">Print</button> &nbsp;
+                    <button class="btn btn-success" (click)="print1()">Print</button> &nbsp;
                     <button class="btn btn-danger">Clear</button> &nbsp;
-                    <button class="btn btn-warning" (click)="this.docShow=true">Id Card</button>
+                    <button class="btn btn-warning" (click)="this.docShow=true">Id Card</button>&nbsp;
                     <button class="btn btn-primary" (click)="sendToUser('IdCard')">Send to User</button>
                 </div>
             </div>
             <div class="w-50 m-auto" *ngIf="docShow">
                 <div class="tempDesign" >
                     <img src="../../../assets/idCard.jpg" alt="" class="w-100 h-100">
+                        <div class="content">
+                            <img [src]="ProfileImg" alt="" class="imgPro">
+                            <h1 class="name">{{Name}}</h1>
+                            <p class="post">{{Post}}</p>
+                            <p class="contact">+91{{contact}}</p>
+                            <p class="idnum">HHS-{{UId}}</p>
+                        </div>
                 </div>
                 <div class="p-2">
                     <button class="btn btn-success">Print</button> &nbsp;

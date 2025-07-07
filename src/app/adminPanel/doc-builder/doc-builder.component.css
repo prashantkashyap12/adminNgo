@@ -25,14 +25,14 @@
 }
 .conent > .hd2{
     position: absolute;
-    top: 209px;
+    top: 204px;
     left: 160px;
     text-align: start;
 }
 
 .conent > .hd3{
     position: absolute;
-    top: 226px;
+    top: 218px;
     left: 10pc;
 }
 
@@ -79,4 +79,53 @@
     left: 6pc;
     top: 30.5pc;
     list-style: none;
+}
+
+
+
+/* CARD */
+.content{
+    position: absolute;
+    top: 7pc;
+    left: 21px;
+    width: 173px;
+    height: 184px;
+}
+.content > .name{
+   position: relative;
+    text-align: center;
+    top: 6.7pc;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Inter";
+}
+.content > .post{
+    position: relative;
+    text-align: center;
+    top: 5.95pc;
+    font-size: 12px;
+}
+.content > .contact{
+    position: relative;
+    text-align: center;
+    top: 77px;
+    font-size: 10px;
+    font-weight: 500;
+}
+.content > .idnum {
+   position: relative;
+   text-align: center;
+   top: 78px;
+   left: 24px;
+   font-size: 11px;
+   font-weight: 700;
+}
+.content > .imgPro{
+    width: 79px;
+    height: 91px;
+    position: absolute;
+    left: 48px;
+    top: 10px;
+    border-radius: 5px;
 }
