@@ -1,9 +1,10 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { DocBuilderService } from '../service/doc-builder.service';
 import { url } from '../../interface/api_config';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-doc-builder',
   standalone: true,
@@ -14,7 +15,11 @@ import { url } from '../../interface/api_config';
 })
 export class DocBuilderComponent {
 
-  private baseUrl = new url().value
+  private baseUrl = new url().value;
+
+  @ViewChild('capture1',{ static: false }) capture1!:ElementRef; 
+  @ViewChild('capture2',{static: false}) captrure2!:ElementRef
+
   constructor(private _docBuildServ:DocBuilderService){}
   ngOnInit(){
     this.allot()
@@ -39,16 +44,17 @@ export class DocBuilderComponent {
   selectEvent(data:any){
     this.IsVisible = true
     if(this.docShow){
-      this.ProfileImg = this.baseUrl + data.ProfileImg
+      this. ProfileImg = data.ProfileImg != null || data.ProfileImg != undefined ? this.baseUrl+data.ProfileImg:null
+      this.ProfileImg =  this.ProfileImg??'../../../assets/noImg.png';
       this.Name = data.Name;
-      this.Post = data.designation;
+      this.Post = data.designation??'Designation';
       this.contact = data.Contact;
       this.UId = data.userId
     }
     if(this.docShow){
-      this.address = data.AddressFull;
+      this.address = data.AddressFull??'Add Address';
       this.date = data.ExpiryDate;
-      this.level = data.join_cat;
+      this.level = data.join_cat??'Join Category';
     }
   }
 
@@ -57,17 +63,46 @@ export class DocBuilderComponent {
     window.print()
   }
 
-  sendToUser(data:any){
+
+
+  async sendToUser(data:any){
+    const IdCard1 = this.capture1.nativeElement;
+    const IdCard2 = this.captrure2.nativeElement;
+
     if(data=='IdCard'){
       // find UserId
       // Make Image Base64 Encripted, 'UserProFolder'
       // save OverRight Img url with profileTable Col
+      
+      // this.UId // userImg/UId/IdCard.jpg
+      const img = await html2canvas(IdCard1);
+      img.toBlob((blob) => {
+        if (blob) {
+          const file = new File([blob], 'IdCard.png', { type: 'image/png' });
+          let dataForm = new FormData();
+          dataForm.append('Img', file);
+
+          // service Call
+            console.log(dataForm);
+
+        }
+      },'image/png');
     }
     else if(data=='OfferLetter'){
-      // find UserId
-      // Make Image Base64 Encripted, 'UserProFolder'
-      // save OverRight Img url with profileTable Col
+        const img = await html2canvas(IdCard2);
+        img.toBlob((Blob)=>{
+          if(Blob){
+            const file = new File([Blob], 'OfferLetter.png', {type:'image/png'});
+            let dataForm = new FormData();
+            dataForm.append('Img', file);
+
+            // service Call
+            console.log(dataForm);
+          }
+        })
     }
+  
+    
   }
 
   allot_ID(){

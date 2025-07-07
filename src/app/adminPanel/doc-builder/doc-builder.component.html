@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-10" *ngIf="IsVisible">
-            <div class="w-50 m-auto" *ngIf="!docShow" >
+            <div class="w-50 m-auto" *ngIf="!docShow" #capture2 id="capture2">
                 <div class="tempDesign">
                     <img src="../../../assets/offerLetter.png" alt="" class="w-100 h-100">
                     <div class="conent">
@@ -29,12 +29,11 @@
                 </div>
                 <div class="p-2">
                     <button class="btn btn-success" (click)="print1()">Print</button> &nbsp;
-                    <button class="btn btn-danger">Clear</button> &nbsp;
                     <button class="btn btn-warning" (click)="this.docShow=true">Id Card</button>&nbsp;
                     <button class="btn btn-primary" (click)="sendToUser('IdCard')">Send to User</button>
                 </div>
             </div>
-            <div class="w-50 m-auto" *ngIf="docShow">
+            <div class="w-50 m-auto" *ngIf="docShow" #capture1 id="capture1">
                 <div class="tempDesign" >
                     <img src="../../../assets/idCard.jpg" alt="" class="w-100 h-100">
                         <div class="content">
@@ -47,7 +46,6 @@
                 </div>
                 <div class="p-2">
                     <button class="btn btn-success">Print</button> &nbsp;
-                    <button class="btn btn-danger">Clear</button> &nbsp;
                     <button class="btn btn-warning" (click)="this.docShow=false">Offer Letter</button> &nbsp;
                     <button class="btn btn-primary" (click)="sendToUser('OfferLetter')">Send to User</button>
                 </div>
