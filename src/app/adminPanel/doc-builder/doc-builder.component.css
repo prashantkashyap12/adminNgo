@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 .tempDesign{
     width: 100%;
     border:1px solid #000;
@@ -5,10 +9,11 @@
     justify-content: center;
 }
 .tempDesign > img{
-    width: 400px;
+    width: 100%;
+    height: 100%;
 }
 
-/*  */
+/* TempDoc */
 .tempDesign{
     position: relative;
 }
@@ -29,13 +34,11 @@
     left: 160px;
     text-align: start;
 }
-
 .conent > .hd3{
     position: absolute;
     top: 218px;
     left: 10pc;
 }
-
 .conent > .subject{
     position: absolute;
     top: 244px;
@@ -72,7 +75,6 @@
 }
 .conent .main_p5{
     position: absolute; 
-    
 }
 .conent > .footer { 
     position: absolute; 
@@ -81,9 +83,7 @@
     list-style: none;
 }
 
-
-
-/* CARD */
+/* ID */
 .content{
     position: absolute;
     top: 7pc;
@@ -128,4 +128,16 @@
     left: 48px;
     top: 10px;
     border-radius: 5px;
+}
+
+@media print {
+   body{
+    background-color: #000;
+   }
+  .page-footer, .page-header, .page-number, .date-time, .print-header {
+    display: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
 }
