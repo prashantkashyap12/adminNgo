@@ -14,9 +14,7 @@ import { url } from '../../interface/api_config';
   styleUrl: './doc-builder.component.css'
 })
 export class DocBuilderComponent {
-
   private baseUrl = new url().value;
-
   @ViewChild('capture1',{ static: false }) capture1!:ElementRef; 
   @ViewChild('capture2',{static: false}) captrure2!:ElementRef
   constructor(private _docBuildServ:DocBuilderService){}
@@ -63,38 +61,9 @@ export class DocBuilderComponent {
   async sendToUser(data:any){
     const IdCard1 = this.capture1.nativeElement;
     const IdCard2 = this.captrure2.nativeElement;
-
     if(data=='IdCard'){
-      // find UserId
-      // Make Image Base64 Encripted, 'UserProFolder'
-      // save OverRight Img url with profileTable Col
-      
-      // this.UId // userImg/UId/IdCard.jpg
-      // const img = await html2canvas(IdCard1);
-      // img.toBlob((blob) => {
-      //   if (blob) {
-      //     const file = new File([blob], 'IdCard.png', { type: 'image/png' });
-      //     let dataForm = new FormData();
-      //     dataForm.append('Img', file);
-
-      //     // service Call
-      //       console.log(dataForm);
-
-      //   }
-      // },'image/png');
     }
     else if(data=='OfferLetter'){
-        // const img = await html2canvas(IdCard2);
-        // img.toBlob((Blob)=>{
-        //   if(Blob){
-        //     const file = new File([Blob], 'OfferLetter.png', {type:'image/png'});
-        //     let dataForm = new FormData();
-        //     dataForm.append('Img', file);
-
-        //     // service Call
-        //     console.log(dataForm);
-        //   }
-        // })
     }
   }
 
@@ -109,10 +78,9 @@ export class DocBuilderComponent {
       this.data = res.results;
     })
   }
-
-  // Print
+ 
   @ViewChild('printSection') printSect!:ElementRef;
-  print(){
+  print(){   // Print
     const printCont = this.printSect.nativeElement.innerHTML;  
     const printBox = window.open('', '_blank', 'width=360,height=500');
     if(printBox){
@@ -200,36 +168,4 @@ export class DocBuilderComponent {
       printBox.document.close();
     }
   }
-
 }
-
-
-// .tempDesign > img {
-            // width: 100%;
-            // height: 100%;
-            
-//             object-fit: cover;
-//             position: absolute;
-//             top: 0;
-//             left: 0;
-//             opacity: 0.05;
-//             z-index: 0;
-//           }
-//           .conent {
-//             z-index: 1;
-//             position: relative;
-//             color: #000;
-//             font-size: 9px;
-//           }
-//           .conent > .hd1{
-//               position: absolute;
-//               top: 187px;
-//               left: 136px;
-//           }
-//          
-//           .conent > .hd3{
-//               position: absolute;
-//               top: 226px;
-//               left: 10pc;
-//           }
-//          
