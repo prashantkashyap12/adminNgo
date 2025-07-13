@@ -3,7 +3,7 @@
         <div class="col-10" *ngIf="IsVisible">
             <div class="w-50 m-auto" *ngIf="!docShow" #capture2 id="capture2">
                 <div class="tempDesign">
-                    <img src="../../../assets/offerLetter.png" alt="" class="w-100 h-100">
+                    <img src="../../../assets/offerLetter.png" alt="" class="w-100 h-100 offerLetter">
                     <div class="conent">
                         <p class="hd1">To,</p>
                         <p class="hd2">Shri/Smt. __{{Name}}__</p>
@@ -26,10 +26,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="p-2">
-                    <button class="btn btn-success" (click)="print1()">Print</button> &nbsp;
+                <div class="p-2 printBtn">
+                    <button class="btn btn-success" (click)="print1('OfferLetter')">Print</button> &nbsp;
                     <button class="btn btn-warning" (click)="this.docShow=true">Id Card</button>&nbsp;
-                    <button class="btn btn-primary" (click)="sendToUser('IdCard')">Send to User</button>
                 </div>
             </div>
             <div class="w-50 m-auto" *ngIf="docShow" #capture1 id="capture1">
@@ -43,14 +42,14 @@
                         <p class="idnum">HHS-{{UId}}</p>
                     </div>
                 </div>
-                <div class="p-2">
-                    <button class="btn btn-success" (click)="print1()">Print</button> &nbsp;
+                <div class="p-2 printBtn">
+                    <button class="btn btn-success" (click)="print1('IDCard')">Print</button> &nbsp;
                     <button class="btn btn-warning" (click)="this.docShow=false">Offer Letter</button> &nbsp;
-                    <button class="btn btn-primary" (click)="sendToUser('OfferLetter')">Send to User</button>
+                    <!-- <button class="btn btn-primary" (click)="sendToUser('OfferLetter')">Send to User</button> -->
                 </div>
             </div>
         </div>
-        <div class="col-md-2 d-none">
+        <div class="col-md-2">
             <ng-autocomplete 
             [data]="data"
             [searchKeyword]="keyword"

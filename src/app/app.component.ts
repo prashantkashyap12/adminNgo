@@ -52,8 +52,8 @@ export class AppComponent {
 
       // Menu parsal
       if(decodedToken['role'] === 'user') {
-        this.isUser = false;
-        this.isAdmin = false;
+        this.isUser =false;
+        this.isAdmin = true;
       }else if(decodedToken['role'] === 'admin'){
         this.isUser = false;
         this.isAdmin = true;

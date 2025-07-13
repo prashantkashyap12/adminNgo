@@ -1,7 +1,4 @@
-*{
-    margin: 0px;
-    padding: 0px;
-}
+
 .tempDesign{
     width: 100%;
     border:1px solid #000;
@@ -13,7 +10,7 @@
     height: 100%;
 }
 
-/* TempDoc */
+/* TempDoc OPEN */
 .tempDesign{
     position: relative;
 }
@@ -82,8 +79,11 @@
     top: 30.5pc;
     list-style: none;
 }
+@media print {
 
-/* ID */
+}
+
+/* ID -- OPEN */
 .content{
     position: absolute;
     top: 7pc;
@@ -130,14 +130,5 @@
     border-radius: 5px;
 }
 
-@media print {
-   body{
-    background-color: #000;
-   }
-  .page-footer, .page-header, .page-number, .date-time, .print-header {
-    display: none !important;
-  }
-  .no-print {
-    display: none !important;
-  }
-}
+
+/* ID -- CLOSE */
