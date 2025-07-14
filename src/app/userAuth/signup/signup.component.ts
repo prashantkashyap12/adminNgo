@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import moment from 'moment';
 import { AuthserviceService } from '../authservice.service';
@@ -15,7 +15,8 @@ declare var $: any;
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
   imports: [CommonModule, HttpClientModule, ReactiveFormsModule, FormsModule],
-  providers: [AuthserviceService]
+  providers: [AuthserviceService],
+  encapsulation:ViewEncapsulation.None
 })
 export class SignupComponent implements OnInit{
 

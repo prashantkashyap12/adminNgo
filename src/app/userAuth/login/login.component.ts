@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, HttpClientModule, ReactiveFormsModule, FormsModule],
   providers: [AuthserviceService],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit{
 

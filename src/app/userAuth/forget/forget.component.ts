@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers:[AuthserviceService],
   templateUrl: './forget.component.html',
-  styleUrl: './forget.component.css'
+  styleUrl: './forget.component.css',
+  encapsulation:ViewEncapsulation.None
 })
 export class ForgetComponent implements OnInit {
 

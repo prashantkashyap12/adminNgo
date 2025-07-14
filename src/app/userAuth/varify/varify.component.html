@@ -1,16 +1,4 @@
-                 <!-- <form *ngIf="userVerify" [formGroup]="userVerify" >
-                    <div class="intro-x mt-8">
-                        <input autocomplete="on" maxlength="60" type="text" id="email" formControlName="email" [value]="email" readonly class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 intro-x block min-w-full px-4 py-3 xl:min-w-[350px]">
-                        <input autocomplete="on" maxlength="60" type="password" id="name" formControlName="password" [value]="password"  class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 intro-x mt-4 block min-w-full px-4 py-3 xl:min-w-[350px]">
-                        <input  autocomplete="on" maxlength="60" type="text" placeholder="Enter OTP" formControlName="otp" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 intro-x mt-4 block min-w-full px-4 py-3 xl:min-w-[350px]">
-                    </div>
-                    <span>OTP Valid - {{minStr}}:{{secStr}}</span>
-                    <div class="intro-x mt-5 text-center xl:mt-8 xl:text-left">
-                        <button (click)="onSubmit()" >Verify</button>
-                    </div>
-                </form> -->
-
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row bg-light h-100 ">
         <div class="col-md-12">
             <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center">
@@ -25,9 +13,71 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
+<!-- Start Main Content -->
+    <div class="main-content m-4">
+        <div class="grid grid-cols-12 gap-y-7 sm:gap-7 card px-4 sm:px-10 2xl:px-[70px] py-15 lg:items-center lg:min-h-[calc(100vh_-_32px)]">
+            <!-- Start Overview Area -->
+            <div class="col-span-full lg:col-span-6">
+                <div class="flex flex-col items-center justify-center gap-10 text-center">
+                    <div class="hidden sm:block">
+                        <!-- <img src="../../../assets/images/loti/loti-auth.svg" alt="loti" class="group-[.dark]:hidden"> -->
+                        <img src="../../../assets/images/loti/loti-auth-dark.svg" alt="loti" class="group-[.light]:hidden">
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-[28px] leading-none font-semibold text-heading">
+                            Welcome back!
+                        </h3>
+                        <p class="font-medium text-gray-500 dark:text-dark-text mt-4 px-[10%]">
+                            Whether you're launching a stunning online store  optimizing your our object-oriented 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- End Overview Area -->
+
+            <!-- Start Form Area -->
+            <div class="col-span-full lg:col-span-6 w-full lg:max-w-[600px]">
+                <div class="border border-form dark:border-dark-border p-5 md:p-10 rounded-20 md:rounded-30 dk-theme-card-square">
+                    <h3 class="text-xl md:text-[28px] leading-none font-semibold text-heading">
+                        Forgot Password
+                    </h3>
+                    <p class="font-medium text-gray-500 dark:text-dark-text mt-4">
+                        Welcome Back! Log in to your account
+                    </p>
+                    <form *ngIf="userVerify" [formGroup]="userVerify" class="leading-none mt-8">
+                        <div class="mb-7">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email"  autocomplete="off" formControlName="email" [value]="email" readonly class="form-input px-4 py-3.5 rounded-lg">
+                        </div>
+                        <div class="mb-7">
+                            <label for="email" class="form-label">Password</label>
+                            <input type="password"  autocomplete="off" formControlName="password" [value]="password" readonly class="form-input px-4 py-3.5 rounded-lg">
+                        </div>
+    
+                        <div class="m-2">
+                            <span>OTP Valid - {{minStr}}:{{secStr}}</span>
+                        </div>
+
+                        <div class="mb-7">
+                            <label for="email" class="form-label">OTP</label>
+                            <input type="text"  autocomplete="off" placeholder="Enter OTP" formControlName="otp" class="form-input px-4 py-3.5 rounded-lg">
+                        </div>
+                        <!-- Submit Button -->
+                        <button (click)="onSubmit()" class="btn b-solid btn-primary-solid w-full dk-theme-card-square">Forgot Password</button>
+                    </form>
+                    <div class="text-gray-900 dark:text-dark-text font-medium leading-none mt-5">
+                        Back to /
+                        <a routerLink="/signin" class="text-primary-500 font-semibold">Sign in</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Form Area -->
+        </div>
+    </div>
+    <!-- End Main Content -->
 
 
 

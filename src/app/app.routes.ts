@@ -18,6 +18,8 @@ import { CommingEventComponent } from './UserPanel/comming-event/comming-event.c
 import { DocBuilderComponent } from './adminPanel/doc-builder/doc-builder.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileCompleteComponent } from './UserPanel/profile-complete/profile-complete.component';
+import { DocumentsComponent } from './web/documents/documents.component';
+import { HelpNSuppComponent } from './web/help-nsupp/help-nsupp.component';
 
 export const routes: Routes = [
 
@@ -42,6 +44,8 @@ export const routes: Routes = [
     {path:'donate', component:DonateComponent},
     {path:'donateDetails',component:DonateDetailsComponent},
     {path:'team_manager', component:TeamComponent}, 
+    {path:'document', component:DocumentsComponent},
+    {path:'support', component:HelpNSuppComponent},
 
     // Admin Panel- working
     //...

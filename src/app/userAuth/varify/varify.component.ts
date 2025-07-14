@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { AuthserviceService } from '../authservice.service';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
   imports: [CommonModule, HttpClientModule, ReactiveFormsModule, FormsModule],
   providers: [AuthserviceService],
   templateUrl: './varify.component.html',
-  styleUrl: './varify.component.css'
+  styleUrl: './varify.component.css',
+  encapsulation:ViewEncapsulation.None
 })
 export class VarifyComponent implements OnInit {
 

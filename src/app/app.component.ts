@@ -63,7 +63,7 @@ export class AppComponent {
 
   navigate(){
     if(this.isVisible){
-      this._router.navigate(['/docBuilder']);
+      this._router.navigate(['/dashboard']);
     }else{
       this._router.navigate(['/login']);
     }
