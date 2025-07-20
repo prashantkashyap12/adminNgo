@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class ProfileCompleteComponent {
 
   baseUrl = new url().value;
-
+  loader:any=false;
   constructor(private _fb:FormBuilder, private _userProf:UserprofileService){}
   ngOnInit(){
     this.Init();
@@ -41,41 +41,34 @@ export class ProfileCompleteComponent {
     var regId = "HHS"+ddMM+sessionStorage.getItem('userId');
     this.ProfUpdat = this._fb.group({
 
-      imgPath:['', [Validators.required]],
+      imgPath:[''],
 
       doj:[moment(sessionStorage.getItem("expiryDate")).format("DD-MM-YYYY")],
       registerId: [regId],
-      designation:['', [Validators.required]],
-
+      designation:[''],
       name:[sessionStorage.getItem("Name")],
       contact:[sessionStorage.getItem('contact')],
       email:[sessionStorage.getItem('email')],
-      whatCont: ['', [Validators.required]],
+      whatCont: [''],
+      fName:[''], //
+      dob:[''],
+      gender:[''], //
+      maritalStatus:[''], //
+      hEdu:[''], //
+      workProf:[''], //
 
-      fName:['', [Validators.required]], //
-      dob:[''], //
-      gender:['', [Validators.required]], //
-      
-      maritalStatus:['', [Validators.required]], //
-      hEdu:['', [Validators.required]], //
-      workProf:['', [Validators.required]], //
-
-      Address:['', [Validators.required]],  // +
-      landmark:['', [Validators.required]], // + 
-      pin:['', [Validators.required]],  // +
-
-      Member_Type:['',[Validators.required]], //
-
-      join_cat:['', [Validators.required]], //
-      MemOther:['', [Validators.required]],  //
-      desination:['', [Validators.required]], //
+      Address:[''],  // +
+      landmark:[''], // + 
+      pin:[''],  // +
+      Member_Type:[''], //
+      join_cat:[''], //
+      MemOther:[''],  //
+      desination:[''], //
+      whatsApp:['']
     })
 
   
   }
-
-
-
 
   selectEvent(evt:any){}
   
@@ -85,35 +78,42 @@ export class ProfileCompleteComponent {
 
 
   onSubmit(){
+    this.loader = true;
     let Address = this.ProfUpdat.get('Address')?.value;
     let landmark = this.ProfUpdat.get('landmark')?.value;
     let pin = this.ProfUpdat.get('pin')?.value;
     this.CombinAdd = `${Address}#${landmark}#${pin}`;
     const dataForm = new FormData();
-    dataForm.append('ProfileImg', this.ProfImg)
-    dataForm.append('userId', this.userId);
-    dataForm.append('Father_Name', this.ProfUpdat.get('fName')?.value);
-    dataForm.append('DOB', this.ProfUpdat.get('dob')?.value);
-    dataForm.append('Gender', this.ProfUpdat.get('gender')?.value);
-    dataForm.append('MaritalStatus', this.ProfUpdat.get('maritalStatus')?.value);
-    dataForm.append('Education', this.ProfUpdat.get('hEdu')?.value);
-    dataForm.append('Profession', this.ProfUpdat.get('workProf')?.value);
-    dataForm.append('whatApp', this.ProfUpdat.get('')?.value);
-    dataForm.append('AddressFull', this.CombinAdd);
-    dataForm.append('Member_Type', this.ProfUpdat.get('Member_Type')?.value);
-    dataForm.append('join_cat', this.ProfUpdat.get('join_cat')?.value);
-    dataForm.append('Already_Join', this.ProfUpdat.get('MemOther')?.value);
-    dataForm.append('designation',this.ProfUpdat.get('desination')?.value);
-
+    dataForm.append('ProfileImg', this.ProfImg ?? "")
+    dataForm.append('userId', this.userId ?? "");
+    dataForm.append('designation',this.ProfUpdat.get('designation')?.value ?? "");
+    dataForm.append('Father_Name', this.ProfUpdat.get('fName')?.value ?? "");
+    dataForm.append('DOB', this.ProfUpdat.get('dob')?.value ?? "");
+    dataForm.append('Gender', this.ProfUpdat.get('gender')?.value ?? "");
+    dataForm.append('MaritalStatus', this.ProfUpdat.get('maritalStatus')?.value ?? "");
+    dataForm.append('Education', this.ProfUpdat.get('hEdu')?.value ?? "");
+    dataForm.append('Profession', this.ProfUpdat.get('workProf')?.value ?? "");
+    dataForm.append('whatApp', this.ProfUpdat.get('whatsApp')?.value ?? "");
+    dataForm.append('AddressFull', this.CombinAdd ?? "");
+    dataForm.append('Member_Type', this.ProfUpdat.get('Member_Type')?.value ?? "");
+    dataForm.append('join_cat', this.ProfUpdat.get('join_cat')?.value ?? "");
+    dataForm.append('Already_Join', this.ProfUpdat.get('MemOther')?.value ?? "");
     for(const file of (dataForm as any).keys()){
       console.log(file, dataForm.get(file));
     }
-    console.log("wait");
     this._userProf.updateUser(dataForm).subscribe(res=>{
       if(res.state == true){
-
+        this.loader = false;
+        this.ngOnInit()
+        alert(res.massege)
+      }else{
+        this.loader = false;
       }
-    })
+    },(err)=>
+      {
+        this.loader = false;
+        console.log(err);
+      })
   }
 
   patch(data:any){
@@ -139,7 +139,7 @@ export class ProfileCompleteComponent {
       Member_Type:this.data.Member_Type,
       join_cat:this.data.join_cat,
       MemOther:this.data.Already_Join,
-      desination:this.data.designation
+      whatApp:this.data.whatApp
     })
   }
   allot(){

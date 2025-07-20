@@ -19,5 +19,4 @@ export class UserprofileService {
     let url = `${this.baseUrl}GTProfUpdate?userId=${userId}`;
     return this._http.get(url);
   }
-
 }

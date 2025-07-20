@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { AuthserviceService } from '../authservice.service';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -18,7 +18,9 @@ import { Router } from '@angular/router';
 })
 export class VarifyComponent implements OnInit {
 
+  loader:boolean = false;
   userVerify!: FormGroup;
+  @ViewChild('isHidden') HidePwd!:ElementRef;
   constructor(private _fb:FormBuilder, 
     @Inject(PLATFORM_ID) private platformId: Object, 
     private _auth:AuthserviceService,
@@ -31,12 +33,14 @@ export class VarifyComponent implements OnInit {
   tempPwd:any;
   ngOnInit(){
     this.TimeCoutner();
-    this.password == "000000" ? this.tempPwd = true : this.tempPwd = false;
+    // this.password == "000000" ? this.tempPwd = true : this.tempPwd = false;
     if (isPlatformBrowser(this.platformId)) {
       this.email = sessionStorage.getItem('email');
       this.password = sessionStorage.getItem('password');
       this.password = this.password == "000000" ? "" : this.password; 
-      if(this.password == "000000"){
+      if(this.password == ""){
+        this.tempPwd = false;
+      }else{
         this.tempPwd = true;
       }
     }
@@ -83,20 +87,28 @@ export class VarifyComponent implements OnInit {
   }
 
   onSubmit(){
+    this.loader = true;
     if(this.userVerify.invalid){
       alert("form Invalid");
+      this.loader = false;
       return;
     }
     const model = this.datamodel();
     this._auth.varify(model).subscribe(res=>{
       if(res.state==true){
+        this.loader = false;
         alert("Password set successfully")
         this._router.navigate(['/login']);
       }else{
-        alert(res.Message)
+        this.loader = false;
+        alert(res.message)
       }
     })
 
 
   }
+  signin(){
+    this._router.navigate(['/login']);
+  }
+
 }

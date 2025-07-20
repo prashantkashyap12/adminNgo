@@ -40,15 +40,121 @@
     </div>
 </div> -->
 
-  <!-- Start Main Content -->
+    <!-- loader -->
+    <div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+        <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+    </div>
+    <!-- loader -->
+
     <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
         <div class="card">
-            <h2 class="card-title">Forms Input Component</h2>
+            <h2 class="card-title">Live User List</h2>
         </div>
-        <div class="grid grid-cols-12 gap-x-4" style="background-color: antiquewhite;">
-            <div class="p-2">
-                <h4>ok</h4>
+        <div class="grid grid-cols-12">
+            <!-- INFORMATION TABLE ONE -->
+            <div class="col-span-full">
+                <div class="card p-0">
+                    <div class="p-6">
+                        <div class="flex-center-between">
+                            <div class="flex items-center gap-5">
+                                <form class="max-w-80 relative">
+                                    <span class="absolute top-1/2 -translate-y-[40%] left-2.5">
+                                        <i class="ri-search-line text-gray-900 dark:text-dark-text text-[14px]"></i>
+                                    </span>
+                                    <input type="text" placeholder="Search for..." class="form-input pl-[30px]">
+                                </form>
+                                <button type="button" class="font-spline_sans text-sm px-1 text-gray-900 dark:text-dark-text flex-center gap-1.5" (click)="allot()">
+                                    <i class="ri-loop-right-line text-inherit text-sm"></i>
+                                    <span>Refresh</span>
+                                </button>
+                            </div>
+                            <button class="btn b-light btn-primary-light dk-theme-card-square">
+                                <i class="ri-add-fill text-inherit"></i>
+                                <span>Add Data</span>
+                            </button>
+                        </div>
+                        <!-- START INFORMATION TABLE -->
+                        <div class="overflow-x-auto mt-5">
+                            <table class="table-auto border-collapse w-full whitespace-nowrap text-left text-gray-500 dark:text-dark-text font-medium">
+                                <thead>
+                                    <tr>
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one">Sr.</th>
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one">Name</th>
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one">Email</th>
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one">Contact</th>
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one">Password</th>
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one">OTP</th>
+                                        
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one">Auth-Permission</th>
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one">Is_Verified</th>
+                                        <th class="p-6 py-4 bg-[#F2F4F9] dark:bg-dark-card-two dk-border-one w-10">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 dark:divide-dark-border-three">
+                                    <tr *ngFor="let team of data, index as i">
+                                        <td class="p-6 py-4 dk-border-one">{{i+1}}</td>
+                                        <td class="p-6 py-4 dk-border-one">{{team.name}}</td>
+                                        <td class="p-6 py-4 dk-border-one">{{team.email}}</td>
+                                        <td class="p-6 py-4 dk-border-one">{{team.contact}}</td>
+                                        <td class="p-6 py-4 dk-border-one">{{team.password}}</td>
+                                        <td class="p-6 py-4 dk-border-one">{{team.otp}}</td>
+                                        <td class="p-6 py-4 dk-border-one">{{team.role}}</td>
+                                        <td class="p-6 py-4 dk-border-one">{{team.isVerified}}</td>
+                                        <td class="p-6 py-4 dk-border-one">
+                                            <div class="flex items-center gap-2">
+                                                <!-- Dirrect Message -->
+                                                <!-- <a (click)="edit(team)" class="btn-icon btn-primary-icon-light size-7">
+                                                    <i class="ri-ball-pen-line text-inherit text-[13px]"></i>
+                                                </a> -->
+                                                <!-- Delete From List -->
+                                                <a (click)="del(team.email)" class="btn-icon btn-danger-icon-light size-7">
+                                                    <i class="ri-delete-bin-line text-inherit text-[13px]"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- START PAGINATION -->
+                        <div class="flex-center-between mt-5">
+                            <div class="font-spline_sans text-sm text-gray-900 dark:text-dark-text">Showing 1 to 8 of 20 entries</div>
+                            <nav class="dk-border-one rounded-[4px] overflow-hidden">
+                                <ul class="divide-x divide-gray-200 dark:divide-dark-border-three flex items-center">
+                                    <li>
+                                        <a href="#" class="font-spline_sans font-medium flex-center size-8 text-gray-900 dark:text-dark-text bg-white dark:bg-dark-card-two hover:bg-primary-500 hover:text-white [&.active]:bg-primary-500 [&.active]:text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 -rotate-45">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 19.5-15-15m0 0v11.25m0-11.25h11.25" />
+                                            </svg>                                            
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="font-spline_sans font-medium flex-center size-8 text-gray-900 dark:text-dark-text bg-white dark:bg-dark-icon hover:text-primary-500 [&.active]:text-primary-500">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="font-spline_sans font-medium flex-center size-8 text-gray-900 dark:text-dark-text bg-white dark:bg-dark-icon hover:text-primary-500 [&.active]:text-primary-500 active">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="font-spline_sans font-medium flex-center size-8 text-gray-900 dark:text-dark-text bg-white dark:bg-dark-icon hover:text-primary-500 [&.active]:text-primary-500">
+                                            <i class="ri-more-fill text-inherit"></i>                                              
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="font-spline_sans font-medium flex-center size-8 text-gray-900 dark:text-dark-text bg-white dark:bg-dark-icon hover:text-primary-500 [&.active]:text-primary-500">10</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="font-spline_sans font-medium flex-center size-8 text-gray-900 dark:text-dark-text bg-white dark:bg-dark-card-two hover:bg-primary-500 hover:text-white [&.active]:bg-primary-500 [&.active]:text-white active">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 rotate-45">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                                            </svg>                                                                                          
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Main Content -->
+

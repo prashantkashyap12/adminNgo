@@ -17,7 +17,7 @@ import { url } from '../../interface/api_config';
 export class BlogComponent implements OnInit {
 
 
-
+  loader:any = false;
   constructor(private _fb:FormBuilder, private _blog:BlogService){}
   ngOnInit(){
    this.init(); 

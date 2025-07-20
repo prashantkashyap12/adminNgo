@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit{
     this.Init();
   }
   signupForm!:FormGroup;
+  loader:boolean =false;
 
   Init(){
     this.signupForm = this._fb.group({
@@ -42,8 +43,10 @@ export class LoginComponent implements OnInit{
     this._router.navigate(['/signup'])
   }
   onSubmit(){
+    this.loader = true;
     if(!this.signupForm.valid){
       alert("form is not Valid");
+      this.loader = false;
       return
     }
     let model = this.Ismodel();
@@ -57,7 +60,9 @@ export class LoginComponent implements OnInit{
         sessionStorage.setItem('contact', res.data.contact);
         sessionStorage.setItem('expiryDate', res.data.expiryDate);
         location.reload();
+        this.loader = false;
       }else{
+        this.loader = false;
         alert(res.message);
       }
     })

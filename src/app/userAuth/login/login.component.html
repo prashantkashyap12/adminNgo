@@ -14,9 +14,15 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> 
     </div> -->
 
+    <!-- loader -->
+    <div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+        <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+    </div>
+    <!-- loader -->
+    
      <!-- Start Main Content -->
     <div class="main-content m-4">
         <div class="grid grid-cols-12 gap-y-7 sm:gap-7 card px-4 sm:px-10 2xl:px-[70px] py-15 lg:items-center lg:min-h-[calc(100vh_-_32px)]">
@@ -25,15 +31,7 @@
                 <div class="flex flex-col items-center justify-center gap-10 text-center">
                     <div class="hidden sm:block">
                         <!-- <img src="../../../assets/images/loti/loti-auth.svg" alt="loti" class="group-[.dark]:hidden"> -->
-                        <img src="../../../assets/images/loti/loti-auth-dark.svg" alt="loti" class="group-[.light]:hidden">
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-[28px] leading-none font-semibold text-heading">
-                            Welcome back!
-                        </h3>
-                        <p class="font-medium text-gray-500 dark:text-dark-text mt-4 px-[10%]">
-                            Whether you're launching a stunning online store  optimizing your our object-oriented 
-                        </p>
+                        <img src="../../../assets/images/loti/auth-img.png " alt="loti" class="group-[.light]:hidden">
                     </div>
                 </div>
             </div>
@@ -51,16 +49,13 @@
                     <form [formGroup]="signupForm" *ngIf="signupForm" class="leading-none mt-8">
                         <div class="mb-2.5">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" formControlName="email" placeholder="debra.holt@example.com" required class="form-input px-4 py-3.5 rounded-lg">
+                            <input type="email" id="email" formControlName="email" placeholder="Enter Registered E-mail" required class="form-input px-4 py-3.5 rounded-lg">
                         </div>
                         <div class="mt-5">
                             <label for="password" class="form-label">Password</label>
                             <div class="relative">
                                 <input type="password" id="password" formControlName="password" placeholder="Password" required class="form-input px-4 py-3.5 rounded-lg">
-                                <label for="toggleInputType" class="size-8 rounded-md flex-center hover:bg-gray-200 dark:hover:bg-dark-icon foucs:bg-gray-200 dark:foucs:bg-dark-icon position-center !left-auto -right-2.5">
-                                    <input type="checkbox" id="toggleInputType" class="inputTypeToggle peer/it" hidden>
-                                    <i class="ri-eye-off-line text-gray-500 dark:text-dark-text peer-checked/it:before:content-['\ecb5']"></i>
-                                </label>
+                                
                             </div>
                         </div>
                         <div class="flex items-center justify-between mt-3 mb-7">
@@ -94,3 +89,7 @@
         </div>
     </div>
     <!-- End Main Content -->
+
+
+
+    

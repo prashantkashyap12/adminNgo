@@ -67,457 +67,95 @@
     </div>
 </div> -->
 
-    <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
-        <div class="card">
-            <h2 class="card-title">Forms Input Component</h2>
-        </div>
-    </div>
 
-  <!-- Start Main Content -->
+    <!-- loader -->
+    <div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+        <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+    </div>
+    <!-- loader -->
+
+    <!-- Start Main Content -->
     <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
         <div class="card">
-            <h2 class="card-title">Forms Input Component</h2>
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <h2 class="card-title">Document Builder</h2>
+                <ng-autocomplete 
+                    [data]="data"
+                    [searchKeyword]="keyword"
+                    placeholder="Find Save Record..."
+                    (selected)='selectEvent($event)'
+                    [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate">                                 
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.Name">{{item.Name}}</a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
         </div>
         <div class="grid grid-cols-12 gap-x-4">
-            <!-- BASIC INPUT -->
-            <div class="col-span-full lg:col-span-6">
+            <!-- DATA FORM -->
+            <div class="col-span-full" *ngIf="IsVisible">
                 <div class="card p-0">
-                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
-                        <h3 class="text-lg card-title leading-none">Basic Inputs</h3>
-                        <button type="button" class="btn b-light btn-primary-light btn-sm prism-toggle !py-2.5 focus:bg-primary-500 focus:text-white dark:!bg-dark-icon">
-                            <span class="shrink-0">View Code</span>
-                            <i class="ri-code-line text-inherit text-[15px]"></i>
-                        </button>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <div>
-                                <label for="first_name" class="form-label">First name</label>
-                                <input type="text" id="first_name" class="form-input" placeholder="First Name" autocomplete="off" required >
+                    
+                   <div class="w-50 m-auto" *ngIf="!docShow" #capture2 id="capture2">
+                        <!-- <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
+                            <h3 class="text-lg card-title leading-none">Offer Letter</h3>
+                        </div> -->
+                        <div class="tempDesign">
+                            <img src="../../../assets/offerLetter.png" alt="" class="w-100 h-100 offerLetter">
+                            <div class="conent">
+                                <p class="hd1">To,</p>
+                                <p class="hd2">Shri/Smt. __{{Name}}__</p>
+                                <p class="hd3">Address: _{{address}}_</p>
+                                <p class="subject">Subject: Regarding the position at -<br>Helping Hand Sanstha</p>
+                                <p class="main_p1">Respected Mr./Ms. _{{Name}}_,</p>
+                                <p class="main_p2">We are pleased to inform you that you are hereby appointed for voluntary service at the Helping Hand Sanstha's ___________ branch for the following position:</p>
+                                <ul class="mainLs">
+                                    <li>Designation: _{{Post}}_</li>
+                                    <li>Level: {{level}}</li>
+                                    <li>Date of Appointment: {{date | date:'dd'}}/{{date | date:'MM'}}/  {{date | date:'yyyy'}}</li>
+                                </ul>
+                                <p class="main_p3">Your appointment is completely honorary/voluntary, and the organization reserves the right to amend or terminate it at any time without prior notice.</p>
+                                <p class="main_p4">Our best wishes are with you.</p>
+                                <p class="main_p5">Sincerely,</p>
+                                <ul class="footer">
+                                    <li>Name: {{Name}}_</li>
+                                    <li>Designation: {{Post}}</li><br>
+                                    <li>Seal: ________________</li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                    <!-- Prism Code -->
-                    <div class="p-6 hidden">
-                        <pre>
-                            <code class="language-markup">
-                                &lt;div>
-                                    &lt;label for="first_name" class="form-label">First name&lt;/label>
-                                    &lt;input type="text" id="first_name" class="form-input" placeholder="First Name" autocomplete="off" required >
-                                &lt;/div>
-                            </code>
-                        </pre>
-                    </div>
-                    <!-- Prism Code -->
-                </div>
-            </div>
-            <!-- BASIC Radius -->
-            <div class="col-span-full lg:col-span-6">
-                <div class="card p-0">
-                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
-                        <h3 class="text-lg card-title leading-none">Radius Basic Inputs</h3>
-                        <button type="button" class="btn b-light btn-primary-light btn-sm prism-toggle !py-2.5 focus:bg-primary-500 focus:text-white dark:!bg-dark-icon">
-                            <span class="shrink-0">View Code</span>
-                            <i class="ri-code-line text-inherit text-[15px]"></i>
-                        </button>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <label for="last_name" class="form-label">Last name</label>
-                            <input type="text" id="last_name" class="form-input bg-[#F8F8FC] dark:bg-dark-card-two" placeholder="Last Name" autocomplete="off" required >
+                        <div class="p-2 printBtn" style="width:100%;display: flex;justify-content: space-between;">
+                            <button class="btn b-light btn-danger-light" (click)="print1('OfferLetter')">Print</button>
+                            <button class="btn b-light btn-success-light"  (click)="this.docShow=true">Id Card</button>&nbsp;
                         </div>
                     </div>
-                    <!-- Prism Code -->
-                    <div class="p-6 hidden">
-                        <pre>
-                            <code class="language-markup">
-                                &lt;div>
-                                    &lt;label for="last_name" class="form-label">Last Name&lt;/label>
-                                    &lt;input type="text" id="last_name" class="form-input bg-[#F8F8FC] dark:bg-dark-card-two" placeholder="Last Name" autocomplete="off" required >
-                                &lt;/div>
-                            </code>
-                        </pre>
-                    </div>
-                    <!-- Prism Code -->
-                </div>
-            </div>
-            <!-- INPUT GROUP -->
-            <div class="col-span-full lg:col-span-6">
-                <div class="card p-0">
-                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
-                        <h3 class="text-lg card-title leading-none">Input Group</h3>
-                        <button type="button" class="btn b-light btn-primary-light btn-sm prism-toggle !py-2.5 focus:bg-primary-500 focus:text-white dark:!bg-dark-icon">
-                            <span class="shrink-0">View Code</span>
-                            <i class="ri-code-line text-inherit text-[15px]"></i>
-                        </button>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <label class="form-label">Type Date</label>
-                            <div class="flex">
-                                <span class="form-input-group input-icon !rounded-r-none">
-                                    <i class="ri-calendar-line text-inherit"></i>
-                                </span>
-                                <input type="date" class="form-input !rounded-l-none bg-[#F8F8FC] dark:bg-dark-card-two" required >
+                    <div class="w-50 m-auto" *ngIf="docShow" #capture1 id="capture1">
+                         <!-- <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
+                            <h3 class="text-lg card-title leading-none">ID Card</h3>
+                        </div> -->
+                        <div class="tempDesign" >
+                            <img src="../../../assets/idCard.jpg" alt="" class="w-100 h-100">
+                            <div class="content">
+                                <img [src]="ProfileImg" alt="" class="imgPro">
+                                <h1 class="name">{{Name}}</h1>
+                                <p class="post">{{Post}}</p>
+                                <p class="contact">+91{{contact}}</p>
+                                <p class="idnum">HHS-{{UId}}</p>
                             </div>
                         </div>
-                        <div>
-                            <label class="form-label">Time</label>
-                            <div class="flex">
-                                <span class="form-input-group input-icon !rounded-r-none">
-                                    <i class="ri-time-line text-inherit"></i>
-                                </span>
-                                <input type="time" value="16:20" class="form-input !rounded-l-none bg-[#F8F8FC] dark:bg-dark-card-two" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Type Email</label>
-                            <div class="flex">
-                                <span class="form-input-group input-icon !rounded-r-none">
-                                    <i class="ri-mail-line text-inherit"></i>
-                                </span>
-                                <input type="email" class="form-input !rounded-l-none bg-[#F8F8FC] dark:bg-dark-card-two" placeholder="example@gmail.com" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Type URL</label>
-                            <div class="flex">
-                                <span class="form-input-group input-icon !rounded-r-none">
-                                    <i class="ri-links-fill text-inherit"></i>
-                                </span>
-                            <input type="url" class="form-input !rounded-l-none bg-[#F8F8FC] dark:bg-dark-card-two" placeholder="http://example.com" required >
-                            </div>
+                        <div class="p-2 printBtn" style="display: flex;justify-content: space-between;">
+                            <button class="btn b-light btn-danger-light" (click)="print1('IDCard')">Print</button> &nbsp;
+                            <button class="btn b-light btn-success-light" (click)="this.docShow=false">Offer Letter</button> &nbsp;
                         </div>
                     </div>
-                    <!-- Prism Code -->
-                    <div class="p-6 hidden">
-                        <pre>
-                            <code class="language-markup">
-                                &lt;div>
-                                    &lt;label class="form-label">Type Date&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group input-icon !rounded-r-none">
-                                            &lt;i class="ri-calendar-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="date" class="form-input !rounded-l-none bg-[#F8F8FC] dark:bg-dark-card-two" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Time&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group input-icon !rounded-r-none">
-                                            &lt;i class="ri-time-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="time" value="16:20" class="form-input !rounded-l-none bg-[#F8F8FC] dark:bg-dark-card-two" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Type Email&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group input-icon !rounded-r-none">
-                                            &lt;i class="ri-mail-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="email" class="form-input !rounded-l-none bg-[#F8F8FC] dark:bg-dark-card-two" placeholder="<a href="https://template.codexshaper.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8beef3eae6fbe7eecbece6eae2e7a5e8e4e6">[email&#160;protected]</a>" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Type URL&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group input-icon !rounded-r-none">
-                                            &lt;i class="ri-links-fill text-inherit">&lt;/i>
-                                        &lt;/span>
-                                    &lt;input type="url" class="form-input !rounded-l-none bg-[#F8F8FC] dark:bg-dark-card-two" placeholder="http://example.com" required >
-                                    &lt;/div>
-                                &lt;/div>
-                            </code>
-                        </pre>
-                    </div>
-                    <!-- Prism Code -->
-                </div>
-            </div>
-            <!-- INPUT GROUP -->
-            <div class="col-span-full lg:col-span-6">
-                <div class="card p-0">
-                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
-                        <h3 class="text-lg card-title leading-none">Input Group</h3>
-                        <button type="button" class="btn b-light btn-primary-light btn-sm prism-toggle !py-2.5 focus:bg-primary-500 focus:text-white dark:!bg-dark-icon">
-                            <span class="shrink-0">View Code</span>
-                            <i class="ri-code-line text-inherit text-[15px]"></i>
-                        </button>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <label class="form-label">Type Date</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon bg-[#F8F8FC] dark:bg-dark-card-two">
-                                    <i class="ri-calendar-line text-inherit"></i>
-                                </span>
-                                <input type="date" class="form-input !rounded-l-none" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Time</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon bg-[#F8F8FC] dark:bg-dark-card-two">
-                                    <i class="ri-time-line text-inherit"></i>
-                                </span>
-                                <input type="time" value="16:20" class="form-input !rounded-l-none" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Type Email</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon bg-[#F8F8FC] dark:bg-dark-card-two">
-                                    <i class="ri-mail-line text-inherit"></i>
-                                </span>
-                                <input type="email" class="form-input !rounded-l-none" placeholder="example@gmail.com" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Type URL</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon bg-[#F8F8FC] dark:bg-dark-card-two">
-                                    <i class="ri-links-fill text-inherit"></i>
-                                </span>
-                            <input type="url" class="form-input !rounded-l-none" placeholder="http://example.com" required >
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Prism Code -->
-                    <div class="p-6 hidden">
-                        <pre>
-                            <code class="language-markup">
-                                &lt;div>
-                                    &lt;label class="form-label">Type Date&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon bg-[#F8F8FC] dark:bg-dark-card-two">
-                                            &lt;i class="ri-calendar-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="date" class="form-input !rounded-l-none" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Time&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon bg-[#F8F8FC] dark:bg-dark-card-two">
-                                            &lt;i class="ri-time-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="time" value="16:20" class="form-input !rounded-l-none" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Type Email&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon bg-[#F8F8FC] dark:bg-dark-card-two">
-                                            &lt;i class="ri-mail-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="email" class="form-input !rounded-l-none" placeholder="<a href="https://template.codexshaper.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bdd8c5dcd0cdd1d8fddad0dcd4d193ded2d0">[email&#160;protected]</a>" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Type URL&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon bg-[#F8F8FC] dark:bg-dark-card-two">
-                                            &lt;i class="ri-links-fill text-inherit">&lt;/i>
-                                        &lt;/span>
-                                    &lt;input type="url" class="form-input !rounded-l-none" placeholder="http://example.com" required >
-                                    &lt;/div>
-                                &lt;/div>
-                            </code>
-                        </pre>
-                    </div>
-                    <!-- Prism Code -->
-                </div>
-            </div>
-            <!-- INPUT GROUP DARK -->
-            <div class="col-span-full lg:col-span-6">
-                <div class="card p-0">
-                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
-                        <h3 class="text-lg card-title leading-none">Input Group</h3>
-                        <button type="button" class="btn b-light btn-primary-light btn-sm prism-toggle !py-2.5 focus:bg-primary-500 focus:text-white dark:!bg-dark-icon">
-                            <span class="shrink-0">View Code</span>
-                            <i class="ri-code-line text-inherit text-[15px]"></i>
-                        </button>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <label class="form-label">Type Date</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon !text-gray-900 dark:text-dark-text">
-                                    <i class="ri-calendar-line text-inherit"></i>
-                                </span>
-                                <input type="date" class="form-input !rounded-l-none bg-[#F8F8F8] dark:bg-dark-card-two" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Time</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon !text-gray-900 dark:text-dark-text">
-                                    <i class="ri-time-line text-inherit"></i>
-                                </span>
-                                <input type="time" value="16:20" class="form-input !rounded-l-none bg-[#F8F8F8] dark:bg-dark-card-two" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Type Email</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon !text-gray-900 dark:text-dark-text">
-                                    <i class="ri-mail-line text-inherit"></i>
-                                </span>
-                                <input type="email" class="form-input !rounded-l-none bg-[#F8F8F8] dark:bg-dark-card-two" placeholder="example@gmail.com" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Type URL</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon !text-gray-900 dark:text-dark-text">
-                                    <i class="ri-links-fill text-inherit"></i>
-                                </span>
-                            <input type="url" class="form-input !rounded-l-none bg-[#F8F8F8] dark:bg-dark-card-two" placeholder="http://example.com" required >
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Prism Code -->
-                    <div class="p-6 hidden">
-                        <pre>
-                            <code class="language-markup">
-                                &lt;div>
-                                    &lt;label class="form-label">Type Date&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon !text-gray-900 dark:text-dark-text">
-                                            &lt;i class="ri-calendar-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="date" class="form-input !rounded-l-none bg-[#F8F8F8] dark:bg-dark-card-two" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Time&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon !text-gray-900 dark:text-dark-text">
-                                            &lt;i class="ri-time-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="time" value="16:20" class="form-input !rounded-l-none bg-[#F8F8F8] dark:bg-dark-card-two" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Type Email&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon !text-gray-900 dark:text-dark-text">
-                                            &lt;i class="ri-mail-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="email" class="form-input !rounded-l-none bg-[#F8F8F8] dark:bg-dark-card-two" placeholder="<a href="https://template.codexshaper.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a7f627b776a767f5a7d777b737634797577">[email&#160;protected]</a>" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Type URL&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon !text-gray-900 dark:text-dark-text">
-                                            &lt;i class="ri-links-fill text-inherit">&lt;/i>
-                                        &lt;/span>
-                                    &lt;input type="url" class="form-input !rounded-l-none bg-[#F8F8F8] dark:bg-dark-card-two" placeholder="http://example.com" required >
-                                    &lt;/div>
-                                &lt;/div>
-                            </code>
-                        </pre>
-                    </div>
-                    <!-- Prism Code -->
-                </div>
-            </div>
-            <!-- INPUT GROUP DARK -->
-            <div class="col-span-full lg:col-span-6">
-                <div class="card p-0">
-                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
-                        <h3 class="text-lg card-title leading-none">Input Group</h3>
-                        <button type="button" class="btn b-light btn-primary-light btn-sm prism-toggle !py-2.5 focus:bg-primary-500 focus:text-white dark:!bg-dark-icon">
-                            <span class="shrink-0">View Code</span>
-                            <i class="ri-code-line text-inherit text-[15px]"></i>
-                        </button>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <label class="form-label">Type Date</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon bg-[#F8F8F8] dark:bg-dark-card !text-gray-900 dark:text-dark-text">
-                                    <i class="ri-calendar-line text-inherit"></i>
-                                </span>
-                                <input type="date" class="form-input !rounded-l-none" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Time</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon bg-[#F8F8F8] dark:bg-dark-card !text-gray-900 dark:text-dark-text">
-                                    <i class="ri-time-line text-inherit"></i>
-                                </span>
-                                <input type="time" value="16:20" class="form-input !rounded-l-none" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Type Email</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon bg-[#F8F8F8] dark:bg-dark-card !text-gray-900 dark:text-dark-text">
-                                    <i class="ri-mail-line text-inherit"></i>
-                                </span>
-                                <input type="email" class="form-input !rounded-l-none" placeholder="example@gmail.com" required >
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Type URL</label>
-                            <div class="flex">
-                                <span class="form-input-group !rounded-r-none input-icon bg-[#F8F8F8] dark:bg-dark-card !text-gray-900 dark:text-dark-text">
-                                    <i class="ri-links-fill text-inherit"></i>
-                                </span>
-                            <input type="url" class="form-input !rounded-l-none" placeholder="http://example.com" required >
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Prism Code -->
-                    <div class="p-6 hidden">
-                        <pre>
-                            <code class="language-markup">
-                                &lt;div>
-                                    &lt;label class="form-label">Type Date&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon bg-[#F8F8F8] dark:bg-dark-card !text-gray-900 dark:text-dark-text">
-                                            &lt;i class="ri-calendar-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="date" class="form-input !rounded-l-none" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Time&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon bg-[#F8F8F8] dark:bg-dark-card !text-gray-900 dark:text-dark-text">
-                                            &lt;i class="ri-time-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="time" value="16:20" class="form-input !rounded-l-none" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Type Email&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon bg-[#F8F8F8] dark:bg-dark-card !text-gray-900 dark:text-dark-text">
-                                            &lt;i class="ri-mail-line text-inherit">&lt;/i>
-                                        &lt;/span>
-                                        &lt;input type="email" class="form-input !rounded-l-none" placeholder="<a href="https://template.codexshaper.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="55302d3438253930153238343c397b363a38">[email&#160;protected]</a>" required >
-                                    &lt;/div>
-                                &lt;/div>
-                                &lt;div>
-                                    &lt;label class="form-label">Type URL&lt;/label>
-                                    &lt;div class="flex">
-                                        &lt;span class="form-input-group !rounded-r-none input-icon bg-[#F8F8F8] dark:bg-dark-card !text-gray-900 dark:text-dark-text">
-                                            &lt;i class="ri-links-fill text-inherit">&lt;/i>
-                                        &lt;/span>
-                                    &lt;input type="url" class="form-input !rounded-l-none" placeholder="http://example.com" required >
-                                    &lt;/div>
-                                &lt;/div>
-                            </code>
-                        </pre>
-                    </div>
-                    <!-- Prism Code -->
                 </div>
             </div>
         </div>
     </div>
     <!-- End Main Content -->
+
 

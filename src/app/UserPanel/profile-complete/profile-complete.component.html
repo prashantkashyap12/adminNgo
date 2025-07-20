@@ -1,4 +1,4 @@
-<div style="height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px;">
+<!-- <div style="height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px;">
 
    <div class="row">
      <div class="col-md-12">
@@ -131,30 +131,187 @@
         </form>
      </div>
      <div class="col-md-4">
-        <!-- <div class="ng-autocomplete pt-4" [ngClass]="showList?'d-block':'d-none'">
-            <ng-autocomplete 
-            [data]="data"
-            [searchKeyword]="keyword"
-            placeholder="Find Save Record..."
-            (selected)='selectEvent($event)'
-            [itemTemplate]="itemTemplate"
-            [notFoundTemplate]="notFoundTemplate">                                 
-            </ng-autocomplete>
-            <ng-template #itemTemplate let-item>
-            <a [innerHTML]="item.linkText1">{{item.heading}}</a>
-            </ng-template>
-            <ng-template #notFoundTemplate let-notFound>
-            <div [innerHTML]="notFound"></div>
-            </ng-template>
-        </div> -->
         <img *ngIf="imagePreview" [src]="imagePreview" alt="Image_Preview" height="150px" class="pt-2 w-75">
      </div>
    </div>
-
     <div class="d-flex justify-content-between w-75" style="position:fixed; bottom: 20px;left: 205px;background-color: rgb(240, 240, 240);  border-radius: 20px; padding:10px;">
         <div>
             <button (click)="onSubmit()" class="btn shadow-sm" [ngClass]="updateAct?'btn-secondary':'btn-success'">{{updateAct?'Submit':'Update'}}</button>
         </div>
     </div>
+</div> -->
 
-</div>
+
+
+
+    <!-- loader -->
+    <div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+        <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+    </div>
+    <!-- loader -->
+
+
+        <!-- Start Main Content -->
+    <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
+        <div class="card">
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <h2 class="card-title">User Profile</h2>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-x-4">
+            <!-- DATA FORM -->
+            <div class="col-span-full">
+                <div class="card p-0">
+                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
+                        <h3 class="text-lg card-title leading-none">Profile Update</h3>
+                    </div>
+                    <form class="p-6" [formGroup]="ProfUpdat">
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label for="full_name_data" class="form-label">Set Profile Picture</label>
+                                <input type="file" formControlName="imgPath"  placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-input"autocomplete="off" >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Date of Joining</label>
+                                <input type="text" formControlName="doj" placeholder="Select Date" placeholder="Enter Heading" class="form-input" autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Register Id</label>
+                                <input type="text" formControlName="registerId" placeholder="Enter Register Id" class="form-input" autocomplete="off"  >
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Designation</label>
+                                <input type="text" formControlName="designation" placeholder="Enter Designation" placeholder="Enter Heading" class="form-input" autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Name</label>
+                                <input type="text" formControlName="name" placeholder="Enter Name" class="form-input" autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Contact</label>
+                                <input type="text" formControlName="contact"  placeholder="Enter Contact" class="form-input" autocomplete="off"  >
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Email</label>
+                                <input type="text" formControlName="email"  placeholder="Enter E_mail" class="form-input" autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Father's Name</label>
+                                <input type="text" formControlName="fName" id="name" placeholder="Select Father" class="form-input" autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Date of Birth</label>
+                                <input type="date" formControlName="dob" class="form-input" autocomplete="off"  >
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Gender</label>
+                                    <select formControlName="gender" class="form-input form-select w-full h-11 border-b">
+                                        <option data-display="Selected Option"></option>
+                                        <option value="male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Marital Status</label>
+                                <select formControlName="maritalStatus" class="form-input form-select w-full h-11">
+                                    <option default value="single">Single</option>
+                                    <option value="married">Married</option>
+                                </select>
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                class="form-label">Higher Education</label>
+                                <select formControlName="hEdu" class="form-input form-select w-full h-11">
+                                    <option default value="highSchool">High School</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="graduation">Graduation</option>
+                                    <option value="postGrad">Post Graduation</option>
+                                    <option value="Other" type="text"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Working Profession</label>
+                                <input type="text" formControlName="workProf"  placeholder="Enter Working Profession" class="form-input" autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Address</label>
+                                <input type="text" formControlName="Address"  placeholder="Enter Address" placeholder="Enter Heading" class="form-input" autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">LandMark</label>
+                                <input type="text" formControlName="landmark" placeholder="Enter Landmark" class="form-input" autocomplete="off"  >
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Pin Code</label>
+                                <input type="text" formControlName="pin" placeholder="Enter PinCode" class="form-input" autocomplete="off" maxlength="6"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                class="form-label">MemberShip Type</label>
+                                <select formControlName="Member_Type" class="form-input form-select w-full h-11">
+                                    <option default value="LifeTime">Lifetime Member</option>
+                                    <option value="General Member">General Member</option>
+                                    <option value="Executive Member">Executive Member</option>
+                                    <option value="Volunteer">Volunteer</option>
+                                </select>
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                class="form-label">NGO Contribute</label>
+                                <select formControlName="join_cat" class="form-input form-select w-full h-11">
+                                    <option value="Education">Education</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Women Empowerment">Women Empowerment</option>
+                                    <option value="Environmental Protection">Environmental Protection</option>
+                                    <option value="Youth Service">Youth Service</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Already Join with other NGO</label>
+                                <input type="text" formControlName="MemOther" placeholder="Enter NGO Name" class="form-input" autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6" class="form-label">WhatsApp</label>
+                                <input type="text" formControlName="whatsApp" class="form-input" maxlength="10" required autocomplete="off"  >
+                            </div>
+                            <div class="w-full mb-4">
+                                <img *ngIf="imagePreview" [src]="imagePreview" alt="Image_Preview" height="150px" class="pt-2 w-75">
+                            </div>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;">
+                            <button (click)="onSubmit()" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'" class="btn b-solid px-5 dk-theme-card-square" >{{updateAct?'Submit':'Update'}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

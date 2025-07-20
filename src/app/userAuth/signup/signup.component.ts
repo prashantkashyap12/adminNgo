@@ -19,7 +19,7 @@ declare var $: any;
   encapsulation:ViewEncapsulation.None
 })
 export class SignupComponent implements OnInit{
-
+  loader:boolean =false;
   userSignup!: FormGroup;
   constructor(private _fb:FormBuilder, 
     private _router:Router, 
@@ -31,11 +31,11 @@ export class SignupComponent implements OnInit{
 
   select1:any = "selected";
 
-  PwdValidator(form: FormGroup) {
-    const pwd = form.get('password')?.value;
-    const rePwd = form.get('rePassword')?.value;
-    return pwd === rePwd ? null : { mismatch: true };
-  }
+  // PwdValidator(form: FormGroup) {
+  //   const pwd = form.get('password')?.value;
+  //   const rePwd = form.get('rePassword')?.value;
+  //   return pwd === rePwd ? null : { mismatch: true };
+  // }
   
   // Define Form Controller
   initForm(){
@@ -43,11 +43,11 @@ export class SignupComponent implements OnInit{
       date: [moment(new Date()).format("DD-MM-YYYY")],
       name:['', [Validators.required]],
       email:['', [Validators.required, Validators.email]],
-      contact: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
-      rePassword: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
+      contact: ['', [Validators.required, Validators.maxLength(10)]], //Validators.pattern(/^[0-9]{10}$/)]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      // password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
       role:['user', [Validators.required]]
-    }, {validators: this.PwdValidator });
+    });
   }
 
   // Data before save validation Model 
@@ -62,25 +62,28 @@ export class SignupComponent implements OnInit{
     };
   }
 
-
   onSubmit(){
+    this.loader = true;
     if (this.userSignup.invalid) {
       // this.userSignup.markAllAsTouched();
-      alert("Form Invalid")
+      alert("Form Invalid");
+      this.loader = false;
       return;
     }
     const model= this.datamodel();  // validation
     this._auth.signup(model).subscribe(
       res=>{ 
        if(res.state == true){
-        console.log(res)
+        // console.log(res)
+        this.loader = false;
         sessionStorage.setItem('email', this.userSignup.value.email);
         sessionStorage.setItem('password', this.userSignup.value.password);
         sessionStorage.setItem('user', this.userSignup.value.name);
         sessionStorage.setItem('role', this.userSignup.value.role);
         this._router.navigate(['/verify']);
        }else{
-        console.log(res)
+        this.loader = false;
+        alert(res)
        }
       });
   }

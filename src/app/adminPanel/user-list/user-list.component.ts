@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class UserListComponent implements OnInit{
 
   delete:any;
+  loader:any = false;
   constructor(private _user:UserListService){}
 
   ngOnInit(){
@@ -33,9 +34,14 @@ export class UserListComponent implements OnInit{
     console.log(data);
   }
   del(evt:any){
+    this.loader = true;
     this._user.userDelLs(evt).then(res=>{
       if(res.state){
         alert(res.message);
+        this.ngOnInit()
+        this.loader = false;
+      }else{
+        alert(res.message)
       }
     }).catch(err=>{
       alert(err);

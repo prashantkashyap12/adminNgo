@@ -14,6 +14,7 @@ import { url } from '../../interface/api_config';
   styleUrl: './doc-builder.component.css'
 })
 export class DocBuilderComponent {
+  loader:any = false;
   private baseUrl = new url().value;
   @ViewChild('capture1',{ static: false }) captrure1!:ElementRef; 
   @ViewChild('capture2',{static: false}) captrure2!:ElementRef
@@ -57,8 +58,11 @@ export class DocBuilderComponent {
 
   // Data Calling
   allot(){
+    this.loader =true;
     this._docBuildServ.getRecord().subscribe(res=>{
       this.data = res.results;
+      this.loader =false;
+
     })
   }
 

@@ -1,4 +1,4 @@
-<div style="height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px;">
+<!-- <div style="height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px;">
 
    <div class="row">
      <div class="col-md-8">
@@ -56,11 +56,94 @@
     <div class="d-flex justify-content-between w-75" style="position:fixed; bottom: 20px;left: 205px;background-color: rgb(240, 240, 240);  border-radius: 20px; padding:10px;">
         <div>
             <button (click)="onSubmit()" class="btn shadow-sm" [ngClass]="updateAct?'btn-secondary':'btn-success'">{{updateAct?'Submit':'Update'}}</button>
-            <button (click)="delet()" class="btn btn-danger mx-2 shadow-sm" [ngClass]="updateAct?'d-none':'-d-block'">Delete</button>
+            <button (click)="delet()" class="btn btn-danger mx-2 shadow-sm" >Delete</button>
             <button (click)="allot()" class="btn btn-light mx-2 shadow-sm">All List</button>
             <button (click)="fresh()" class="btn btn-light mx-2 shadow-sm">New Entry</button>
         </div>
        
     </div>
 
-</div>
+</div> -->
+
+
+
+
+    <!-- loader -->
+    <div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+        <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+    </div>
+    <!-- loader -->
+
+    <!-- Start Main Content -->
+    <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
+        <div class="card">
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <h2 class="card-title">Website Blog Form</h2>
+                <div class="ng-autocomplete" [ngClass]="showList?'d-block':'d-none'">
+                    <ng-autocomplete 
+                    [data]="data"
+                    [searchKeyword]="keyword"
+                    placeholder="Find Save Record..."
+                    (selected)='selectEvent($event)'
+                    [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate">                                 
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-x-4">
+            <!-- DATA FORM -->
+            <div class="col-span-full">
+                <div class="card p-0">
+                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
+                        <h3 class="text-lg card-title leading-none">Blog List</h3>
+                    </div>
+                    <form class="p-6" [formGroup]="blogForm">
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label for="full_name_data" class="form-label">Select Date</label>
+                                <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="email-6"
+                                    class="form-label">Heading</label>
+                                <input type="text" formControlName="linkText1" placeholder="Enter Heading" class="form-input" autocomplete="off" required >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="password-6" class="form-label">Rights</label>
+                                <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-input" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4 mb-2">
+                            <div class="w-full mb-4">
+                                <label for="location" class="form-label">Type Service</label>
+                                <input type="text" formControlName="type"  placeholder="Enter service type" class="form-input" >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label for="phone" class="form-label">Set Image</label>
+                                <input type="file" formControlName="imgPath"  placeholder="Select Image .JPG, .PNG" (change)="fileUpdate($event)" class="form-input" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <img *ngIf="imagePreview" [src]="imagePreview" alt="Image_Preview" height="150px" class="pt-2 w-75">
+                            </div>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;">
+                            <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
+                            <button (click)="delet()" class="btn b-solid btn-danger-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'d-none':'-d-block'">Delete</button>
+                            <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
+                            <button (click)="fresh()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Content -->

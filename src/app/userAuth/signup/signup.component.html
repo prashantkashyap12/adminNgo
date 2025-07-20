@@ -1,32 +1,38 @@
-<!-- <div class="container-fluid">
-    <div class="row bg-light h-100 ">
-        <div class="col-md-12">
-            <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center">
-                <h3>User Register</h3>
-                <form *ngIf="userSignup" [formGroup]="userSignup" id="form1">
-                    <div class="intro-x mt-8">
-                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="name" formControlName="name" placeholder="First Name" class="mt-2 form-control">
-                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="email" formControlName="email" placeholder="Email" class="mt-2 form-control">
-                        <div *ngIf="userSignup.get('email')?.touched && userSignup.get('email')?.invalid" class="text-red-500 text-sm mt-1">
-                            <div *ngIf="userSignup.get('email')?.errors?.['required']">Email is required.</div>
-                            <div *ngIf="userSignup.get('email')?.errors?.['email']">Please enter a valid email address.</div>
-                        </div>
-                        <input class="form-control" autocomplete="on" maxlength="60" type="text" id="contact" formControlName="contact" placeholder="contact" class="mt-2 form-control">
-                        <input class="form-control" autocomplete="on" maxlength="60" type="password" id="password" formControlName="password" placeholder="Password" class="mt-2 form-control">
-                        <input class="form-control" autocomplete="on" maxlength="60" type="password" formControlName="rePassword"  data-tw-merge="" type="text" placeholder="Password Confirmation" class="mt-2 form-control">
-                    </div>
-                    <div class="d-flex justify-center justify-content-between pt-2 p-1">
-                        <button type="submit" (click)="onSubmit()" class="btn btn-primary">Register</button>
-                        <button data-tw-merge="" (click)="signin()" class="btn btn-primary">Sign In</button>
-                    </div>
-                </form>
+ <!-- <form *ngIf="userSignup" [formGroup]="userSignup" id="form1" class="my-10 flex h-screen py-5 xl:my-0 xl:h-auto xl:py-0" > 
+    <div class="mx-auto my-auto w-full rounded-md bg-white px-5 py-8 shadow-md dark:bg-darkmode-600 sm:w-3/4 sm:px-8 lg:w-2/4 xl:ml-20 xl:w-auto xl:bg-transparent xl:p-0 xl:shadow-none">
+        
+        <div class="intro-x mt-8">
+            <input autocomplete="on" maxlength="60" type="text" id="name" formControlName="name" placeholder="First Name" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 intro-x block min-w-full px-4 py-3 xl:min-w-[350px]">
+            <input autocomplete="on" maxlength="60" type="text" id="email" formControlName="email" placeholder="Email" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 intro-x mt-4 block min-w-full px-4 py-3 xl:min-w-[350px]">
+            <div *ngIf="userSignup.get('email')?.touched && userSignup.get('email')?.invalid" class="text-red-500 text-sm mt-1">
+                <div *ngIf="userSignup.get('email')?.errors?.['required']">Email is required.</div>
+                <div *ngIf="userSignup.get('email')?.errors?.['email']">Please enter a valid email address.</div>
             </div>
+            <input autocomplete="on" maxlength="60" type="text" id="contact" formControlName="contact" placeholder="contact" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 intro-x mt-4 block min-w-full px-4 py-3 xl:min-w-[350px]">
+            <input autocomplete="on" maxlength="60" type="password" id="password" formControlName="password" placeholder="Password" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 intro-x mt-4 block min-w-full px-4 py-3 xl:min-w-[350px]">
+            <input autocomplete="on" maxlength="60" type="password" formControlName="rePassword"  data-tw-merge="" type="text" placeholder="Password Confirmation" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 intro-x mt-4 block min-w-full px-4 py-3 xl:min-w-[350px]">
+        </div>
+        
+        <div class="intro-x mt-5 text-center xl:mt-8 xl:text-left">
+            <button type="submit" (click)="onSubmit()" class="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary w-full px-4 py-3 align-top xl:mr-3 xl:w-32">Register</button>
+            <button data-tw-merge="" (click)="signin()" class="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 mt-3 w-full px-4 py-3 align-top xl:mt-0 xl:w-32">Sign in</button>
         </div>
     </div>
-</div> -->
+</form> -->
+
+  <!-- <div id="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+    <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+  </div> -->
 
 
-<!-- Start Main Content -->
+
+  <!-- loader -->
+  <div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+    <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+  </div>
+  <!-- loader -->
+
+  <!-- Start Main Content -->
     <div class="main-content m-4">
         <div class="grid grid-cols-12 gap-y-7 sm:gap-7 card px-4 sm:px-10 2xl:px-[70px] py-15 lg:items-center lg:min-h-[calc(100vh_-_32px)]">
             <!-- Start Overview Area -->
@@ -34,15 +40,7 @@
                 <div class="flex flex-col items-center justify-center gap-10 text-center">
                     <div class="hidden sm:block">
                         <!-- <img src="../../../assets/images/loti/loti-auth.svg" alt="loti" class="group-[.dark]:hidden"> -->
-                        <img src="../../../assets/images/loti/loti-auth-dark.svg" alt="loti" class="group-[.light]:hidden">
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-[28px] leading-none font-semibold text-heading">
-                            Welcome back!
-                        </h3>
-                        <p class="font-medium text-gray-500 dark:text-dark-text mt-4 px-[10%]">
-                            Whether you're launching a stunning online store  optimizing your our object-oriented 
-                        </p>
+                        <img src="../../../assets/images/loti/loti-admin-dashboard.svg" style="height: 396px;" alt="loti" class="group-[.light]:hidden">
                     </div>
                 </div>
             </div>
@@ -72,27 +70,13 @@
                         </div>
                         <div class="mt-5">
                             <label for="name" class="form-label">Contact</label>
-                            <input type="text" id="name" formControlName="contact" placeholder="Enter Contact" maxlength="13" required class="form-input px-4 py-3.5 rounded-lg">
+                            <input type="text" id="name" formControlName="contact" placeholder="Enter Contact" maxlength="10" required class="form-input px-4 py-3.5 rounded-lg">
                         </div>
-                        <div class="mt-5">
+                        <div class="mt-5 mb-2.5">
                             <label for="password" class="form-label">Password</label>
                             <p class="form-label" style="color:rgb(255, 103, 103)">Including at least one uppercase letter, one lowercase letter, one number, and one special character (e.g., $, !, %, *, ?, &)</p>
                             <div class="relative">
-                                <input type="password" id="password" formControlName="password" placeholder="Password" required class="form-input px-4 py-3.5 rounded-lg">
-                                <label for="toggleInputType" class="size-8 rounded-md flex-center hover:bg-gray-200 dark:hover:bg-dark-icon foucs:bg-gray-200 dark:foucs:bg-dark-icon position-center !left-auto -right-2.5">
-                                    <input type="checkbox" id="toggleInputType" class="inputTypeToggle peer/it" hidden>
-                                    <i class="ri-eye-off-line text-gray-500 dark:text-dark-text peer-checked/it:before:content-['\ecb5']"></i>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="mt-5 mb-2.5">
-                            <label for="password" class="form-label">Conform Password</label>
-                            <div class="relative">
-                                <input type="password" id="Cpassword" formControlName="rePassword" placeholder="Password Confirmation" required class="form-input px-4 py-3.5 rounded-lg">
-                                <label for="toggleInputType" class="size-8 rounded-md flex-center hover:bg-gray-200 dark:hover:bg-dark-icon foucs:bg-gray-200 dark:foucs:bg-dark-icon position-center !left-auto -right-2.5">
-                                    <input type="checkbox"  id="toggleInputType" class="inputTypeToggle peer/it" hidden>
-                                    <i class="ri-eye-off-line text-gray-500 dark:text-dark-text peer-checked/it:before:content-['\ecb5']"></i>
-                                </label>
+                                <input type="text" id="password" formControlName="password" placeholder="Password" maxlength="10" required class="form-input px-4 py-3.5 rounded-lg">
                             </div>
                         </div>
                         <!-- Submit Button -->
@@ -109,3 +93,6 @@
         </div>
     </div>
     <!-- End Main Content -->
+
+
+    <!-- Loader inject -->

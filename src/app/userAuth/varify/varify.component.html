@@ -16,6 +16,14 @@
 </div> -->
 
 
+
+    <!-- loader -->
+    <div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+        <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+    </div>
+    <!-- loader -->
+
+
 <!-- Start Main Content -->
     <div class="main-content m-4">
         <div class="grid grid-cols-12 gap-y-7 sm:gap-7 card px-4 sm:px-10 2xl:px-[70px] py-15 lg:items-center lg:min-h-[calc(100vh_-_32px)]">
@@ -23,17 +31,9 @@
             <div class="col-span-full lg:col-span-6">
                 <div class="flex flex-col items-center justify-center gap-10 text-center">
                     <div class="hidden sm:block">
-                        <!-- <img src="../../../assets/images/loti/loti-auth.svg" alt="loti" class="group-[.dark]:hidden"> -->
-                        <img src="../../../assets/images/loti/loti-auth-dark.svg" alt="loti" class="group-[.light]:hidden">
+                        <img src="../../../assets/images/loti/loti-success-confirmation.svg" alt="loti" class="group-[.light]:hidden">
                     </div>
-                    <div>
-                        <h3 class="text-xl md:text-[28px] leading-none font-semibold text-heading">
-                            Welcome back!
-                        </h3>
-                        <p class="font-medium text-gray-500 dark:text-dark-text mt-4 px-[10%]">
-                            Whether you're launching a stunning online store  optimizing your our object-oriented 
-                        </p>
-                    </div>
+                    
                 </div>
             </div>
             <!-- End Overview Area -->
@@ -52,10 +52,18 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="email"  autocomplete="off" formControlName="email" [value]="email" readonly class="form-input px-4 py-3.5 rounded-lg">
                         </div>
-                        <div class="mb-7">
-                            <label for="email" class="form-label">Password</label>
-                            <input type="password"  autocomplete="off" formControlName="password" [value]="password" class="form-input px-4 py-3.5 rounded-lg">
-                        </div>
+                        @if(tempPwd){
+                            <div class="mb-7">
+                                <label for="email" class="form-label">Password</label>
+                                <input type="password" formControlName="password" placeholder="Set your password / pin" autocomplete="off" [value]="password" readonly class="form-input px-4 py-3.5 rounded-lg">
+                            </div>
+                        }@else{
+                            <div class="mb-7">
+                                <label for="email" class="form-label">Password</label>
+                                <input type="password" formControlName="password" placeholder="Set your password / pin" autocomplete="off" [value]="password" maxlength="10" required  class="form-input px-4 py-3.5 rounded-lg">
+                            </div>
+                        }
+
     
                         <div class="m-2">
                             <span>OTP Valid - {{minStr}}:{{secStr}}</span>
@@ -63,14 +71,14 @@
 
                         <div class="mb-7">
                             <label for="email" class="form-label">OTP</label>
-                            <input type="text"  autocomplete="off" placeholder="Enter OTP" formControlName="otp" class="form-input px-4 py-3.5 rounded-lg">
+                            <input type="text"  autocomplete="off" placeholder="Enter OTP" formControlName="otp" maxlength="6" required class="form-input px-4 py-3.5 rounded-lg">
                         </div>
                         <!-- Submit Button -->
                         <button (click)="onSubmit()" class="btn b-solid btn-primary-solid w-full dk-theme-card-square">Forgot Password</button>
                     </form>
                     <div class="text-gray-900 dark:text-dark-text font-medium leading-none mt-5">
                         Back to /
-                        <a routerLink="/signin" class="text-primary-500 font-semibold">Sign in</a>
+                        <a (click)="signin()" class="text-primary-500 font-semibold">Sign in</a>
                     </div>
                 </div>
             </div>
