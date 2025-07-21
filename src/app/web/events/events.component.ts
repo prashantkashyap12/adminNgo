@@ -15,7 +15,7 @@ import { EventService } from '../service/event.service';
   styleUrl: './events.component.css'
 })
 export class EventsComponent {
-
+    loader:boolean = false;
     constructor(private _fb:FormBuilder, private _evtServ:EventService){}
     ngOnInit(){
       this.Init()
@@ -73,6 +73,7 @@ export class EventsComponent {
     }
   
     onSubmit(){
+      this.loader = true;
       if(this.EventLsForm.valid){
         let formData = new FormData();
         formData.append('date', this.EventLsForm.value.date);
@@ -91,6 +92,7 @@ export class EventsComponent {
               alert('Event Added Successfully');
               this.Init();
               this.allot();
+              this.loader = false;
             }
           })
         }else{
@@ -103,22 +105,26 @@ export class EventsComponent {
               this.allot();
               this.updateAct = true;
               this.imagePreview = null;
+              this.loader = false;
             }
           })
         }
       }else{
         alert('Please Fill All Required Fields');
+        this.loader = false;
       }
     } 
 
     // Done
     delet(){
+      this.loader = true;
       this._evtServ.deleteEventList(this.EvtTran).subscribe(res=>{
         if(res.status == 200){
           this.allot();
           this.Init();
           this.updateAct = true;
           alert('Event Deleted Successfully');
+          this.loader = false;
         }
       })
     }

@@ -21,9 +21,9 @@ export class ProjectDetailsComponent {
     constructor(private _fb: FormBuilder, private _proj: ProjectService) { }
       ngOnInit() {
       this.clear();    
-      
     }
 
+    loader:any = false;
     private baseUrl = new url().value;
     ProjectDetails!:FormGroup;
     isVisible:boolean=false;
@@ -112,9 +112,8 @@ export class ProjectDetailsComponent {
 
       
   onSubmit() {
-
+    this.loader = true;
     const formDatas = new FormData();
-    
     formDatas.append('projDetails1[0].projectTran', this.projectTran);
     formDatas.append('projDetails1[0].img1', this.imgIformA as File);
     formDatas.append('projDetails1[0].img2', this.imgIformB as File);
@@ -143,6 +142,7 @@ export class ProjectDetailsComponent {
         this.Init();
         this.updateAct = true;
         this.isVisible = false;
+        this.loader = false;
       })
     }
   }

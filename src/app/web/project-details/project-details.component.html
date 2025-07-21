@@ -1,4 +1,4 @@
-<div style="min-height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px; padding-bottom:3em">
+<!-- <div style="min-height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px; padding-bottom:3em">
 
    <div class="row">
      <div class="col-md-9">
@@ -118,5 +118,136 @@
             <button (click)="clear()" class="btn btn-light mx-2 shadow-sm">Clear</button>
         </div>
     </div>
+</div> -->
 
+<div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+    <img src="assets/pre-loader/bar-loader.gif" alt="loader">
 </div>
+
+
+<div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
+    <div class="card">
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+            <h2 class="card-title">Website Project Form</h2>
+            <div class="ng-autocomplete" [ngClass]="showList?'d-block':'d-none'">
+                <ng-autocomplete 
+                [data]="data"
+                [searchKeyword]="keyword"
+                placeholder="Find Save Record..."
+                (selected)='selectEvent($event)'
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
+                </ng-autocomplete>
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.Head">{{item.Head}}</a>
+                </ng-template>
+                <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+     <div class="grid grid-cols-12 gap-x-4">
+        <!-- DATA FORM -->
+        <div class="col-span-full">
+            <div class="card p-0">
+                <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
+                    <h3 class="text-lg card-title leading-none">Project Details</h3>
+                </div>
+                <form class="p-6" [formGroup]="ProjectDetails">
+                    <div  [ngStyle]="{ 'display': this.isVisible ? 'block' : 'none' }">
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Image 1</label>
+                                <input type="file" formControlName="img1" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgIform1($event)">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Image 2</label>
+                                <input type="file" formControlName="img2" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgIform2($event)">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Image 3</label>
+                                <input type="file" formControlName="img3" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgIform3($event)">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Heading</label>
+                                <input type="text" formControlName="head1" placeholder="Enter Rights" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Peragraph 1</label>
+                                <input type="text" formControlName="pera1" placeholder="Enter Peragraph" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Peragraph</label>
+                                <input type="text" formControlName="pera11" placeholder="Enter Sub Peragraph" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Heading 2</label>
+                                <input type="text" formControlName="head2" placeholder="Enter Heading 2" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Peragraph 2</label>
+                                <input type="text" formControlName="pera2" placeholder="Enter Peragraph 2" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Heading 3</label>
+                                <input type="text" formControlName="head3" placeholder="Enter Heading 3" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Pera 3</label>
+                                <input type="text" formControlName="pera3" placeholder="Enter Pera 3" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Category</label>
+                                <input type="text" formControlName="cat" placeholder="Enter Category" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Authrized</label>
+                                <input type="text" formControlName="auth" placeholder="Enter Authrized" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Tag</label>
+                                <input type="text" formControlName="tag" placeholder="Enter Tag" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Cost</label>
+                                <input type="text" formControlName="cost" placeholder="Enter Rights" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Date</label>
+                                <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label>Image</label>
+                                <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label>BlogImg1</label>
+                                <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label>BlogImg2</label>
+                                <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex lg:flex-row flex-col gap-x-4"  style="display: flex;justify-content: space-between;">
+                        <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
+                        <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
+                        <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

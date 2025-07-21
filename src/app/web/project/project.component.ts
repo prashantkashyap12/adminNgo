@@ -12,11 +12,11 @@ import { ProjectService } from '../service/project.service';
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule, CommonModule, HttpClientModule, AutocompleteLibModule],
   providers: [ProjectService],
-  
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
 export class ProjectComponent {
+  loader:any = false;
   constructor(private _fb: FormBuilder, private _projSer: ProjectService){}
   ngOnInit(){
     this.Init();
@@ -74,6 +74,7 @@ export class ProjectComponent {
   
 
   onSubmit() {
+    this.loader = true;
     const formdata = new FormData();
     formdata.append('ImgPath', this.IfromFile as File);
     formdata.append('Head', this.ProjectForm.value.head);
@@ -85,28 +86,29 @@ export class ProjectComponent {
         this.allot();
         this.Init();
         this.updateAct = true;
+        this.loader = false;
       })
     } else {
       formdata.append('projectTran', this.ProjTran);
-
       for (let data of (formdata as any).keys()) {
         console.log(data, formdata.get(data));
       }
-     
-
       this._projSer.updateProjectLs(formdata).subscribe(res => {
         res.state ? alert("Project Updated Successfully") : alert("Project Not Updated");
-        this.fresh()
+        this.fresh();
+        this.loader = false;
       })
     }
   }
 
   delet() {
+    this.loader = true;
     this._projSer.deleteProjectLs(this.ProjTran).subscribe(res => {
       if (res.state) {
         this.ProjectForm.reset();
         this.fresh();
         alert("Project Deleted Successfully");
+        this.loader = false;
       }
     })
   }

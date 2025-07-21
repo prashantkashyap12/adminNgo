@@ -15,7 +15,7 @@ import { EventService } from '../service/event.service';
   styleUrl: './event-details.component.css'
 })
 export class EventDetailsComponent {
-
+  loader:any = false;
   constructor(private _fb:FormBuilder, private _evtServ:EventService){}
   ngOnInit(){
     this.Init();
@@ -111,6 +111,7 @@ export class EventDetailsComponent {
     }
     
     onSubmit(){
+      this.loader = true;
       let formData = new FormData();
       formData.append('eventTran', this.eventTran);
       formData.append('img', this.IformFile as File);
@@ -139,6 +140,9 @@ export class EventDetailsComponent {
             alert("Event Details Added Successfully");
             this.ngOnInit();
             this.imagePreview1 = null;
+            this.loader = false;
+          }else{
+            this.loader = false;
           }
         })
       }
@@ -148,9 +152,7 @@ export class EventDetailsComponent {
         this.data = res.result;
       })
     }
-
     clear(){
-      this.isVisible = false
+      this.isVisible = true
     }
-
 }

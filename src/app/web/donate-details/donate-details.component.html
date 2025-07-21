@@ -1,151 +1,147 @@
-<div style="min-height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px; padding-bottom:3em">
+<!-- <div style="min-height: 100vh; width: 100%; background-color: antiquewhite; padding: 2px; padding-bottom:3em">
 
-   <div class="row">
-     <div class="col-md-9">
-         <form action="" class="p-2" [formGroup]="donateDetails">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="ng-autocomplete pt-4" [ngClass]="showList?'d-block':'d-none'">
-                        <ng-autocomplete 
-                        [data]="data"
-                        [searchKeyword]="keyword"
-                        placeholder="Find Save Record..."
-                        (selected)='selectEvent($event)'
-                        [itemTemplate]="itemTemplate"
-                        [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
-                        </ng-autocomplete>
-                        <ng-template #itemTemplate let-item>
-                        <a [innerHTML]="item.Heading">{{item.heading}}</a>
-                        </ng-template>
-                        <ng-template #notFoundTemplate let-notFound>
-                        <div [innerHTML]="notFound"></div>
-                        </ng-template>
+    <div class="row">
+        <div class="col-md-9">
+            <form action="" class="p-2" [formGroup]="donateDetails">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="ng-autocomplete pt-4" [ngClass]="showList?'d-block':'d-none'">
+                            <ng-autocomplete 
+                            [data]="data"
+                            [searchKeyword]="keyword"
+                            placeholder="Find Save Record..."
+                            (selected)='selectEvent($event)'
+                            [itemTemplate]="itemTemplate"
+                            [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
+                            </ng-autocomplete>
+                            <ng-template #itemTemplate let-item>
+                            <a [innerHTML]="item.Heading">{{item.heading}}</a>
+                            </ng-template>
+                            <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div [ngStyle]="{ 'display': this.isVisible ? 'block' : 'none' }">
-                <div class="row pt-2">
-                    <div class="col-md-6">
-                        <label>img</label>
-                        <input type="file" #img1 formControlName="img" (change)="check1($event)" placeholder="Enter img" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>colAmt</label>
-                        <input type="text" formControlName="colAmt" placeholder="Enter colAmt" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>raised</label>
-                        <input type="text" formControlName="raised" placeholder="Enter raised" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>progres</label>
-                        <input type="text" formControlName="progres" placeholder="Enter progres" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>notes</label>
-                        <input type="text" formControlName="notes" placeholder="Enter notes" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>fix_amt1</label>
-                        <input type="text" formControlName="fix_amt1" placeholder="Enter fix_amt1" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>fix_amt2</label>
-                        <input type="text" formControlName="fix_amt2" placeholder="Enter fix_amt2" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>fix_amt3</label>
-                        <input type="text" formControlName="fix_amt3" placeholder="Enter fix_amt3" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>fix_amt4</label>
-                        <input type="text" formControlName="fix_amt4" placeholder="Enter fix_amt4" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>fix_amt5</label>
-                        <input type="text" formControlName="fix_amt5" placeholder="Enter fix_amt5" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryPera</label>
-                        <input type="text" formControlName="sumryPera" placeholder="Enter sumryPera" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryLi1</label>
-                        <input type="text" formControlName="sumryLi1" placeholder="Enter sumryLi1" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryLi2</label>
-                        <input type="text" formControlName="sumryLi2" placeholder="Enter sumryLi2" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryLi3</label>
-                        <input type="text" formControlName="sumryLi3" placeholder="Enter sumryLi3" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryLi4</label>
-                        <input type="text" formControlName="sumryLi4" placeholder="Enter sumryLi4" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryLi5</label>
-                        <input type="text" formControlName="sumryLi5" placeholder="Enter sumryLi5" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryLi6</label>
-                        <input type="text" formControlName="sumryLi6" placeholder="Enter sumryLi6" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryLi7</label>
-                        <input type="text" formControlName="sumryLi7" placeholder="Enter sumryLi7" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>sumryLi8</label>
-                        <input type="text" formControlName="sumryLi8" placeholder="Enter sumryLi8" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>smr_img1</label>
-                        <input type="file" formControlName="smr_img1" #smrImg1 (change)="check2($event)" placeholder="Enter smr_img1" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>smr_img2</label>
-                        <input type="file" formControlName="smr_img2" #smrImg2 (change)="check3($event)" placeholder="Enter smr_img2" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>smr_pra1</label>
-                        <input type="text" formControlName="smr_pra1" placeholder="Enter smr_pra1" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>smr_blockqt</label>
-                        <input type="text" formControlName="smr_blockqt" placeholder="Enter smr_blockqt" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label>smr_pra2</label>
-                        <input type="text" formControlName="smr_pra2" placeholder="Enter smr_pra2" class="form-control">
+                
+                <div [ngStyle]="{ 'display': this.isVisible ? 'block' : 'none' }">
+                    <div class="row pt-2">
+                        <div class="col-md-6">
+                            <label>img</label>
+                            <input type="file" #img1 formControlName="img" (change)="check1($event)" placeholder="Enter img" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>colAmt</label>
+                            <input type="text" formControlName="colAmt" placeholder="Enter colAmt" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>raised</label>
+                            <input type="text" formControlName="raised" placeholder="Enter raised" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>progres</label>
+                            <input type="text" formControlName="progres" placeholder="Enter progres" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>notes</label>
+                            <input type="text" formControlName="notes" placeholder="Enter notes" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>fix_amt1</label>
+                            <input type="text" formControlName="fix_amt1" placeholder="Enter fix_amt1" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>fix_amt2</label>
+                            <input type="text" formControlName="fix_amt2" placeholder="Enter fix_amt2" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>fix_amt3</label>
+                            <input type="text" formControlName="fix_amt3" placeholder="Enter fix_amt3" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>fix_amt4</label>
+                            <input type="text" formControlName="fix_amt4" placeholder="Enter fix_amt4" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>fix_amt5</label>
+                            <input type="text" formControlName="fix_amt5" placeholder="Enter fix_amt5" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryPera</label>
+                            <input type="text" formControlName="sumryPera" placeholder="Enter sumryPera" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryLi1</label>
+                            <input type="text" formControlName="sumryLi1" placeholder="Enter sumryLi1" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryLi2</label>
+                            <input type="text" formControlName="sumryLi2" placeholder="Enter sumryLi2" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryLi3</label>
+                            <input type="text" formControlName="sumryLi3" placeholder="Enter sumryLi3" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryLi4</label>
+                            <input type="text" formControlName="sumryLi4" placeholder="Enter sumryLi4" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryLi5</label>
+                            <input type="text" formControlName="sumryLi5" placeholder="Enter sumryLi5" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryLi6</label>
+                            <input type="text" formControlName="sumryLi6" placeholder="Enter sumryLi6" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryLi7</label>
+                            <input type="text" formControlName="sumryLi7" placeholder="Enter sumryLi7" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>sumryLi8</label>
+                            <input type="text" formControlName="sumryLi8" placeholder="Enter sumryLi8" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>smr_img1</label>
+                            <input type="file" formControlName="smr_img1" #smrImg1 (change)="check2($event)" placeholder="Enter smr_img1" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>smr_img2</label>
+                            <input type="file" formControlName="smr_img2" #smrImg2 (change)="check3($event)" placeholder="Enter smr_img2" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>smr_pra1</label>
+                            <input type="text" formControlName="smr_pra1" placeholder="Enter smr_pra1" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>smr_blockqt</label>
+                            <input type="text" formControlName="smr_blockqt" placeholder="Enter smr_blockqt" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>smr_pra2</label>
+                            <input type="text" formControlName="smr_pra2" placeholder="Enter smr_pra2" class="form-control">
+                        </div>
                     </div>
                 </div>
+            </form>
+        </div>
+        <div class="col-md-3" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
+            <div class="row pt-2">
+                <label>Image</label>
+                <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
             </div>
+            <div class="row pt-2">
+                <label>BlogImg1</label>
+                <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
 
-        </form>
-     </div>
-      <div class="col-md-3" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
-        <div class="row pt-2">
-            <label>Image</label>
-            <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
-
+            </div>
+            <div class="row pt-2">
+                <label>BlogImg2</label>
+                <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
+            </div>
         </div>
-        <div class="row pt-2">
-            <label>BlogImg1</label>
-             <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
-
-        </div>
-        <div class="row pt-2">
-            <label>BlogImg2</label>
-            <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
-
-        </div>
-     </div>
-   </div>
-
+    </div>
 
     <div class="d-flex justify-content-between w-75" style="position:fixed; bottom: 20px;left: 205px;background-color: rgb(240, 240, 240);  border-radius: 20px; padding:10px;">
         <div>
@@ -155,4 +151,178 @@
         </div>
     </div>
 
+</div> -->
+
+
+<div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+    <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+</div>
+<div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
+    <div class="card">
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+            <h2 class="card-title">Website Donate Form</h2>
+            <div class="ng-autocomplete" [ngClass]="showList?'d-block':'d-none'">
+                <ng-autocomplete 
+                [data]="data"
+                [searchKeyword]="keyword"
+                placeholder="Find Save Record..."
+                (selected)='selectEvent($event)'
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate" class="w-100">                                 
+                </ng-autocomplete>
+                <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.Heading">{{item.heading}}</a>
+                </ng-template>
+                <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+     <div class="grid grid-cols-12 gap-x-4">
+        <!-- DATA FORM -->
+        <div class="col-span-full">
+            <div class="card p-0">
+                <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
+                    <h3 class="text-lg card-title leading-none">Donate Details</h3>
+                </div>
+                <form class="p-6" [formGroup]="donateDetails" >
+                    <div [ngStyle]="{'display': this.isVisible ? 'block' : 'none' }">
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Image</label>
+                                <input type="file" #img1 formControlName="img" (change)="check1($event)" placeholder="Enter img"  placeholder="Select Image .JPG, .PNG" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Col Amount</label>
+                                <input type="text" formControlName="colAmt" placeholder="Enter Rights" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Raised</label>
+                                <input type="text" formControlName="raised" placeholder="Enter Raised " class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Progres</label>
+                                <input type="text" formControlName="progres" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Notes</label>
+                                <input type="text" formControlName="notes" placeholder="Enter Progres" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Fix Amount 1</label>
+                                <input type="text" formControlName="fix_amt1" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Fix Amount 2</label>
+                                <input type="text" formControlName="fix_amt2" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Fix Amount 3</label>
+                                <input type="text" formControlName="fix_amt3" placeholder="Enter Progres" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Fix Amount 4</label>
+                                <input type="text" formControlName="fix_amt4" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Fix Amount 5</label>
+                                <input type="text" formControlName="fix_amt5" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary Pera </label>
+                                <input type="text" formControlName="sumryPera" placeholder="Enter Progres" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary List 1 </label>
+                                <input type="text" formControlName="sumryLi1" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary List 2</label>
+                                <input type="text" formControlName="sumryLi2" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary List 3</label>
+                                <input type="text" formControlName="sumryLi3" placeholder="Enter Progres" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary List 4 </label>
+                                <input type="text" formControlName="sumryLi4" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary List 5</label>
+                                <input type="text" formControlName="sumryLi5" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary List 6</label>
+                                <input type="text" formControlName="sumryLi6" placeholder="Enter Progres" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary List 7 </label>
+                                <input type="text" formControlName="sumryLi7" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary List 8</label>
+                                <input type="text" formControlName="sumryLi8" placeholder="Enter Progres" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary Image 1</label>
+                                <input type="file" formControlName="smr_img1" #smrImg1 (change)="check2($event)" placeholder="Enter smr_img1" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary Image 2</label>
+                                <input type="file" formControlName="smr_img2" #smrImg2 (change)="check3($event)" placeholder="Enter smr_img1" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary Pera 1 </label>
+                                <input type="text" formControlName="smr_pra1" placeholder="Enter Summary Pera 1" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary Blockquate</label>
+                                <input type="text" formControlName="smr_blockqt" placeholder="Enter Summary Blockquate" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Summary Pera 2 </label>
+                                <input type="text" formControlName="sumryLi7" placeholder="Enter Summary Pera 2" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Image</label>
+                                <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Blog Image 1 </label>
+                                <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Blog Image 2</label>
+                                <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex lg:flex-row flex-col gap-x-4">
+                    <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
+                    <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
+                    <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

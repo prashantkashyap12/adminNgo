@@ -16,7 +16,7 @@ import { url } from '../../interface/api_config';
 })
 export class BlogDetailsComponent {
 
-  
+  loader:any = false;
   constructor(private _fb:FormBuilder, private _blog:BlogService){}
   ngOnInit(){
   this.init(); 
@@ -141,6 +141,7 @@ export class BlogDetailsComponent {
 
 
   onSubmit(){
+    this.loader = true
     let FormData1 = new FormData();
     FormData1.append('Img', this.img1_FormData as File ? this.img1_FormData as File : this.imagePreview3);
     FormData1.append('rigths',this.blogDetails.value.Rights);
@@ -164,11 +165,15 @@ export class BlogDetailsComponent {
     }
     this._blog.blogDetailsUpdate(FormData1).then(res=>{
       if(res.state){
+        this.loader = false
         alert("Data updateed");
         this.clear();
+      }else{
+        this.loader = false
       }
     }).catch(err=>{
       console.log(err);
+      this.loader = false
     })
   }
 

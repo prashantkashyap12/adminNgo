@@ -35,17 +35,17 @@ export const routes: Routes = [
 
     
     // Admin Web - Done
-    {path:'blog', component:BlogComponent},
-    {path:'BlogDetails', component:BlogDetailsComponent},
-    {path:'project', component:ProjectComponent},
-    {path:'projectDetails', component:ProjectDetailsComponent},
-    {path:'event', component:EventsComponent},
-    {path:'eventDetails', component:EventDetailsComponent},
-    {path:'donate', component:DonateComponent},
-    {path:'donateDetails',component:DonateDetailsComponent},
-    {path:'team_manager', component:TeamComponent}, 
-    {path:'document', component:DocumentsComponent},
-    {path:'support', component:HelpNSuppComponent},
+  {path:'blog', component:BlogComponent},                       //
+    {path:'BlogDetails', component:BlogDetailsComponent},       //
+    {path:'project', component:ProjectComponent},               //
+    {path:'projectDetails', component:ProjectDetailsComponent}, //
+    {path:'event', component:EventsComponent},                  // 
+    {path:'eventDetails', component:EventDetailsComponent},    //
+    {path:'donate', component:DonateComponent},              // 
+    {path:'donateDetails',component:DonateDetailsComponent}, //
+    {path:'team_manager', component:TeamComponent},          //
+    {path:'document', component:DocumentsComponent},         // 
+    {path:'support', component:HelpNSuppComponent},          //
 
     // Admin Panel- working
     //...

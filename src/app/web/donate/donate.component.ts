@@ -15,6 +15,7 @@ import { DonateService } from '../service/donate.service';
   styleUrl: './donate.component.css'
 })
 export class DonateComponent {
+  loader:any = false;
   constructor(private _fb: FormBuilder, private _dontSer: DonateService) { }
     ngOnInit(){
       this.Init();
@@ -29,19 +30,18 @@ export class DonateComponent {
     imagePreview:any = null;
     donationTran:any;
   
-    Init(){
-      this.DonateForm = this._fb.group({
-        imgPath: ['', [Validators.required]],
-        categ: ['', [Validators.required]],
-        rais: ['', [Validators.required]],
-        goal: ['', [Validators.required]],
-        heading: ['', [Validators.required]],
-        para: ['', [Validators.required]],
-        progress: ['', [Validators.required]],
-        link: ['', [Validators.required]],
-      })
-    }
-  
+  Init(){
+    this.DonateForm = this._fb.group({
+      imgPath: ['', [Validators.required]],
+      categ: ['', [Validators.required]],
+      rais: ['', [Validators.required]],
+      goal: ['', [Validators.required]],
+      heading: ['', [Validators.required]],
+      para: ['', [Validators.required]],
+      progress: ['', [Validators.required]],
+      link: ['', [Validators.required]],
+    })
+  }
 
   IfromFile:any;
   fileUpdate(file: any) {
@@ -50,7 +50,6 @@ export class DonateComponent {
       this.IfromFile = file.target.files[0];
     }
   }
-
   // autoComplete 
   selectEvent(data: any) {
     this.datapatch(data);
@@ -60,7 +59,6 @@ export class DonateComponent {
     this.donationTran = data.DonationTran;
     this.imagePreview = this.baseUrl + data.ImgPath;
     this.updateAct = false;
-
     this.DonateForm.patchValue({
       ImgPath: data.ImgPath,
       categ: data.Categ ? data.Categ : '',
@@ -75,6 +73,7 @@ export class DonateComponent {
   
   onSubmit()
   {
+    this.loader = true;
     let fmdata = new FormData();
     fmdata.append('ImgPath', this.IfromFile as File);
     fmdata.append('Categ', this.DonateForm.get('categ')?.value);
@@ -96,6 +95,7 @@ export class DonateComponent {
           this.showList = true;
           this.fresh();
           this.allot();
+          this.loader = false;
         }
       })
     } else {
@@ -105,17 +105,20 @@ export class DonateComponent {
         this.fresh();
         this.allot();
         alert("Record Updated");
+        this.loader = false;
       })
     }
   }
 
   delet() {   
+    this.loader = true;
     this._dontSer.deleteList(this.donationTran).subscribe(res => {
       this.showList = true;
       this.fresh();
       this.allot()
       this.imagePreview = null;
       alert("Record Deleted");
+      this.loader = false;
     })
   }
 

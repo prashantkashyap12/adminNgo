@@ -19,7 +19,7 @@ export class DonateDetailsComponent {
   @ViewChild('img1') img1A!:ElementRef;
   @ViewChild('smrImg1') smrImg1!:ElementRef;
   @ViewChild('smrImg2') smrImg2!:ElementRef;
-
+  loader:any =false;
   constructor(private _fb:FormBuilder, private _donate:DonateService){}
   ngOnInit(){
     this.Init();
@@ -95,15 +95,16 @@ export class DonateDetailsComponent {
   }
 
   selectEvent(evt:any){
+    this.loader = true;
     this.isVisible = true
     this.doanteKey = evt.DonationTran;
      this._donate.getDonationDetails(evt.DonationTran).subscribe(res=>{
       let resp = res.result[0]
       this.datapatch(resp)
+      this.loader = true;
     })
   }
   datapatch(evt:any){
-
     this.imagePreview1 = this.baseUrl+evt.Img !=null ? this.baseUrl+evt.Img:'Image not Marked';
     this.imagePreview2 = this.baseUrl+evt.SmrImg1 !=null ? this.baseUrl+evt.SmrImg1:'Image not Marked';
     this.imagePreview3 = this.baseUrl+evt.SmrImg2 !=null ? this.baseUrl+evt.SmrImg2:'Image not Marked';
@@ -144,6 +145,7 @@ export class DonateDetailsComponent {
   }
   
   onSubmit(){
+    this.loader =true;
     let Fd = new FormData();
     Fd.append('img', this.img1 as File)
     Fd.append('colAmt', this.donateDetails.get('colAmt')?.value);
@@ -180,6 +182,9 @@ export class DonateDetailsComponent {
           alert("Record Updated");
           this.clear();
           this.allot();
+          this.loader = false;
+      }else{
+        this.loader = false;
       }
     })
   }
@@ -197,10 +202,9 @@ export class DonateDetailsComponent {
   
   clear(){
     this.Init();
-    this.isVisible = false;
+    this.isVisible = true;
     this.img1 =null;
     this.img2 =null;
     this.img3 =null;
   }
-  
 }

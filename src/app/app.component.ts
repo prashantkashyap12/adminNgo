@@ -65,7 +65,7 @@ export class AppComponent {
     if(this.isVisible){
       this._router.navigate(['/dashboard']);
     }else{
-      this._router.navigate(['/login']);
+      this._router.navigate(['/eventDetails']);
     }
   }
   logout(){

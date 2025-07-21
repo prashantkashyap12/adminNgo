@@ -15,7 +15,7 @@ import { TeamService } from '../service/team.service';
   styleUrl: './team.component.css'
 })
 export class TeamComponent {
-
+  loader:any =false
   constructor(private _fb:FormBuilder, private _teamSer:TeamService){}
   ngOnInit(){
     this.Init();
@@ -60,7 +60,7 @@ export class TeamComponent {
     }
   
     onSubmit(){
-
+      this.loader  = true
       let fromds= new FormData();
       fromds.append('imgPath', this.IfromFile as File);
       fromds.append('position', this.TeamForm.value.position);
@@ -70,6 +70,7 @@ export class TeamComponent {
           if(res.state){
             this.fresh();
             alert("Record added");
+            this.loader  = false
           }
         })
       }else{
@@ -78,6 +79,7 @@ export class TeamComponent {
           if(res.status){
             this.fresh();
             alert("Record updated");
+            this.loader  = false
           }
         })
 
@@ -85,10 +87,12 @@ export class TeamComponent {
       
     }
     delet(){
+      this.loader  = true
       this._teamSer.DeleteTeam(this.TeamTrn).then(res=>{
         if(res.status){
           this.fresh();
           alert("Data Has been deleted");
+          this.loader  = false
         }
       })
     }
