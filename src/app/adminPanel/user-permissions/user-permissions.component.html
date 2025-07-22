@@ -1,0 +1,73 @@
+    <!-- loader -->
+    <div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+        <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+    </div>
+    <!-- loader -->
+
+    <!-- Start Main Content -->
+    <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
+        <div class="card">
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <h2 class="card-title">Select User List</h2>
+                <ng-autocomplete 
+                    [data]="data"
+                    [searchKeyword]="keyword"
+                    placeholder="Find Save Record..."
+                    (selected)='selectEvent($event)'
+                    [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate">                                 
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.Name">{{item.Name}}</a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-x-4">
+            <!-- DATA FORM -->
+            <div class="col-span-full">
+                <div class="card p-0">
+                    <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
+                        <h3 class="text-lg card-title leading-none">Set User Permissions</h3>
+                    </div>
+                    <form  class="p-6" [formGroup]="userRec">
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Name</label>
+                                <input type="text" formControlName="name" placeholder="Enter Name"  readonly class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Registered Contact</label>
+                                <input type="text" formControlName="contact" placeholder="Enter Reg. Contact"  readonly class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Registered E-mail</label>
+                                <input type="text" formControlName="email" placeholder="Enter Email" readonly  class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Set Role</label>
+                                <select class="form-input form-select w-full h-11" formControlName="isEdit"  value="true">
+                                    <option value="true">Provide Doc.</option>
+                                    <option value="false">Not Provide Doc.</option>
+                                </select>
+                                <!-- <input type="checkbox" formControlName="isEdit" placeholder="Enter Role" class="form-input"> -->
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">designaton</label>
+                                <input type="text" formControlName="designaton" placeholder="Enter Designation" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
+                            <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
+                            <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

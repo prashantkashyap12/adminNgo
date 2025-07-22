@@ -119,7 +119,7 @@ export class EventsComponent {
     delet(){
       this.loader = true;
       this._evtServ.deleteEventList(this.EvtTran).subscribe(res=>{
-        if(res.status == 200){
+        if(res.state){
           this.allot();
           this.Init();
           this.updateAct = true;
@@ -129,19 +129,16 @@ export class EventsComponent {
       })
     }
 
-    // get Event List
-    allot(){
-      this._evtServ.getEventList().subscribe(res=>{
-        this.data = res.result;
-      })
-    }
+  // get Event List
+  allot(){
+    this._evtServ.getEventList().subscribe(res=>{
+      this.data = res.result;
+    })
+  }
 
-
-    fresh(){
-      this.Init();
-      this.updateAct = true;
-
-    }
-  
-
+  fresh(){
+    this.Init();
+    this.updateAct = true;
+    this.imagePreview = null;
+  }
 }

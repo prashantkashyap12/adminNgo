@@ -82,7 +82,7 @@
     <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
         <div class="card">
             <div style="display: flex;justify-content: space-between;align-items: center;">
-                <h2 class="card-title">Website Donate Form</h2>
+                <h2 class="card-title">Search Donate List</h2>
                 <div class="ng-autocomplete" [ngClass]="showList?'d-block':'d-none'">
                     <ng-autocomplete 
                     [data]="data"
@@ -115,8 +115,36 @@
                                 <input type="file" formControlName="imgPath" (change)="fileUpdate($event)" placeholder="Select Image .JPG, .PNG" class="form-input" autocomplete="off" required>
                             </div>
                             <div class="w-full mb-4">
-                                <label for="location" class="form-label">Category</label>
-                                <input type="text" formControlName="type" placeholder="Enter service type" class="form-input" >
+                                <label  class="form-label">Category</label>
+                                <input type="text" formControlName="categ" placeholder="Enter service type" class="form-input" >
+                            </div>
+                             <div class="w-full mb-4">
+                                <label class="form-label">Raise</label>
+                                <input type="text" formControlName="rais" placeholder="Enter service type" class="form-input" >
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label  class="form-label">Goal</label>
+                                <input type="text" formControlName="goal" placeholder="Enter service type" class="form-input" >
+                            </div>
+                             <div class="w-full mb-4">
+                                <label  class="form-label">Heading</label>
+                                <input type="text" formControlName="heading" placeholder="Enter service type" class="form-input" >
+                            </div>
+                             <div class="w-full mb-4">
+                                <label class="form-label">Peragraph</label>
+                                <input type="text" formControlName="para" placeholder="Enter service type" class="form-input" >
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label  class="form-label">Progress</label>
+                                <input type="text" formControlName="progress" placeholder="Enter service type" class="form-input" >
+                            </div>
+                             <div class="w-full mb-4">
+                                <label  class="form-label">Link</label>
+                                <input type="text" formControlName="link" placeholder="Enter service type" class="form-input" >
                             </div>
                         </div>
                         <div class="flex lg:flex-row flex-col gap-x-4">

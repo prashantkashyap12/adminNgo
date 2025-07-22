@@ -139,7 +139,7 @@
 <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
     <div class="card">
         <div style="display: flex;justify-content: space-between;align-items: center;">
-            <h2 class="card-title">Website Blog Form</h2>
+            <h2 class="card-title">Select Blog Details using Blog List Heading</h2>
             <div class="ng-autocomplete" [ngClass]="showList?'d-block':'d-none'">
                 <ng-autocomplete 
                 [data]="data"
@@ -167,100 +167,104 @@
                     <h3 class="text-lg card-title leading-none">Blog Details</h3>
                 </div>
                 <form class="p-6" [formGroup]="blogDetails">
-                    <div class="flex lg:flex-row flex-col gap-x-4">
-                        <div class="w-full mb-4">
-                            <label class="form-label">Blog dinList Heag</label>
-                            <input type="text" [value]="blogListHding" autocomplete="off" class="form-input" required >
+                    <div *ngIf="formShow">
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Blog dinList Heag</label>
+                                <input type="text" [value]="blogListHding" autocomplete="off" class="form-input" required >
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Image</label>
+                                <input type="file" formControlName="Img" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgPath1($event)">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Rights</label>
+                                <input type="text" formControlName="Rights" placeholder="Enter Rights" class="form-input">
+                            </div>
                         </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Image</label>
-                            <input type="file" formControlName="Img" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgPath1($event)">
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Type</label>
+                                <input type="text" formControlName="type" placeholder="Enter Type" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Head</label>
+                                <input type="text" formControlName="Head" placeholder="Enter Head" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Peragraph 1</label>
+                                <input type="text" formControlName="Pera1" placeholder="Enter Peragraph 1" class="form-input">
+                            </div>
                         </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Rights</label>
-                            <input type="text" formControlName="Rights" placeholder="Enter Rights" class="form-input">
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Blockquate</label>
+                                <input type="text" formControlName="blockquate" placeholder="Enter Blockquate Type" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Peragraph 2</label>
+                                <input type="text" formControlName="Pera2" placeholder="Enter Peragraph 2" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Peragraph 3</label>
+                                <input type="text" formControlName="Pera3" placeholder="Enter Peragraph 3" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Blog Image 1</label>
+                                <input type="file" formControlName="BlogImg1" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgPath2($event)">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Blog Image 2</label>
+                                <input type="file" formControlName="BlogImg2" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgPath3($event)">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Peragraph 4</label>
+                                <input type="text" formControlName="Pera4" placeholder="Enter Peragraph 4" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Facebook-Link</label>
+                                <input type="text" formControlName="FbLink" placeholder="Enter FB Hyper Link" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Twitter-Link</label>
+                                <input type="text" formControlName="TwLink" placeholder="Enter Twitter Hyper Link" class="form-input">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Linked-Link</label>
+                                <input type="text" formControlName="LinkLink" placeholder="Enter LinkedIn Hyper Links" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Insta Link</label>
+                                <input type="text" formControlName="InstLink" placeholder="Enter Insta Hyper Links" class="form-input">
+                            </div>
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
+                            <div class="w-full mb-4">
+                                <label class="form-label">Image</label>
+                                <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Blog Image 1</label>
+                                <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Blog Image 2</label>
+                                <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
+                            </div>
                         </div>
                     </div>
-                    <div class="flex lg:flex-row flex-col gap-x-4">
-                        <div class="w-full mb-4">
-                            <label class="form-label">Type</label>
-                            <input type="text" formControlName="type" placeholder="Enter Type" class="form-input">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Head</label>
-                            <input type="text" formControlName="Head" placeholder="Enter Head" class="form-input">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Peragraph 1</label>
-                            <input type="text" formControlName="Pera1" placeholder="Enter Peragraph 1" class="form-input">
-                        </div>
-                    </div>
-                    <div class="flex lg:flex-row flex-col gap-x-4">
-                        <div class="w-full mb-4">
-                            <label class="form-label">Blockquate</label>
-                            <input type="text" formControlName="blockquate" placeholder="Enter Blockquate Type" class="form-input">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Peragraph 2</label>
-                            <input type="text" formControlName="Pera2" placeholder="Enter Peragraph 2" class="form-input">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Peragraph 3</label>
-                            <input type="text" formControlName="Pera3" placeholder="Enter Peragraph 3" class="form-input">
-                        </div>
-                    </div>
-                    <div class="flex lg:flex-row flex-col gap-x-4">
-                        <div class="w-full mb-4">
-                            <label class="form-label">Blog Image 1</label>
-                            <input type="file" formControlName="BlogImg1" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgPath2($event)">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Blog Image 2</label>
-                            <input type="file" formControlName="BlogImg2" placeholder="Select Image .JPG, .PNG" class="form-input" (change)="imgPath3($event)">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Peragraph 4</label>
-                            <input type="text" formControlName="Pera4" placeholder="Enter Peragraph 4" class="form-input">
-                        </div>
-                    </div>
-                    <div class="flex lg:flex-row flex-col gap-x-4">
-                        <div class="w-full mb-4">
-                            <label class="form-label">Facebook-Link</label>
-                            <input type="text" formControlName="FbLink" placeholder="Enter FB Hyper Link" class="form-input">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Twitter-Link</label>
-                            <input type="text" formControlName="TwLink" placeholder="Enter Twitter Hyper Link" class="form-input">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Linked-Link</label>
-                            <input type="text" formControlName="LinkLink" placeholder="Enter LinkedIn Hyper Links" class="form-input">
-                        </div>
-                    </div>
-                    <div class="flex lg:flex-row flex-col gap-x-4">
-                        <div class="w-full mb-4">
-                            <label class="form-label">Insta Link</label>
-                            <input type="text" formControlName="InstLink" placeholder="Enter Insta Hyper Links" class="form-input">
-                        </div>
-                    </div>
-                    <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
-                        <div class="w-full mb-4">
-                            <label class="form-label">Image</label>
-                            <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Blog Image 1</label>
-                            <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Blog Image 2</label>
-                            <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
-                        </div>
-                    </div>
-                     <div style="display: flex;justify-content: space-between;">
-                        <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
-                        <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
-                        <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">Clear</button>
+                    <div [ngStyle]="{'display':this.formShow?'block':'none'}">
+                        <div style="display: flex;justify-content: space-between;">
+                           <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
+                           <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
+                           <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">Clear</button>
+                       </div>
                     </div>
                 </form>
             </div>

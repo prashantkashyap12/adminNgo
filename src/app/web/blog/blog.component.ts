@@ -148,6 +148,7 @@ export class BlogComponent implements OnInit {
   }
   allot(){
     this.showList= !this.showList;
+    this.fresh()
   }
   fresh(){   // Done
     this.init();

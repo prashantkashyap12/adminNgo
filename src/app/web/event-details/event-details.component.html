@@ -142,7 +142,7 @@
 <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
     <div class="card">
         <div style="display: flex;justify-content: space-between;align-items: center;">
-            <h2 class="card-title">Website Event Details Form</h2>
+            <h2 class="card-title">Event Details Form using Event list</h2>
             <div class="ng-autocomplete" [ngClass]="showList?'d-block':'d-none'">
                 <ng-autocomplete 
                 [data]="data"
@@ -173,8 +173,8 @@
                     <div [ngStyle]="{ 'display': this.isVisible ? 'block' : 'none' }">
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
-                                 <label class="form-label">Event List Heading</label>
-                            <input type="text" [value]="eventListHding" disabled autocomplete="off" class="form-input" required >
+                                <label class="form-label">Event List Heading</label>
+                                <input type="text" [value]="eventListHding" disabled autocomplete="off" [placeholder]="eventListHding" class="form-input" required >
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">Image</label>
@@ -271,7 +271,7 @@
                         </div>
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
-                                <img *ngIf="imagePreview1" [src]="imagePreview1" alt="Image_Preview" height="150px" class="pt-2 w-75">
+                                <img *ngIf="imagePreview1" [src]="imagePreview1" alt="Image_Preview" height="150px" width="150px" class="pt-2 w-75">
                             </div>
                         </div>
                         

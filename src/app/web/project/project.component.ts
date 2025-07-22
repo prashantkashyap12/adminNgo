@@ -68,7 +68,7 @@ export class ProjectComponent {
       head: data.Head,
       pera: data.Pera,
       path: data.Path,
-      imgpath: data.Imgpath,
+      imgpath: this.imagePreview,
     })
   }
   

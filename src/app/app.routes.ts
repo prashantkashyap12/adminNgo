@@ -20,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileCompleteComponent } from './UserPanel/profile-complete/profile-complete.component';
 import { DocumentsComponent } from './web/documents/documents.component';
 import { HelpNSuppComponent } from './web/help-nsupp/help-nsupp.component';
+import { UserPermissionsComponent } from './adminPanel/user-permissions/user-permissions.component';
 
 export const routes: Routes = [
 
@@ -35,22 +36,23 @@ export const routes: Routes = [
 
     
     // Admin Web - Done
-  {path:'blog', component:BlogComponent},                       //
-    {path:'BlogDetails', component:BlogDetailsComponent},       //
-    {path:'project', component:ProjectComponent},               //
-    {path:'projectDetails', component:ProjectDetailsComponent}, //
-    {path:'event', component:EventsComponent},                  // 
-    {path:'eventDetails', component:EventDetailsComponent},    //
-    {path:'donate', component:DonateComponent},              // 
-    {path:'donateDetails',component:DonateDetailsComponent}, //
-    {path:'team_manager', component:TeamComponent},          //
-    {path:'document', component:DocumentsComponent},         // 
-    {path:'support', component:HelpNSuppComponent},          //
+  {path:'blog', component:BlogComponent},                      
+    {path:'BlogDetails', component:BlogDetailsComponent},      
+    {path:'project', component:ProjectComponent},              
+    {path:'projectDetails', component:ProjectDetailsComponent},
+    {path:'event', component:EventsComponent},                  
+    {path:'eventDetails', component:EventDetailsComponent},    
+    {path:'donate', component:DonateComponent},               
+    {path:'donateDetails',component:DonateDetailsComponent}, 
+    {path:'team_manager', component:TeamComponent},          
+    {path:'document', component:DocumentsComponent},          
+    {path:'support', component:HelpNSuppComponent},          
 
     // Admin Panel- working
     //...
     {path:'docBuilder',component:DocBuilderComponent},
     {path:'UserList', component:UserListComponent},
+    {path:'userPermission', component:UserPermissionsComponent},
 
     
     // User - working

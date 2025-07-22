@@ -15,9 +15,12 @@ export class DocBuilderService {
     let url = `${this.baseUrl}GTProfUpdate?userId=0`;
     return this._http.get(url);
   }
-  sendImg(data:any):Observable<any>{
-    let url = `${this.baseUrl}`;
-    return this._http.post(url, data);
+  
+  setPermission(desig:any, isEdit:any,uid:any):Observable<any>{
+    let url = `${this.baseUrl}updateRec?`;
+    return this._http.post(url,desig,);
   }
+
+
 
 }

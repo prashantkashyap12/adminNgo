@@ -36,6 +36,7 @@ export class BlogDetailsComponent {
   imagePreview3:any = null;
   isVisible = false; 
   blogListHding:any;
+  formShow:any = false;
 
   init(){
     this.blogDetails = this._fb.group({
@@ -87,12 +88,9 @@ export class BlogDetailsComponent {
   datapatch2(data:any){
     this.blogTran = data.blogTran;
     this._blog.blogDetails(data.blogTran)
-    this.imagePreview1= this.baseUrl+data.img !=null ? this.baseUrl+data.img:'Image not Marked'
-    this.imagePreview2= this.baseUrl+data.BlogImg1 !=null ? this.baseUrl+data.BlogImg1:'Image not Marked'
-    this.imagePreview3= this.baseUrl+data.BlogImg2 !=null ? this.baseUrl+data.BlogImg2:'Image not Marked'
-    console.log("1"+this.imagePreview1);
-    console.log("2"+this.imagePreview2);
-    console.log("3"+this.imagePreview3);
+    this.imagePreview1= this.baseUrl+data.img !=null ? this.baseUrl+data.img:'Image not Marked';
+    this.imagePreview2= this.baseUrl+data.BlogImg1 !=null ? this.baseUrl+data.BlogImg1:'Image not Marked';
+    this.imagePreview3= this.baseUrl+data.BlogImg2 !=null ? this.baseUrl+data.BlogImg2:'Image not Marked';
 
     this.blogDetails.patchValue({
       Img: data['Img'],
@@ -111,6 +109,7 @@ export class BlogDetailsComponent {
       LinkLink: data['LinkLink'] ? data['LinkLink'] : 'Empty Mark',
       InstLink: data['InstLink'] ? data['InstLink'] : 'Empty Mark'
     })
+    this.formShow = true;
   }
 
 
@@ -168,12 +167,19 @@ export class BlogDetailsComponent {
         this.loader = false
         alert("Data updateed");
         this.clear();
+        this.formShow = false;
+
       }else{
-        this.loader = false
+        this.loader = false;
+        this.formShow = false;
       }
     }).catch(err=>{
       console.log(err);
       this.loader = false
+        this.formShow = false;
+
+
+
     })
   }
 
@@ -183,6 +189,8 @@ export class BlogDetailsComponent {
   }
   clear(){
     this.init();
-    this.isVisible = false
+    this.isVisible = false;
+    this.formShow = false;
+
   }
 }

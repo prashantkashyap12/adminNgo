@@ -78,7 +78,7 @@
     <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
         <div class="card">
             <div style="display: flex;justify-content: space-between;align-items: center;">
-                <h2 class="card-title">Website Blog Form</h2>
+                <h2 class="card-title">Search Blog List</h2>
                 <div class="ng-autocomplete" [ngClass]="showList?'d-block':'d-none'">
                     <ng-autocomplete 
                     [data]="data"
@@ -132,12 +132,12 @@
                         </div>
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
-                                <img *ngIf="imagePreview" [src]="imagePreview" alt="Image_Preview" height="150px" class="pt-2 w-75">
+                                <img *ngIf="imagePreview" [src]="imagePreview" alt="Image_Preview" height="150px" width="150px" class="pt-2 w-75">
                             </div>
                         </div>
                         <div style="display: flex;justify-content: space-between;">
                             <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
-                            <button (click)="delet()" class="btn b-solid btn-danger-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'d-none':'-d-block'">Delete</button>
+                            <button (click)="delet()" class="btn b-solid btn-danger-solid px-5 dk-theme-card-square" [ngStyle]="{'display':this.updateAct?'none':'block'}">Delete</button>
                             <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
                             <button (click)="fresh()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>
                         </div>

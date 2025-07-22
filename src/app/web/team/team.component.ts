@@ -48,7 +48,7 @@ export class TeamComponent {
       this.TeamForm.patchValue({
         name: data.Name,
         position:data.Position,
-        imgPath : data.ImgPath
+        imgPath : this.imagePreview
       })
     }
     
@@ -107,6 +107,7 @@ export class TeamComponent {
       this.updateAct =true;
       this.IfromFile = null
       this.Init();
+      this.imagePreview = null
     }
   
 

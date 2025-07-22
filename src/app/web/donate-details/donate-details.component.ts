@@ -100,8 +100,8 @@ export class DonateDetailsComponent {
     this.doanteKey = evt.DonationTran;
      this._donate.getDonationDetails(evt.DonationTran).subscribe(res=>{
       let resp = res.result[0]
+      this.loader = false;
       this.datapatch(resp)
-      this.loader = true;
     })
   }
   datapatch(evt:any){
@@ -202,9 +202,13 @@ export class DonateDetailsComponent {
   
   clear(){
     this.Init();
-    this.isVisible = true;
+    this.isVisible = false;
     this.img1 =null;
     this.img2 =null;
     this.img3 =null;
+    this.imagePreview1= null;
+    this.imagePreview2= null;
+    this.imagePreview3= null;
+
   }
 }
