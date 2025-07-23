@@ -16,11 +16,13 @@ export class DocBuilderService {
     return this._http.get(url);
   }
   
-  setPermission(desig:any, isEdit:any,uid:any):Observable<any>{
+  setPermission(data:any,uid:any):Observable<any>{
     let url = `${this.baseUrl}updateRec?`;
-    return this._http.post(url,desig,);
+    let model = {
+      uid:uid,
+      isDocView:data.isEdit,
+      designation:data.designaton,
+    }
+    return this._http.post(url,model);
   }
-
-
-
 }

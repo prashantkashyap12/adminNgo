@@ -55,24 +55,29 @@ export class UserPermissionsComponent {
       isEdit:date.isEdit
     })
     this.isUserId = date.userId;
+  }
 
+
+  model(){
+    return {
+      designaton:this.userRec.value.designaton ?? '',
+      isEdit: this.userRec.value.isEdit == null ? 'false':'true'
+    }
   }
 
   onSubmit(){
-   this.userRec.value.isEdit = this.userRec.value.isEdit == null ? 'false':'true';
-    console.log(this.userRec.value);
-    this.isUserId
-
-    this._docBuildServ.setPermission(this.userRec.value.designaton,this.userRec.value.isEdit, this.isUserId).subscribe(res=>{
+    let model = this.model();
+    this._docBuildServ.setPermission(model, this.isUserId).subscribe(res=>{
       if(res.state){
         alert("Set successfully");
+      }else{
+        alert(res.message);
       }
     })
-
   }
 
   clear(){
     this.ngOnInit()
   }
-
+  
 }
