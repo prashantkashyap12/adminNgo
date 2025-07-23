@@ -109,9 +109,10 @@
 .content > .contact{
     position: relative;
     text-align: center;
-    top: 77px;
-    font-size: 10px;
+      top: 388px;
+    font-size: 20px;
     font-weight: 500;
+    left: 104px;
 }
 .content > .idnum {
    position: relative;
@@ -122,11 +123,11 @@
    font-weight: 700;
 }
 .content > .imgPro{
-    width: 79px;
-    height: 91px;
+   width: 181px;
+    height: 196px;
     position: absolute;
-    left: 48px;
-    top: 10px;
+    left: 125px;
+    top: 149px;
     border-radius: 5px;
 }
 

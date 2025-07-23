@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AutocompleteComponent, AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { DocBuilderService } from '../service/doc-builder.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-permissions',
@@ -27,11 +27,11 @@ export class UserPermissionsComponent {
   }
   init(){
     this.userRec = this._fb.group({
-      name:[''],
-      contact:[''],
-      email:[''],
-      designaton:[''],
-      isEdit:['']
+      name:['', Validators.required],
+      contact:['',Validators.required],
+      email:['', Validators.required],
+      designaton:['', Validators.required],
+      isEdit:['', Validators.required]
     })
   }
 
@@ -61,17 +61,23 @@ export class UserPermissionsComponent {
   model(){
     return {
       designaton:this.userRec.value.designaton ?? '',
-      isEdit: this.userRec.value.isEdit == null ? 'false':'true'
+      isEdit: this.userRec.value.isEdit,
     }
   }
 
   onSubmit(){
+    if(this.userRec.invalid){
+      return alert("Form incomplete");
+    }
     let model = this.model();
     this._docBuildServ.setPermission(model, this.isUserId).subscribe(res=>{
       if(res.state){
         alert("Set successfully");
+        this.ngOnInit()
       }else{
         alert(res.message);
+        this.ngOnInit()
+
       }
     })
   }
