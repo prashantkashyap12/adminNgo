@@ -21,6 +21,8 @@ import { ProfileCompleteComponent } from './UserPanel/profile-complete/profile-c
 import { DocumentsComponent } from './web/documents/documents.component';
 import { HelpNSuppComponent } from './web/help-nsupp/help-nsupp.component';
 import { UserPermissionsComponent } from './adminPanel/user-permissions/user-permissions.component';
+import { EventManagerComponent } from './adminPanel/event-manager/event-manager.component';
+import { PaymentAckListComponent } from './adminPanel/payment-ack-list/payment-ack-list.component';
 
 export const routes: Routes = [
 
@@ -33,10 +35,8 @@ export const routes: Routes = [
     {path:'signup', component:SignupComponent},
     {path:'verify', component:VarifyComponent},
     {path:'forget', component:ForgetComponent},
-
-    
     // Admin Web - Done
-  {path:'blog', component:BlogComponent},                      
+    {path:'blog', component:BlogComponent},                      
     {path:'BlogDetails', component:BlogDetailsComponent},      
     {path:'project', component:ProjectComponent},              
     {path:'projectDetails', component:ProjectDetailsComponent},
@@ -46,20 +46,18 @@ export const routes: Routes = [
     {path:'donateDetails',component:DonateDetailsComponent}, 
     {path:'team_manager', component:TeamComponent},          
     {path:'document', component:DocumentsComponent},          
-    {path:'support', component:HelpNSuppComponent},          
+    {path:'support', component:HelpNSuppComponent},
 
     // Admin Panel- working
-    //...
     {path:'docBuilder',component:DocBuilderComponent},
     {path:'UserList', component:UserListComponent},
     {path:'userPermission', component:UserPermissionsComponent},
-
+    {path:'AddEventManager', component:EventManagerComponent},
     
     // User - working
     {path:'ProfileUpdate',component:ProfileCompleteComponent},
     {path:'UpcommingEvent', component:CommingEventComponent},
-
+    {path:'PaymentList', component:PaymentAckListComponent},
     { path: '**', component: NotFoundComponent }
-
 
 ];

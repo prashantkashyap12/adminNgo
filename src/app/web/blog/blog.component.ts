@@ -55,9 +55,6 @@ export class BlogComponent implements OnInit {
     })
   }
 
-
-
-
   init(){
     this.blogForm = this._fb.group({
       date:[moment(new Date()).format('DD-MM-YYYY')],
@@ -102,7 +99,6 @@ export class BlogComponent implements OnInit {
   }
 
   onSubmit(){
-    
     const dataLs = new FormData();
     dataLs.append("date", this.blogForm.value.date ? moment(this.blogForm.value.date).format('YYYY-MM-DD') : '');
     dataLs.append("linkText1", this.blogForm.value.linkText1? this.blogForm.value.linkText1 : '');
@@ -114,11 +110,12 @@ export class BlogComponent implements OnInit {
     if(this.updateAct){
       this._blog.bloglisAdd(dataLs).then(res=>{
         if(res.state){
-        alert(res.message1);
-        this.fresh();
-        this.allot();
-        this.showList = false
-        this.blogListView()
+          alert(res.message1);
+          this.fresh();
+          this.allot();
+          this.showList = false
+          this.blogListView();
+          this.fresh()
         }
       }).catch(err=>{
         console.log(err);
@@ -132,6 +129,7 @@ export class BlogComponent implements OnInit {
       this._blog.bloglisUpdate(dataLs).then(res=>{
         if(res.state){
           alert("updated");
+          this.ngOnInit();
         }
       })
     }

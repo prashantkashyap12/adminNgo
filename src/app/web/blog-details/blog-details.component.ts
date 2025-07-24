@@ -91,7 +91,6 @@ export class BlogDetailsComponent {
     this.imagePreview1= this.baseUrl+data.img !=null ? this.baseUrl+data.img:'Image not Marked';
     this.imagePreview2= this.baseUrl+data.BlogImg1 !=null ? this.baseUrl+data.BlogImg1:'Image not Marked';
     this.imagePreview3= this.baseUrl+data.BlogImg2 !=null ? this.baseUrl+data.BlogImg2:'Image not Marked';
-
     this.blogDetails.patchValue({
       Img: data['Img'],
       Rights: data['Rights'] ? data['Rights'] : 'Empty Mark',
@@ -177,9 +176,6 @@ export class BlogDetailsComponent {
       console.log(err);
       this.loader = false
         this.formShow = false;
-
-
-
     })
   }
 

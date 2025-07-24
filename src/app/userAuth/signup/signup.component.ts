@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit{
       contact: ['', [Validators.required, Validators.maxLength(10)]], //Validators.pattern(/^[0-9]{10}$/)]
       password: ['', [Validators.required, Validators.minLength(6)]],
       // password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
-      role:['user', [Validators.required]]
+      role:['admin', [Validators.required]]
     });
   }
 

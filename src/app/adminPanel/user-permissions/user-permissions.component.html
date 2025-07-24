@@ -50,8 +50,8 @@
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
                                 <label class="form-label">Set Role</label>
-                                <select class="form-input form-select w-full h-11" formControlName="isEdit"  value="true">
-                                    <option value="true">Provide Doc.</option>
+                                <select class="form-input form-select w-full h-11" formControlName="isEdit" value="true">
+                                    <option value="true" [defaultSelected]="true">Provide Doc.</option>
                                     <option value="false">Not Provide Doc.</option>
                                 </select>
                                 <!-- <input type="checkbox" formControlName="isEdit" placeholder="Enter Role" class="form-input"> -->

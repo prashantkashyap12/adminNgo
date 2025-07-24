@@ -4,21 +4,21 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 @Component({
-  selector: 'app-payment-ack-list',
+  selector: 'app-event-manager',
   standalone: true,
-  imports: [AutocompleteLibModule, ReactiveFormsModule,FormsModule,CommonModule],
-  templateUrl: './payment-ack-list.component.html',
-  styleUrl: './payment-ack-list.component.css'
+  imports: [FormsModule, AutocompleteLibModule, CommonModule, ReactiveFormsModule],
+  templateUrl: './event-manager.component.html',
+  styleUrl: './event-manager.component.css'
 })
-export class PaymentAckListComponent {
+export class EventManagerComponent {
+
+  loader:boolean = false;
   blogForm!:FormGroup;
-  loader:any = false;
   showList:boolean = true;
   data:any = []
   keyword="";
   selectEvent(data:any){}
 
   allot(){}
-  del(data:any){}
-  
+  del(a:any){}
 }

@@ -1,14 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Route, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { ProfileCompleteComponent } from './UserPanel/profile-complete/profile-complete.component';
+import { UserprofileService } from './UserPanel/service/profileComp.service';
+import { HttpClientModule } from '@angular/common/http';
+import { url } from './interface/api_config';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule],
+  imports: [RouterOutlet, RouterLink, CommonModule, HttpClientModule, ReactiveFormsModule],
+  providers:[UserprofileService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,16 +22,16 @@ export class AppComponent {
   title = 'adminPanel';
   isVisible:boolean = true;
   isBrowser:boolean = true;
-
+  isDoc:any= true
   isUser:boolean = false;
   isAdmin:boolean = false;
   
-  constructor(private _router:Router){}
-
+  constructor(private _router:Router, private _profileView:UserprofileService){}
   duration:any;
 
   ngAfterViewInit(){
     // Router Auth / Panel
+    this.allot();
     var valueToken;
     if (this.isBrowser) {
       valueToken = sessionStorage.getItem("token");
@@ -52,8 +58,8 @@ export class AppComponent {
 
       // Menu parsal
       if(decodedToken['role'] === 'user') {
-        this.isUser =false;
-        this.isAdmin = true;
+        this.isUser =true;
+        this.isAdmin = false;
       }else if(decodedToken['role'] === 'admin'){
         this.isUser = false;
         this.isAdmin = true;
@@ -72,6 +78,35 @@ export class AppComponent {
     sessionStorage.clear();
     window.location.reload();
   }
+  baseurl = new url().value;
+  user:any = {
+    name:'',
+    email:'',
+    profileImg:''
+  }
+  allot(){
+    this._profileView.GetUser(sessionStorage.getItem('userId')).subscribe(res=>{
+      let resp = res.results[0];
+      this.isDoc = resp.isEdit; 
+      this.user = {
+        name:resp.Name,
+        email:resp.Email,
+        profileImg: resp.ProfileImg!= null?`${this.baseurl}${resp.ProfileImg}`:'../assets/images/user/profile.jpg'
+      }
+    })
+  }
+
+  changeLang(sel:any){
+    var selc = confirm(`Do you want to change language ${sel} ?`);
+    if(selc){
+      alert(sel);
+      window.location.reload();
+    }else{
+      alert("Alright");
+    }
+  }
+
+
 }
 
 

@@ -144,13 +144,10 @@ export class ProfileCompleteComponent {
   }
   allot(){
     // string split # data form api record Address 
-
     this._userProf.GetUser(this.userId).subscribe(res=>{
       this.data = res.results[0];
       this.patch(this.data);
     })
-
-   
   }
   fresh(){}
 
