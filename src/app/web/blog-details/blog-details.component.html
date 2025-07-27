@@ -244,18 +244,18 @@
                                 <input type="text" formControlName="InstLink" placeholder="Enter Insta Hyper Links" class="form-input">
                             </div>
                         </div>
-                        <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':this.isVisible ? 'block':'none'}">
+                        <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':this.isVisible ? 'flex':'none'}">
                             <div class="w-full mb-4">
                                 <label class="form-label">Image</label>
-                                <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" class="pt-2 w-75">
+                                <img *ngIf="imagePreview3" [src]="imagePreview3" [alt]="imagePreview3" height="150px" width="150px" class="pt-2 w-75">
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">Blog Image 1</label>
-                                <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" class="pt-2 w-75">
+                                <img *ngIf="imagePreview1" [src]="imagePreview1" [alt]="imagePreview1" height="150px" width="150px" class="pt-2 w-75">
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">Blog Image 2</label>
-                                <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" class="pt-2 w-75">
+                                <img *ngIf="imagePreview2" [src]="imagePreview2" [alt]="imagePreview2" height="150px" width="150px" class="pt-2 w-75">
                             </div>
                         </div>
                     </div>

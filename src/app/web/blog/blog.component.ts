@@ -140,7 +140,8 @@ export class BlogComponent implements OnInit {
       if(res.state){
         alert("Toster = Record Hasbeen Deleted");
         this.blogListView()
-        this.fresh()
+        this.fresh();
+        this.allot()
       }
     })
   }
