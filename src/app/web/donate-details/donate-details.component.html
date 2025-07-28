@@ -318,7 +318,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="display: flex;justify-content: space-between;flex-wrap: wrap;">
+                    <div style="display: flex;justify-content: space-between;flex-wrap: wrap;" [ngStyle]="{'display': this.isVisible ? 'flex':'none'}">
                         <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
                         <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
                         <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>

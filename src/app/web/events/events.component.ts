@@ -40,9 +40,9 @@ export class EventsComponent {
         pera: ['', [Validators.required]],
         place: ['', [Validators.required]],
         address: ['', [Validators.required]],
-        imgPath: [null],
         link: ['', [Validators.required]],
-        linkText: ['', [Validators.required]]
+        linkText: ['', [Validators.required]],
+        imgPath: [null, [Validators.required]],
       })
     }
   
@@ -74,7 +74,6 @@ export class EventsComponent {
   
     onSubmit(){
       this.loader = true;
-      if(this.EventLsForm.valid){
         let formData = new FormData();
         formData.append('date', this.EventLsForm.value.date);
         formData.append('heading', this.EventLsForm.value.heading);
@@ -109,10 +108,6 @@ export class EventsComponent {
             }
           })
         }
-      }else{
-        alert('Please Fill All Required Fields');
-        this.loader = false;
-      }
     } 
 
     // Done
