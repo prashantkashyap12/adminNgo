@@ -50,18 +50,17 @@ export class ProfileCompleteComponent {
       contact:[sessionStorage.getItem('contact')],
       email:[sessionStorage.getItem('email')],
       whatCont: [''],
-      fName:[''], //
+      fName:[''], 
       dob:[''],
-      gender:[''], //
-      maritalStatus:[''], //
-      hEdu:[''], //
-      workProf:[''], //
-
-      Address:[''],  // +
-      landmark:[''], // + 
-      pin:[''],  // +
-      Member_Type:[''], //
-      join_cat:[''], //
+      gender:[''],
+      maritalStatus:[''],
+      hEdu:[''],
+      workProf:[''],
+      Address:[''],  
+      landmark:[''],  
+      pin:[''],  
+      Member_Type:[''],
+      join_cat:[''],
       MemOther:[''],  //
       desination:[''], //
       whatsApp:['']
@@ -71,7 +70,6 @@ export class ProfileCompleteComponent {
   }
 
   selectEvent(evt:any){}
-  
   fileUpdate(evt:any){
     this.ProfImg = evt.target.files[0];
   }
@@ -139,7 +137,7 @@ export class ProfileCompleteComponent {
       Member_Type:this.data.Member_Type,
       join_cat:this.data.join_cat,
       MemOther:this.data.Already_Join,
-      whatApp:this.data.whatApp
+      whatsApp:this.data.whatApp
     })
   }
   allot(){

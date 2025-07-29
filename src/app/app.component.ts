@@ -7,6 +7,7 @@ import { UserprofileService } from './UserPanel/service/profileComp.service';
 import { HttpClientModule } from '@angular/common/http';
 import { url } from './interface/api_config';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonService } from './common.service';
 
 
 
@@ -26,7 +27,7 @@ export class AppComponent {
   isUser:boolean = false;
   isAdmin:boolean = false;
   
-  constructor(private _router:Router, private _profileView:UserprofileService){}
+  constructor(private _router:Router, private _profileView:UserprofileService, private _common:CommonService){}
   duration:any;
 
   ngAfterViewInit(){
@@ -93,6 +94,7 @@ export class AppComponent {
         email:resp.Email,
         profileImg: resp.ProfileImg!= null?`${this.baseurl}${resp.ProfileImg}`:'../assets/images/user/profile.jpg'
       }
+      this._common.dashUser.next(resp.Name);  // data set / binding with subject
     })
   }
 
@@ -105,10 +107,4 @@ export class AppComponent {
       alert("Alright");
     }
   }
-
-
 }
-
-
-// tejemef733@calorpg.com
-// ng build --configuration production --base-href=/

@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { from } from 'rxjs';
+import { CommonService } from '../../common.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +15,13 @@ export class DashboardComponent {
 
   formModel!:FormGroup;
   fileData: any;
+  authName:any;
   onFileChange(event: any) {
     let data = event.target.files[0];
     this.fileData = data;
   }
 
-  constructor(private _fb:FormBuilder, private _http:HttpClient) {
+  constructor(private _fb:FormBuilder, private _http:HttpClient, private _comm:CommonService) {
     // Initialize the form model here if needed
     this.formModel = new FormGroup({});
   }
@@ -27,6 +29,7 @@ export class DashboardComponent {
     this.formModel = this._fb.group({
       file: [null, Validators.required]
     });
+    this._comm.dashUser.subscribe(res=>this.authName=res);
   }
 
   onSubmit() {
