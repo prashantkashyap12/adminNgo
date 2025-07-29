@@ -130,6 +130,8 @@ export class BlogComponent implements OnInit {
         if(res.state){
           alert("updated");
           this.ngOnInit();
+          this.imagePreview = "";
+
         }
       })
     }

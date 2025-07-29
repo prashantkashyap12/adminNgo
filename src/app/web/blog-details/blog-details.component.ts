@@ -46,7 +46,7 @@ export class BlogDetailsComponent {
       Head:['', [Validators.required]],
       Pera1:['', [Validators.required]],
       Pera2:['', [Validators.required]],
-      Blockquate:['', [Validators.required]],
+      blockquate:['', [Validators.required]],
       Pera3:['', [Validators.required]],
       BlogImg1:[null],
       BlogImg2:[null],
@@ -93,20 +93,20 @@ export class BlogDetailsComponent {
     this.imagePreview3= this.baseUrl+data.BlogImg2 !=null ? this.baseUrl+data.BlogImg2:'Image not Marked';
     this.blogDetails.patchValue({
       Img: data['Img'],
-      Rights: data['Rights'] ? data['Rights'] : 'Empty Mark',
-      type: data['type'] ? data['type'] : 'Empty Mark',
-      Head: data['Head'] ? data['Head'] : 'Empty Mark',
-      Pera1: data['Pera1'] ? data['Pera1'] : 'Empty Mark',
-      Pera2: data['Pera2'] ? data['Pera2'] : 'Empty Mark',
-      Blockquate: data['Blockquate'] ? data['Blockquate'] : 'Empty Mark',
-      Pera3: data['Pera3'] ? data['Pera3'] : 'Empty Mark',
+      Rights: data['Rights'] ? data['Rights'] : '',
+      type: data['type'] ? data['type'] : '',
+      Head: data['Head'] ? data['Head'] : '',
+      Pera1: data['Pera1'] ? data['Pera1'] : '',
+      Pera2: data['Pera2'] ? data['Pera2'] : '',
+      blockquate: data['Blockquate'] ? data['Blockquate'] : '',
+      Pera3: data['Pera3'] ? data['Pera3'] : '',
       BlogImg1: data['BlogImg1'],
       BlogImg2: data['BlogImg2'],
-      Pera4: data['Pera4'] ? data['Pera4'] : 'Empty Mark',
-      FbLink: data['FbLink'] ? data['FbLink'] : 'Empty Mark',
-      TwLink: data['TwLink'] ? data['TwLink'] : 'Empty Mark',
-      LinkLink: data['LinkLink'] ? data['LinkLink'] : 'Empty Mark',
-      InstLink: data['InstLink'] ? data['InstLink'] : 'Empty Mark'
+      Pera4: data['Pera4'] ? data['Pera4'] : '',
+      FbLink: data['FbLink'] ? data['FbLink'] : '',
+      TwLink: data['TwLink'] ? data['TwLink'] : '',
+      LinkLink: data['LinkLink'] ? data['LinkLink'] : '',
+      InstLink: data['InstLink'] ? data['InstLink'] : ''
     })
     this.formShow = true;
   }
