@@ -23,7 +23,7 @@ export class AppComponent {
   title = 'adminPanel';
   isVisible:boolean = true;
   isBrowser:boolean = true;
-  isDoc:any= true
+  isDoc:boolean= false
   isUser:boolean = false;
   isAdmin:boolean = false;
   
@@ -88,7 +88,7 @@ export class AppComponent {
   allot(){
     this._profileView.GetUser(sessionStorage.getItem('userId')).subscribe(res=>{
       let resp = res.results[0];
-      this.isDoc = resp.isEdit; 
+      this.isDoc = res.results[0].isEdit == 'true'?true:false; 
       this.user = {
         name:resp.Name,
         email:resp.Email,
