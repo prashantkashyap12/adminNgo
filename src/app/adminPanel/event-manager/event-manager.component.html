@@ -35,23 +35,116 @@
                     <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
                         <h3 class="text-lg card-title leading-none">Add Event Manager</h3>
                     </div>
-                    <form class="p-6" [formGroup]="blogForm">
+                    <form class="p-6" [formGroup]="eventLive">
+                        <!-- Row 1 -->
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
-                                <label for="full_name_data" class="form-label">Select Date</label>
-                                <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
+                                <label class="form-label">Allow User</label>
+                                <input type="text" formControlName="allowUser" placeholder="Enter User Permissions" class="form-input" autocomplete="off">
                             </div>
                             <div class="w-full mb-4">
-                                <label for="email-6"
-                                    class="form-label">Heading</label>
-                                <input type="text" formControlName="linkText1" placeholder="Enter Heading" class="form-input" autocomplete="off" required >
+                                <label class="form-label">Set Image</label>
+                                <input type="file" formControlName="SetImg" placeholder="Set Image URL" class="form-input" autocomplete="off">
                             </div>
                             <div class="w-full mb-4">
-                                <label for="password-6" class="form-label">Rights</label>
-                                <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-input" autocomplete="off" required>
+                            <label class="form-label">Event Name</label>
+                            <input type="text" formControlName="EventName" placeholder="Enter Event Name" class="form-input" autocomplete="off" required>
                             </div>
+                         
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                               <div class="w-full mb-4">
+                            <label class="form-label">Project Category</label>
+                            <input type="text" formControlName="ProjectCat" placeholder="Enter Project Category" class="form-input" autocomplete="off" required>
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Event Description</label>
+                            <input type="text" formControlName="EventDescription" placeholder="Enter Event Description" class="form-input" autocomplete="off" required>
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Event Category</label>
+                            <input type="text" formControlName="EventCategory" placeholder="Enter Event Category" class="form-input" autocomplete="off" required>
+                            </div>
+                           
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                             <div class="w-full mb-4">
+                            <label class="form-label">Date & Time</label>
+                            <input type="datetime-local" formControlName="DatTim" placeholder="Select Date and Time" class="form-input" autocomplete="off" required>
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Location</label>
+                            <input type="text" formControlName="Locat" placeholder="Enter Location" class="form-input" autocomplete="off" required>
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Landmark</label>
+                            <input type="text" formControlName="LandMark" placeholder="Enter Landmark" class="form-input" autocomplete="off" required>
+                            </div>
+                            
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                            <label class="form-label">Organizer Name</label>
+                            <input type="text" formControlName="OrganizerName" placeholder="Enter Organizer Name" class="form-input" autocomplete="off" required>
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Contact</label>
+                            <input type="text" formControlName="Contact" placeholder="Enter Contact Number" class="form-input" autocomplete="off" required>
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Email</label>
+                            <input type="email" formControlName="Email" placeholder="Enter Email" class="form-input" autocomplete="off" required>
+                            </div>
+                            
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                            <label class="form-label">Event Description</label>
+                            <input type="text" formControlName="EventDiscription" placeholder="Enter Additional Description" class="form-input" autocomplete="off">
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Event Purpose</label>
+                            <input type="text" formControlName="EventPurpose" placeholder="Enter Event Purpose" class="form-input" autocomplete="off">
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Number of Participants</label>
+                            <input type="text" formControlName="ParticipantsNo" placeholder="Enter Number of Participants" class="form-input" autocomplete="off">
+                            </div>
+                            
+                        </div>
+
+                        <!-- Row 6 -->
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            <div class="w-full mb-4">
+                            <label class="form-label">Partner Organizations</label>
+                            <input type="text" formControlName="PartnerOrganizations" placeholder="Enter Partner Organizations" class="form-input" autocomplete="off">
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Resources</label>
+                            <input type="text" formControlName="Resources" placeholder="Enter Resources" class="form-input" autocomplete="off">
+                            </div>
+                            <div class="w-full mb-4">
+                            <label class="form-label">Comments</label>
+                            <input type="text" formControlName="Comments" placeholder="Enter Comments" class="form-input" autocomplete="off">
+                            </div>
+                            
+                        </div>
+                        <div class="gap-x-4" style="display:flex; justify-content: space-between;flex-wrap: wrap;">
+                            <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-success-solid':'btn-secondary-solid'">{{updateAct?'Submit':'Update'}}</button> 
+                            <button (click)="onSubmit()" class="btn b-solid btn-danger-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-success-solid':'btn-secondary-solid'">Delete</button> 
+                            <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
+                            <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

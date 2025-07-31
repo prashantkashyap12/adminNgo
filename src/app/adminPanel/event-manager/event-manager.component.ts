@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 @Component({
@@ -12,13 +12,45 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 })
 export class EventManagerComponent {
 
+  constructor(private _fb:FormBuilder){}
+  ngOnInit(){
+    this.Init();
+  }
   loader:boolean = false;
-  blogForm!:FormGroup;
-  showList:boolean = true;
   data:any = []
   keyword="";
-  selectEvent(data:any){}
+  showList:boolean = true;
+  updateAct:boolean = false;
+  
+  eventLive!:FormGroup;
+  Init(){
+    this.eventLive = this._fb.group({
+      allowUser:['', [Validators.required]],
+      EventName:['', Validators.required],
+      ProjectCat:['', Validators.required],
+      EventDescription:['', Validators.required],
+      EventCategory:['', Validators.required],
+      Locat:['', Validators.required],
+      LandMark:['', Validators.required],
+      OrganizerName:['', Validators.required],
+      Contact:['', Validators.required],
+      Email:['', Validators.required],
+      EventDiscription:['', Validators.required],
+      EventPurpose:['', Validators.required],
+      ParticipantsNo:['', Validators.required],
+      PartnerOrganizations:['', Validators.required],
+      Resources:['', Validators.required],
+      Comments:['', Validators.required],
+      SetImg:['', Validators.required],
+      DatTim:['', Validators.required],
+    })
+  }
 
+  selectEvent(data:any){}
   allot(){}
   del(a:any){}
+  onSubmit(){
+    console.log(this.eventLive.value);
+  }
+  clear(){}
 }
