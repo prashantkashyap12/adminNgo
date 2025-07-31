@@ -10,7 +10,7 @@
         <div class="card">
             <div style="display: flex;justify-content: space-between;align-items: center;">
                 <h2 class="card-title">Search Live Event List</h2>
-                <div class="ng-autocomplete" [ngClass]="showList?'d-block':'d-none'">
+                <div class="ng-autocomplete w-50" [ngClass]="showList?'d-block':'d-none'">
                     <ng-autocomplete 
                     [data]="data"
                     [searchKeyword]="keyword"
@@ -20,7 +20,7 @@
                     [notFoundTemplate]="notFoundTemplate">                                 
                     </ng-autocomplete>
                     <ng-template #itemTemplate let-item>
-                    <a [innerHTML]="item.linkText1">{{item.heading}}</a>
+                    <a [innerHTML]="item.EventName">{{item.EventName}}</a>
                     </ng-template>
                     <ng-template #notFoundTemplate let-notFound>
                     <div [innerHTML]="notFound"></div>
@@ -40,11 +40,25 @@
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
                                 <label class="form-label">Allow User</label>
-                                <input type="text" formControlName="allowUser" placeholder="Enter User Permissions" class="form-input" autocomplete="off">
+                                <ng-autocomplete 
+                                [data]="userList"
+                                [searchKeyword]="keyword2"
+                                placeholder="Find Save Record..."
+                                (selected)='selectEvent($event)'
+                                [itemTemplate]="itemTemplate"
+                                [notFoundTemplate]="notFoundTemplate" 
+                                class="form-input">                           
+                                </ng-autocomplete>
+                                <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="item.Name">{{item.Name}}</a>
+                                </ng-template>
+                                <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                                </ng-template>
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">Set Image</label>
-                                <input type="file" formControlName="SetImg" placeholder="Set Image URL" class="form-input" autocomplete="off">
+                                <input type="file" formControlName="SetImg" placeholder="Set Image URL" #img (change)="imgMain($event)" class="form-input" autocomplete="off">
                             </div>
                             <div class="w-full mb-4">
                             <label class="form-label">Event Name</label>
@@ -135,7 +149,9 @@
                             <label class="form-label">Comments</label>
                             <input type="text" formControlName="Comments" placeholder="Enter Comments" class="form-input" autocomplete="off">
                             </div>
-                            
+                        </div>
+                        <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':eventImg ? 'block':'none'}">
+                            <img [src]="eventImg" [alt]="eventImg" style="width: 200px;height: 200px;">
                         </div>
                         <div class="gap-x-4" style="display:flex; justify-content: space-between;flex-wrap: wrap;">
                             <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-success-solid':'btn-secondary-solid'">{{updateAct?'Submit':'Update'}}</button> 
