@@ -82,7 +82,7 @@ export class ProfileCompleteComponent {
     let pin = this.ProfUpdat.get('pin')?.value;
     this.CombinAdd = `${Address}#${landmark}#${pin}`;
     const dataForm = new FormData();
-    dataForm.append('ProfileImg', this.ProfImg ?? "")
+    dataForm.append('ProfileImg', this.ProfImg?this.ProfImg:"")
     dataForm.append('userId', this.userId ?? "");
     dataForm.append('designation',this.ProfUpdat.get('designation')?.value ?? "");
     dataForm.append('Father_Name', this.ProfUpdat.get('fName')?.value ?? "");
@@ -141,7 +141,6 @@ export class ProfileCompleteComponent {
     })
   }
   allot(){
-    // string split # data form api record Address 
     this._userProf.GetUser(this.userId).subscribe(res=>{
       this.data = res.results[0];
       this.patch(this.data);
