@@ -16,4 +16,9 @@ export class EventManagerService {
     return this._http.get(url);
   }
 
+  AddLiveEvent(fromData:any):Observable<any>{
+    let url = this.baseUrl + 'AddLiveEvent';
+    return this._http.post(url, fromData);
+  }
+
 }

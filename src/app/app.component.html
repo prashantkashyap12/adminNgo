@@ -1,8 +1,6 @@
-@if (isVisible) {
-<!-- Start Header -->
+<!-- @if (isVisible) {
 <header class="header px-4 sm:px-6 h-[calc(theme('spacing.header')_-_10px)] sm:h-header bg-white dark:bg-dark-card rounded-none xl:rounded-15 flex items-center mb-4 xl:m-4 group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_32px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_32px)] group-data-[sidebar-size=sm]:group-data-[theme-width=box]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[theme-width=box]:xl:mr-0 dk-theme-card-square z-10 ac-transition">
     <div class="flex-center-between grow">
-        <!-- Header Left -->
         <div class="flex items-center gap-4">
             <div class="menu-hamburger-container flex-center">
                 <button type="button" id="app-menu-hamburger" class="menu-hamburger hidden xl:block">֎</button>
@@ -18,23 +16,18 @@
                 </span>
             </div>
         </div>
-        <!-- Header Right -->
         <div class="flex items-center gap-1 sm:gap-3">
-            <!-- Dark Light Button -->
             <button type="button" class="themeMode size-8 flex-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md" onclick="toggleThemeMode()">
                 <i class="ri-contrast-2-line text-[22px] dark:text-dark-text-two dark:before:!content-['\f1bf']"></i>
             </button>
-            <!-- Settings Button -->
             <button type="button" class="size-8 flex-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md" data-drawer-target="app-setting-drawer" data-drawer-show="app-setting-drawer" data-drawer-placement="right" aria-controls="app-setting-drawer">
                 <i class="ri-settings-3-line text-[22px] dark:text-dark-text-two animate-spin-slow"></i>
             </button>
-            <!-- Notification Button -->
             <div class="relative">
                 <button type="button" data-popover-target="dropdownNotification" data-popover-trigger="click" data-popover-placement="bottom-end" class="relative size-8 flex-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
                     <i class="ri-notification-3-line text-[22px] dark:text-dark-text-two"></i>
                     <span class="absolute -top-1 -right-1 size-4 rounded-50 flex-center bg-primary-500 leading-none text-xs text-white">0</span>
                 </button>
-                <!-- Dropdown menu -->
                 <div id="dropdownNotification" class="!-right-full sm:!right-0 z-backdrop invisible w-[250px] sm:w-[320px] bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-dark-card-two dark:divide-dark-border-four">
                     <div class="block px-4 py-2 font-medium text-center text-heading rounded-t-lg bg-gray-50 dark:bg-dark-card-shade dark:text-white">
                         Notifications
@@ -64,12 +57,10 @@
                     </a>
                 </div>
             </div>
-            <!-- Language Select Button -->
             <div class="relative">
                 <button type="button" data-popover-target="dropdownLanguage" data-popover-trigger="click" data-popover-placement="bottom-end" class="size-8 flex-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
                     <img id="header-lang-img" src="../assets/images/flag/us.svg" alt="flag" class="size-5 rounded-sm" title="English">
                 </button>
-                <!-- Dropdown -->
                 <div id="dropdownLanguage" class="absolute invisible z-backdrop py-2 bg-white rounded-md shadow-md min-w-[10rem] flex flex-col dark:bg-dark-card-shade">
                     <a (click)="changeLang('English')" class="flex items-center gap-3 hover:bg-gray-200 px-4 py-2 dark:hover:bg-dark-icon relative after:absolute after:inset-0 after:size-full" data-lang="en" title="English">
                         <img src="../assets/images/flag/us.svg" alt="flag" class="object-cover size-4 rounded-50">
@@ -81,15 +72,12 @@
                     </a>
                 </div>
             </div>
-            <!-- Border -->
             <div class="w-[1px] h-[calc(theme('spacing.header')_-_10px)] sm:h-header bg-[#EEE] dark:bg-dark-border hidden sm:block"></div>
-            <!-- User Profile Button -->
             <div class="relative">
                 <button type="button" data-popover-target="dropdownProfile" data-popover-trigger="click" data-popover-placement="bottom-end" class="text-gray-500 dark:text-dark-text flex items-center gap-2 sm:pr-4 relative after:absolute after:right-0 after:font-remix after:content-['\ea4e'] after:text-[18px] after:hidden sm:after:block">
                     <img [src]="user.profileImg" alt="user-img" class="size-7 sm:size-9 rounded-50 dk-theme-card-square">
                     <span class="font-semibold leading-none text-lg capitalize hidden sm:block"></span>
                 </button>
-                <!-- Dropdown menu -->
                 <div id="dropdownProfile" class="invisible z-backdrop bg-white text-left divide-y divide-gray-100 rounded-lg shadow w-48 dark:bg-dark-card-shade dark:divide-dark-border-four">
                     <div class="px-4 py-3 text-sm text-gray-500 dark:text-white">
                         <div class="font-medium ">{{user.name}}</div>
@@ -111,9 +99,6 @@
         </div>
     </div>
 </header>
-<!-- End Header -->
-
-<!-- Start App Menu -->
 <div id="app-menu-drawer" class="app-menu flex flex-col gap-y-2.5 bg-white dark:bg-dark-card w-app-menu fixed top-0 left-0 bottom-0 -translate-x-full group-data-[sidebar-size=sm]:min-h-screen group-data-[sidebar-size=sm]:h-max xl:translate-x-0 rounded-r-10 xl:rounded-15 xl:group-data-[sidebar-size=lg]:w-app-menu xl:group-data-[sidebar-size=sm]:w-app-menu-sm xl:group-data-[sidebar-size=sm]:absolute xl:group-data-[sidebar-size=lg]:fixed xl:top-4 xl:left-4 xl:bottom-4 z-backdrop xl:group-data-[theme-width=box]:left-auto dk-theme-card-square ac-transition" tabindex="-1">
   <div class="px-4 h-header flex items-center shrink-0 group-data-[sidebar-size=sm]:px-2 group-data-[sidebar-size=sm]:justify-center">
     <a href="index.html" class="group-data-[sidebar-size=lg]:block hidden">
@@ -147,7 +132,7 @@
                     </span>
                 </a>
             </li>
-            <ul *ngIf="isUser">                <!-- User Panel -->  
+            <ul *ngIf="isUser">              
                 <li class="!mt-5 pt-5 border-t border-gray-200 dark:border-dark-border-two mx-4 group-data-[sidebar-size=sm]:hidden">
                     <h5 class="text-heading text-lg leading-none font-semibold mb-5">User Panel</h5>
                 </li>
@@ -212,7 +197,7 @@
                     </a>
                 </li>
             </ul>
-            <ul *ngIf="isAdmin">               <!-- Admin Panel -->   
+            <ul *ngIf="isAdmin">            
                 <li class="!mt-5 pt-5 border-t border-gray-200 dark:border-dark-border-two mx-4 group-data-[sidebar-size=sm]:hidden">
                     <h5 class="text-heading text-lg leading-none font-semibold mb-5">Admin Panel</h5>
                 </li>
@@ -277,7 +262,7 @@
                     </a>
                 </li>
             </ul>
-            <ul *ngIf="isAdmin">               <!-- Admin Panel -->  
+            <ul *ngIf="isAdmin">              
                 <li class="!mt-5 pt-5 border-t border-gray-200 dark:border-dark-border-two mx-4 group-data-[sidebar-size=sm]:hidden">
                     <h5 class="text-heading text-lg leading-none font-semibold mb-5">Web Panel</h5>
                 </li>
@@ -482,7 +467,6 @@
                     </a>
                 </li>
             </ul>
-            <!-- Done -->
             <li class="!mt-5 pt-5 border-t border-gray-200 dark:border-dark-border-two mx-4 group-data-[sidebar-size=sm]:hidden">
                 <h5 class="text-heading text-lg leading-none font-semibold mb-5">Help</h5>
             </li>
@@ -549,7 +533,6 @@
           </ul>
       </div>
   </div>
-  <!-- Logout Link -->
   <div class="mt-auto px-7 py-6 group-data-[sidebar-size=sm]:px-2">
       <a (click)="logout()" class="flex-center-between text-gray-500 dark:text-dark-text font-semibold leading-none bg-gray-200 dark:bg-[#090927] dark:group-data-[sidebar-size=sm]:bg-dark-card-shade rounded-[10px] px-6 py-4 group-data-[sidebar-size=sm]:p-[12px_8px] group-data-[sidebar-size=sm]:justify-center dk-theme-card-square">
           <span class="group-data-[sidebar-size=sm]:hidden block">Logout</span>
@@ -559,10 +542,12 @@
       </a>
   </div>
 </div>
-<!-- End App Menu -->
 <router-outlet></router-outlet>
 }
 
 @if (!isVisible) {
     <router-outlet></router-outlet>
-}
+} -->
+
+
+<app-event-manager></app-event-manager>

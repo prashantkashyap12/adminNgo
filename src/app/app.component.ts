@@ -8,13 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { url } from './interface/api_config';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonService } from './common.service';
+import { EventManagerComponent } from './adminPanel/event-manager/event-manager.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule, HttpClientModule, ReactiveFormsModule],
+  imports: [RouterOutlet, RouterLink, CommonModule, HttpClientModule, ReactiveFormsModule, EventManagerComponent],
   providers:[UserprofileService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -69,11 +70,11 @@ export class AppComponent {
   }
 
   navigate(){
-    if(this.isVisible){
-      this._router.navigate(['/dashboard']);
-    }else{
-      this._router.navigate(['/login']);
-    }
+    // if(this.isVisible){
+    //   this._router.navigate(['/dashboard']);
+    // }else{
+    //   this._router.navigate(['/login']);
+    // }
   }
   logout(){
     sessionStorage.clear();
