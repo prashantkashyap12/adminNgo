@@ -40,9 +40,7 @@ export class ProfileCompleteComponent {
     var ddMM = moment(sessionStorage.getItem("expiryDate")).format("MM/YY/")
     var regId = "HHS"+ddMM+sessionStorage.getItem('userId');
     this.ProfUpdat = this._fb.group({
-
       imgPath:[''],
-
       doj:[moment(sessionStorage.getItem("expiryDate")).format("DD-MM-YYYY")],
       registerId: [regId],
       designation:[''],
@@ -102,8 +100,8 @@ export class ProfileCompleteComponent {
     this._userProf.updateUser(dataForm).subscribe(res=>{
       if(res.state == true){
         this.loader = false;
-        this.ngOnInit()
-        alert(res.massege)
+        alert(res.massege);
+        this.ngOnInit();
       }else{
         this.loader = false;
       }
@@ -116,13 +114,14 @@ export class ProfileCompleteComponent {
 
   patch(data:any){
     this.data = data;
-     let ary = this.data.AddressFull.split("#");
-    let add = ary[0];
-    let landMrk = ary[1];
-    let pinCod = ary[2];
+     let ary:any = this.data.AddressFull==null ?'': this.data.AddressFull.split("#");
+    let add = ary[0]? ary[0] : '';
+    let landMrk = ary[1]? ary[1] : '';
+    let pinCod = ary[2]? ary[2] : '';
 
     // img Url
-    this.imagePreview = this.baseUrl+data.ProfileImg;
+    let imgUrl = this.data.ProfileImg ?? '';
+    this.imagePreview = this.baseUrl+ imgUrl;
     this.ProfUpdat.patchValue({
       designation: this.data.designation,
       fName:this.data.Father_Name,

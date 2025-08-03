@@ -23,6 +23,7 @@ import { HelpNSuppComponent } from './web/help-nsupp/help-nsupp.component';
 import { UserPermissionsComponent } from './adminPanel/user-permissions/user-permissions.component';
 import { EventManagerComponent } from './adminPanel/event-manager/event-manager.component';
 import { PaymentAckListComponent } from './adminPanel/payment-ack-list/payment-ack-list.component';
+import { OurMembersComponent } from './UserPanel/our-members/our-members.component';
 
 export const routes: Routes = [
 
@@ -57,6 +58,7 @@ export const routes: Routes = [
     // User - working
     {path:'ProfileUpdate',component:ProfileCompleteComponent},
     {path:'UpcommingEvent', component:CommingEventComponent},
+    {path:'OurTeam', component:OurMembersComponent},
     {path:'PaymentList', component:PaymentAckListComponent},
     { path: '**', component: NotFoundComponent }
 

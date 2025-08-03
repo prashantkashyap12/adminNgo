@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit{
       contact: ['', [Validators.required, Validators.maxLength(10)]], //Validators.pattern(/^[0-9]{10}$/)]
       password: ['', [Validators.required, Validators.minLength(6)]],
       // password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
-      role:['admin', [Validators.required]]
+      role:['user', [Validators.required]]
     });
   }
 
@@ -64,12 +64,6 @@ export class SignupComponent implements OnInit{
 
   onSubmit(){
     this.loader = true;
-    if (this.userSignup.invalid) {
-      // this.userSignup.markAllAsTouched();
-      alert("Form Invalid");
-      this.loader = false;
-      return;
-    }
     const model= this.datamodel();  // validation
     this._auth.signup(model).subscribe(
       res=>{ 
@@ -83,7 +77,7 @@ export class SignupComponent implements OnInit{
         this._router.navigate(['/verify']);
        }else{
         this.loader = false;
-        alert(res)
+        alert(res.message)
        }
       });
   }
