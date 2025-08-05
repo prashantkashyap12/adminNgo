@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { UserListService } from '../../adminPanel/service/user-list.service';
 import { DocBuilderService } from '../../adminPanel/service/doc-builder.service';
+import { UserRecPipe } from '../../interface/user-rec.pipe';
 
 @Component({
   selector: 'app-our-members',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule, UserRecPipe],
   providers:[UserListService, DocBuilderService],
   templateUrl: './our-members.component.html',
   styleUrl: './our-members.component.css'

@@ -52,23 +52,26 @@
                             <div class="w-full mb-4">
                                 <label class="form-label">Set Image</label>
                                 <input type="file" formControlName="SetImg" placeholder="Set Image URL" #img (change)="imgMain($event)" class="form-input" autocomplete="off">
+                                <small *ngIf="errorMsg && eventLive.get('SetImg')?.invalid" class="text-red-500">Image is required</small>
                             </div>
                             <div class="w-full mb-4">
-                            <label class="form-label">Event Name</label>
-                            <input type="text" formControlName="EventName" placeholder="Enter Event Name" class="form-input" autocomplete="off" required>
+                                <label class="form-label">Event Name</label>
+                                <input type="text" formControlName="EventName" placeholder="Enter Event Name" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('EventName')?.invalid" class="text-red-500">Event Name is required</small>
                             </div>
-                         
                         </div>
 
                         <!-- Row 2 -->
                         <div class="flex lg:flex-row flex-col gap-x-4">
                                <div class="w-full mb-4">
-                            <label class="form-label">Project Category</label>
-                            <input type="text" formControlName="ProjectCat" placeholder="Enter Project Category" class="form-input" autocomplete="off" required>
+                                <label class="form-label">Project Category</label>
+                                <input type="text" formControlName="ProjectCat" placeholder="Enter Project Category" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('ProjectCat')?.invalid" class="text-red-500">Project Category is required</small>
                             </div>
                             <div class="w-full mb-4">
                             <label class="form-label">Event Description</label>
                             <input type="text" formControlName="EventDescription" placeholder="Enter Event Description" class="form-input" autocomplete="off" required>
+                            <small *ngIf="errorMsg && eventLive.get('EventDescription')?.invalid" class="text-red-500">Event Description is required</small>
                             </div>
                             <div class="w-full mb-4">
                             <label class="form-label">Event Category</label>

@@ -150,7 +150,16 @@ export class EventManagerComponent {
   }
 
   del(a:any){}
+
+  errorMsg:boolean = false;
   onSubmit(){
+    this.errorMsg = true
+    if(this.eventLive.invalid){
+      alert("Please Fill All Required Fields");
+      return;
+    }
+
+
     let formData = new FormData();
     // formData.append('userId', JSON.(this.eventLive.value.allowUser)), //
 

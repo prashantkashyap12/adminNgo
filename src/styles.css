@@ -53,3 +53,7 @@
 .menu-hamburger{
     border-color:rgb(184, 184, 184);
 }
+.text-red-500{
+    font-weight: 500;
+    color: crimson;
+}

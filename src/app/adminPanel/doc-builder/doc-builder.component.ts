@@ -62,7 +62,7 @@ export class DocBuilderComponent {
     this._docBuildServ.getRecord().subscribe(res=>{
       this.data = res.results;
       this.loader =false;
-
+      this.selectEvent(this.data.find((item:any)=>item.userId==sessionStorage.getItem('userId')));
     })
   }
 

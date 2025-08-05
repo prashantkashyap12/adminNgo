@@ -40,28 +40,26 @@ export class ProfileCompleteComponent {
     var ddMM = moment(sessionStorage.getItem("expiryDate")).format("MM/YY/")
     var regId = "HHS"+ddMM+sessionStorage.getItem('userId');
     this.ProfUpdat = this._fb.group({
-      imgPath:[''],
-      doj:[moment(sessionStorage.getItem("expiryDate")).format("DD-MM-YYYY")],
-      registerId: [regId],
-      designation:[''],
-      name:[sessionStorage.getItem("Name")],
-      contact:[sessionStorage.getItem('contact')],
-      email:[sessionStorage.getItem('email')],
-      whatCont: [''],
-      fName:[''], 
-      dob:[''],
-      gender:[''],
-      maritalStatus:[''],
-      hEdu:[''],
-      workProf:[''],
-      Address:[''],  
-      landmark:[''],  
-      pin:[''],  
-      Member_Type:[''],
-      join_cat:[''],
-      MemOther:[''],  //
-      desination:[''], //
-      whatsApp:['']
+      imgPath:['', [Validators.required]],
+      doj:[moment(sessionStorage.getItem("expiryDate")).format("DD-MM-YYYY"), Validators.required],
+      registerId: [regId, Validators.required],
+      designation:['', Validators.required],
+      name:[sessionStorage.getItem("Name"), Validators.required],
+      contact:[sessionStorage.getItem('contact'), Validators.required],
+      email:[sessionStorage.getItem('email'), Validators.required],
+      fName:['', Validators.required], 
+      dob:['',Validators.required],
+      gender:['', Validators.required],
+      maritalStatus:['', Validators.required],
+      hEdu:['', Validators.required],
+      workProf:['', Validators.required],
+      Address:['', Validators.required],  
+      landmark:['', Validators.required],  
+      pin:['', Validators.required],  
+      Member_Type:['', Validators.required],
+      join_cat:['', Validators.required],
+      MemOther:['', Validators.required],  //
+      whatsApp:['', Validators.required]
     })
 
   
@@ -72,17 +70,22 @@ export class ProfileCompleteComponent {
     this.ProfImg = evt.target.files[0];
   }
 
-
+  errorMsg:boolean = false;
   onSubmit(){
+    this.errorMsg = true;
+    if(this.ProfUpdat.invalid){
+      alert("Please fill all the required fields");
+      return;
+    }
     this.loader = true;
     let Address = this.ProfUpdat.get('Address')?.value;
     let landmark = this.ProfUpdat.get('landmark')?.value;
     let pin = this.ProfUpdat.get('pin')?.value;
     this.CombinAdd = `${Address}#${landmark}#${pin}`;
     const dataForm = new FormData();
-    dataForm.append('ProfileImg', this.ProfImg?this.ProfImg:"")
+    dataForm.append('ProfileImg', this.ProfImg?this.ProfImg:null)
     dataForm.append('userId', this.userId ?? "");
-    dataForm.append('designation',this.ProfUpdat.get('designation')?.value ?? "");
+    dataForm.append('designation',this.ProfUpdat.get('designation')?.value ?? "Not Assigned");
     dataForm.append('Father_Name', this.ProfUpdat.get('fName')?.value ?? "");
     dataForm.append('DOB', this.ProfUpdat.get('dob')?.value ?? "");
     dataForm.append('Gender', this.ProfUpdat.get('gender')?.value ?? "");
@@ -123,6 +126,7 @@ export class ProfileCompleteComponent {
     let imgUrl = this.data.ProfileImg ?? '';
     this.imagePreview = this.baseUrl+ imgUrl;
     this.ProfUpdat.patchValue({
+      
       designation: this.data.designation,
       fName:this.data.Father_Name,
       dob:this.data.DOB,
