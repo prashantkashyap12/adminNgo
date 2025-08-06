@@ -12,7 +12,7 @@ export class EventManagerService {
   constructor(private _http:HttpClient) { }
   private baseUrl = new url().value;
   getEvent(userId:any):Observable<any>{
-    let url = `${this.baseUrl}GetAllEvent?userId=${userId}`;
+    let url = `${this.baseUrl}GetAllEvent?LiveEventId=${userId}`;
     return this._http.get(url);
   }
 

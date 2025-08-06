@@ -133,7 +133,7 @@ export class EventManagerComponent {
   userList:any= [];
   userListAll:any = [];
   allot(){
-    this._EvtMang.getEvent("999").subscribe(res=>{
+    this._EvtMang.getEvent("00000").subscribe(res=>{
       this.data = res.massage;
     })
 
@@ -149,7 +149,21 @@ export class EventManagerComponent {
     })
   }
 
-  del(a:any){}
+  delete(a:any){
+    if(confirm("Are you sure you want to delete this event?")){
+      // this._EvtMang.deleteEvent(a).subscribe(res=>{
+      //   if(res.state){
+      //     alert("Event Deleted Successfully");
+      //     this.ngOnInit();
+      //   }else{
+      //     alert(res.state.res);
+      //   }
+      // }, (err)=>{
+      //   alert(err);
+      // })
+    }
+
+  }
 
   errorMsg:boolean = false;
   onSubmit(){
@@ -158,8 +172,6 @@ export class EventManagerComponent {
       alert("Please Fill All Required Fields");
       return;
     }
-
-
     let formData = new FormData();
     // formData.append('userId', JSON.(this.eventLive.value.allowUser)), //
 

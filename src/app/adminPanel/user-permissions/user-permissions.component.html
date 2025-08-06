@@ -37,14 +37,17 @@
                             <div class="w-full mb-4">
                                 <label class="form-label">Name</label>
                                 <input type="text" formControlName="name" placeholder="Enter Name"  readonly class="form-input">
+                                <small *ngIf="this.userRec.get('name')?.invalid && errmsg" class="text-red-500">Please Fill Name</small>
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">Registered Contact</label>
                                 <input type="text" formControlName="contact" placeholder="Enter Reg. Contact"  readonly class="form-input">
+                                <small *ngIf="this.userRec.get('contact')?.invalid && errmsg" class="text-red-500">Please Fill Registered Contact</small>
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">Registered E-mail</label>
                                 <input type="text" formControlName="email" placeholder="Enter Email" readonly  class="form-input">
+                                <small *ngIf="this.userRec.get('email')?.invalid && errmsg" class="text-red-500">Please Fill Registered E-mail</small>
                             </div>
                         </div>
                         <div class="flex lg:flex-row flex-col gap-x-4">
@@ -54,11 +57,12 @@
                                     <option value="true" [defaultSelected]="true">Provide Doc.</option>
                                     <option value="false">Not Provide Doc.</option>
                                 </select>
-                                <!-- <input type="checkbox" formControlName="isEdit" placeholder="Enter Role" class="form-input"> -->
+                                <small *ngIf="this.userRec.get('isEdit')?.invalid && errmsg" class="text-red-500">Please Select Role</small>
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">designaton</label>
                                 <input type="text" formControlName="designaton" placeholder="Enter Designation" class="form-input">
+                                <small *ngIf="this.userRec.get('designaton')?.invalid && errmsg" class="text-red-500">Please Fill Designation</small>
                             </div>
                         </div>
                         <div style="display: flex;justify-content: space-between;">
