@@ -30,7 +30,7 @@ export class EventManagerComponent {
   data:any = []
   keyword="EventName";
   showList:boolean = true;
-  updateAct:boolean = false;
+  updateAct:boolean = true;
   eventLive!:FormGroup;
   eventManger:any;
   eventImg:any; 
@@ -101,6 +101,7 @@ export class EventManagerComponent {
   }
 
   selectEvent(data:any){
+    this.updateAct = false;
     this.delVar = data.liveEventId;
     this.eventManger = data.IdEvent;
     this.eventImg = this.baseUrl+data.SetImg;
@@ -132,8 +133,6 @@ export class EventManagerComponent {
       DatTim:data.DatTim,
       SetImg:this.baseUrl+data.SetImg,
     })
-    // get userList
-   
   }
 
 
@@ -173,7 +172,7 @@ export class EventManagerComponent {
           alert("Event Deleted Successfully");
           this.ngOnInit();
         }else{
-          alert(res.state.res);
+          alert(res.results);
         }
       }, (err)=>{
         alert(err);
@@ -214,7 +213,7 @@ export class EventManagerComponent {
     formData.append('DatTim', this.eventLive.value.DatTim),//
     formData.append('EventImg', this.fileRec) //
     console.log(this.eventLive.value);
-    if(this.updateAct==true){
+    if(this.updateAct){
       this._EvtMang.AddLiveEvent(formData).subscribe(res=>{
         if(res.state){
           alert("Event Add Successfully");
@@ -227,7 +226,7 @@ export class EventManagerComponent {
       })
     }else{
       this._EvtMang.updateEvnet(formData).subscribe(res=>{
-        if(res.state){
+        if(res.state = true){
           alert("Live Event Updated Successfully");
           this.ngOnInit();
         }else{
