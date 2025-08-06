@@ -21,4 +21,16 @@ export class EventManagerService {
     return this._http.post(url, fromData);
   }
 
+  // Delete
+  deleteEvent(delVal:any):Observable<any>{
+    let url = this.baseUrl + `deleteEvent?LiveEventId=${delVal}`;
+    return this._http.delete(url)
+  }
+
+  //update
+  updateEvnet(update:any):Observable<any>{
+    let url = this.baseUrl+``;
+    return this._http.post(url, update);
+  }
+
 }

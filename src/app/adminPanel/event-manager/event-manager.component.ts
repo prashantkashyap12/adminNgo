@@ -101,11 +101,17 @@ export class EventManagerComponent {
   }
 
   selectEvent(data:any){
+    this.delVar = data.liveEventId;
     this.eventManger = data.IdEvent;
     this.eventImg = this.baseUrl+data.SetImg;
     console.log(this.userListAll);
     let userName = this.userListAll.find((a:any)=>a.userId==data.userId);
-    console.log(userName)
+    this._EvtMang.getEvent(data.liveEventId).subscribe(res=>{
+      this.selectedItems = res.massage.map((data:any)=>({
+        id:data.userId,
+        itemName:data.Name || 'No Name'
+       }))
+    })
     this.eventLive.patchValue({
       allowUser: data.userId,
       EventName:data.EventName,
@@ -126,7 +132,8 @@ export class EventManagerComponent {
       DatTim:data.DatTim,
       SetImg:this.baseUrl+data.SetImg,
     })
-    
+    // get userList
+   
   }
 
 
@@ -134,7 +141,16 @@ export class EventManagerComponent {
   userListAll:any = [];
   allot(){
     this._EvtMang.getEvent("00000").subscribe(res=>{
-      this.data = res.massage;
+     let data:any  = new Set(res.massage.map((a:any)=>a.userId));
+     let recRc:any[]=[];
+     for(let da of data){
+      let dataFinal = res.massage.find((a:any)=>(a.userId == da))
+      if(dataFinal){
+        recRc.push(dataFinal);
+      }
+     }
+     console.log(recRc);
+     this.data = recRc
     })
 
     this._UserRec.getRecord().subscribe(res=>{
@@ -149,18 +165,19 @@ export class EventManagerComponent {
     })
   }
 
-  delete(a:any){
+  delVar:any;
+  delete(){
     if(confirm("Are you sure you want to delete this event?")){
-      // this._EvtMang.deleteEvent(a).subscribe(res=>{
-      //   if(res.state){
-      //     alert("Event Deleted Successfully");
-      //     this.ngOnInit();
-      //   }else{
-      //     alert(res.state.res);
-      //   }
-      // }, (err)=>{
-      //   alert(err);
-      // })
+      this._EvtMang.deleteEvent(this.delVar).subscribe(res=>{
+        if(res.state){
+          alert("Event Deleted Successfully");
+          this.ngOnInit();
+        }else{
+          alert(res.state.res);
+        }
+      }, (err)=>{
+        alert(err);
+      })
     }
 
   }
@@ -197,16 +214,31 @@ export class EventManagerComponent {
     formData.append('DatTim', this.eventLive.value.DatTim),//
     formData.append('EventImg', this.fileRec) //
     console.log(this.eventLive.value);
-    this._EvtMang.AddLiveEvent(formData).subscribe(res=>{
-      if(res.state){
-        alert("Event Add Successfully");
-        this.ngOnInit()
-      }else{
-        alert(res.state.res);
-      }
-    }, (err)=>{
+    if(this.updateAct==true){
+      this._EvtMang.AddLiveEvent(formData).subscribe(res=>{
+        if(res.state){
+          alert("Event Add Successfully");
+          this.ngOnInit()
+        }else{
+          alert(res.state.res);
+        }
+      }, (err)=>{
+          alert(err);
+      })
+    }else{
+      this._EvtMang.updateEvnet(formData).subscribe(res=>{
+        if(res.state){
+          alert("Live Event Updated Successfully");
+          this.ngOnInit();
+        }else{
+          alert(res.state.res);
+        }
+      }, (err) =>{
         alert(err);
-    })
+      })
+    }
   }
-  clear(){}
+  clear(){
+    this.ngOnInit()
+  }
 }
