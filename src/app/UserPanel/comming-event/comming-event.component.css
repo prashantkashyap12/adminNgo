@@ -1,0 +1,13 @@
+.cardpk{
+    width: 100%;
+    min-height: 200px;
+    background-color: bisque;
+    border-radius: 13px;
+    padding: 13px;
+}
+.contentpk{
+    padding: 13px;
+}
+
+
+

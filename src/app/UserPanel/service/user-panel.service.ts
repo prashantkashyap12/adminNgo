@@ -14,8 +14,8 @@ export class UsePanelService {
   constructor(private _http:HttpClient) { }
 
   // get Event
-  getEvent():Observable<any>{
-    let url = this.baseUrl+"GetAllEvent"
+  getEvent(userId:any):Observable<any>{
+    let url =  `${this.baseUrl}EventUserId?userId=${userId}`
     return this._http.get(url);
   }
 }

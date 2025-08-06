@@ -24,8 +24,9 @@ export class CommingEventComponent {
     this.record();
   }
   record(){
-    this._usrcommon.getEvent().subscribe(res=>{
-      this.eventRec = res;
+    let userId:string = sessionStorage.getItem('userId') as string;
+    this._usrcommon.getEvent(userId?.toString()).subscribe(res=>{
+      this.eventRec = res.record;
       console.log(this.eventRec)
     })
   }

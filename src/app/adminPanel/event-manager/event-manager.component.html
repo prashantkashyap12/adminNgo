@@ -48,6 +48,7 @@
                                     (onSelectAll)="onSelectAll($event)"
                                     (onDeSelectAll)="onDeSelectAll($event)" formControlName="allowUser">
                                 </angular2-multiselect>
+                                <small *ngIf="errorMsg && eventLive.get('allowUser')?.invalid" class="text-red-500">Select Any User required</small>
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">Set Image</label>
@@ -159,7 +160,7 @@
                             </div>
                         </div>
                         <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':eventImg ? 'block':'none'}">
-                            <img [src]="eventImg" [alt]="eventImg" style="width: 200px;height: 200px;">
+                            <img [src]="eventImg" [alt]="eventImg" style="width: 160px;height: 100px; margin-bottom: 10px;">
                         </div>
                         <div class="gap-x-4" style="display:flex; justify-content: space-between;flex-wrap: wrap;">
                             <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-success-solid':'btn-secondary-solid'">{{updateAct?'Submit':'Update'}}</button> 

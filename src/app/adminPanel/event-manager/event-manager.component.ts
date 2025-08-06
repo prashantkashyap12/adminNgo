@@ -22,6 +22,7 @@ export class EventManagerComponent {
     this.Init();
     this.multiSelectModel();
     this.allot();
+    this.eventImg = '../../../assets/noImg.png';
   }
 
   @ViewChild('agMult') elementRec!:ElementRef;
@@ -104,7 +105,7 @@ export class EventManagerComponent {
     this.updateAct = false;
     this.delVar = data.liveEventId;
     this.eventManger = data.IdEvent;
-    this.eventImg = this.baseUrl+data.SetImg;
+    this.eventImg = this.baseUrl+data.imgPath;
     console.log(this.userListAll);
     let userName = this.userListAll.find((a:any)=>a.userId==data.userId);
     this._EvtMang.getEvent(data.liveEventId).subscribe(res=>{
@@ -124,7 +125,7 @@ export class EventManagerComponent {
       OrganizerName:data.OrganizerName,
       Contact:data.Contact,
       Email:data.Email,
-      EventDiscription:data.EventDiscription,
+      EventDiscription:data.EventDescription,
       EventPurpose:data.EventPurpose,
       ParticipantsNo:data.ParticipantsNo,
       PartnerOrganizations:data.PartnerOrganizations,
@@ -139,11 +140,12 @@ export class EventManagerComponent {
   userList:any= [];
   userListAll:any = [];
   allot(){
+    this.updateAct = true;
     this._EvtMang.getEvent("00000").subscribe(res=>{
-     let data:any  = new Set(res.massage.map((a:any)=>a.userId));
+     let data:any  = new Set(res.massage.map((a:any)=>a.liveEventId));
      let recRc:any[]=[];
      for(let da of data){
-      let dataFinal = res.massage.find((a:any)=>(a.userId == da))
+      let dataFinal = res.massage.find((a:any)=>(a.liveEventId == da))
       if(dataFinal){
         recRc.push(dataFinal);
       }
@@ -238,6 +240,6 @@ export class EventManagerComponent {
     }
   }
   clear(){
-    this.ngOnInit()
+    this.ngOnInit();
   }
 }
