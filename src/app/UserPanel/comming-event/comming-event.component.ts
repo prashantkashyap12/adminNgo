@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { UsePanelService } from '../service/user-panel.service';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { url } from '../../interface/api_config';
 
 @Component({
   selector: 'app-comming-event',
@@ -11,7 +12,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [AutocompleteLibModule, ReactiveFormsModule,FormsModule,CommonModule, HttpClientModule],
   providers:[UsePanelService],
   templateUrl: './comming-event.component.html',
-  styleUrl: './comming-event.component.css'
+  styleUrls: ['./comming-event.component.css', './comming-event.component.scss'],
 })
 export class CommingEventComponent {
   loader:boolean = false;
@@ -19,6 +20,8 @@ export class CommingEventComponent {
   keyword="";
   data:any = [];
   eventRec:any=[]
+  public baseUrl = new url().value;
+  background:any = "";
   constructor(private _usrcommon:UsePanelService){}
   ngOnInit(){
     this.record();
@@ -30,6 +33,7 @@ export class CommingEventComponent {
       console.log(this.eventRec)
     })
   }
+
   selectEvent(data:any){}
   del(a:any){}
   allot(){}

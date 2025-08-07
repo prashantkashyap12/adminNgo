@@ -5,15 +5,6 @@
     .main-content {
         margin-left: 0px;
     }  
-    .cardbodypk{
-        height: 100%;
-    }
-    .cardbodypk > img{
-        border-radius: 13px;
-        margin-right: 13px;
-        height: 268px;
-        width: 100%;
-    }
  }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -24,16 +15,6 @@
     .main-content {
         margin-left: 0px;
     }  
-    .cardbodypk{
-        display: flex;
-        height: 100%;
-    }
-    .cardbodypk > img{
-        border-radius: 13px;
-        margin-right: 13px;
-        height: 100%;
-        width: 180px;
-    }
  }
 
 /* Medium devices (tablets, 768px and up) */
@@ -44,10 +25,7 @@
     .main-content {
         margin-left: 0px;
     }
-    .cardbodypk{
-        display: flex;
-        height: 100%;
-    }
+ 
  }
 
 /* Large devices (desktops, 992px and up) */
@@ -58,10 +36,6 @@
     .main-content {
         margin-left: 0px;
     }
-    .cardbodypk{
-        display: flex;
-        height: 100%;
-    }
  }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -71,10 +45,6 @@
     } 
     .main-content {
         margin-left: 0px;
-    }
-    .cardbodypk{
-        display: flex;
-        height: 100%;
     }
 }
 
@@ -87,10 +57,6 @@
     } 
     .main-content {
         margin-left: calc(280px + 16px);
-    }
-    .cardbodypk{
-        display: flex;
-        height: 100%;
     }
  }
 

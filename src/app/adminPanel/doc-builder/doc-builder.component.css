@@ -94,8 +94,9 @@
 .content > .name{
    position: relative;
     text-align: center;
-    top: 6.7pc;
-    font-size: 14px;
+    top: 66px;
+    left: -18px;
+    font-size: 10px;
     text-transform: uppercase;
     font-weight: 700;
     font-family: "Inter";
@@ -103,8 +104,9 @@
 .content > .post{
     position: relative;
     text-align: center;
-    top: 5.95pc;
-    font-size: 12px;
+    top: 3.95pc;
+    font-size: 11px;
+    left: -15px;
 }
 .content > .contact{
     position: relative;
@@ -117,17 +119,17 @@
 .content > .idnum {
    position: relative;
    text-align: center;
-   top: 78px;
-   left: 24px;
-   font-size: 11px;
+   top: 51px;
+   left: -2px;
+   font-size: 9px;
    font-weight: 700;
 }
 .content > .imgPro{
-   width: 181px;
-    height: 196px;
+   width: 63px;
+    height: 76px;
     position: absolute;
-    left: 125px;
-    top: 149px;
+    left: 34px;
+    top: -16px;
     border-radius: 5px;
 }
 
