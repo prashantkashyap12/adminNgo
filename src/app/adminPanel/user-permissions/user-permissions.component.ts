@@ -67,19 +67,22 @@ export class UserPermissionsComponent {
 
   errmsg:boolean = false;
   onSubmit(){
+    this.loader = true;
     if(this.userRec.invalid){
       this.errmsg = true;
-      return alert("Form incomplete");
+      this.loader = false;
+      return alert("Form Incomplete");
     }
     let model = this.model();
     this._docBuildServ.setPermission(model, this.isUserId).subscribe(res=>{
       if(res.state){
+        this.loader = false;
         alert("Set successfully");
         this.ngOnInit()
       }else{
+        this.loader = false;
         alert(res.message);
         this.ngOnInit()
-
       }
     })
   }

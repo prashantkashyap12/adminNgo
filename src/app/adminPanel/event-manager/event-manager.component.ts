@@ -162,20 +162,25 @@ export class EventManagerComponent {
     },(err)=>{
       console.log("Error Msg"+err);
     })
+    this.ngOnInit();
   }
 
   delVar:any;
   delete(){
     if(confirm("Are you sure you want to delete this event?")){
+      this.loader = true;
       this._EvtMang.deleteEvent(this.delVar).subscribe(res=>{
         if(res.state){
+          this.loader = false;
           alert("Event Deleted Successfully");
           this.ngOnInit();
         }else{
+          this.loader = false;
           alert(res.results);
         }
       }, (err)=>{
         alert(err);
+        this.loader = false;
       })
     }
 
@@ -183,6 +188,7 @@ export class EventManagerComponent {
 
   errorMsg:boolean = false;
   onSubmit(){
+    this.loader = true;
     this.errorMsg = true
     if(this.eventLive.invalid){
       alert("Please Fill All Required Fields");
@@ -216,24 +222,41 @@ export class EventManagerComponent {
     if(this.updateAct){
       this._EvtMang.AddLiveEvent(formData).subscribe(res=>{
         if(res.state){
+          this.loader = false;
           alert("Event Add Successfully");
-          this.ngOnInit()
+          this.ngOnInit();
         }else{
+          this.loader = false;
           alert(res.state.res);
         }
       }, (err)=>{
-          alert(err);
+        this.loader = false;
+        alert(err);
       })
     }else{
-      this._EvtMang.updateEvnet(formData).subscribe(res=>{
-        if(res.state = true){
-          alert("Live Event Updated Successfully");
+      // this._EvtMang.updateEvnet(formData).subscribe(res=>{
+      //   if(res.state = true){
+      //     alert("Live Event Updated Successfully");
+      //     this.ngOnInit();
+      //   }else{
+      //     alert(res.state.res);
+      //   }
+      // }, (err) =>{
+      //   alert(err);
+      // })
+      this._EvtMang.AddLiveEvent(formData).subscribe(res=>{
+        if(res.state){
+          this.loader = false;
+          alert("Event Add Successfully");
           this.ngOnInit();
+
         }else{
+          this.loader = false;
           alert(res.state.res);
         }
-      }, (err) =>{
-        alert(err);
+      }, (err)=>{
+          this.loader = false
+          alert(err);
       })
     }
   }

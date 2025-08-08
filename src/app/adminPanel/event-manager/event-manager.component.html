@@ -160,11 +160,11 @@
                             </div>
                         </div>
                         <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':eventImg ? 'block':'none'}">
-                            <!-- <img [src]="eventImg" [alt]="eventImg" style="width: 160px;height: 100px; margin-bottom: 10px;"> -->
-                            <img src="../../../assets/noImg.png" style="width: 160px;height: 100px; margin-bottom: 10px;">
+                            <img [src]="eventImg" [alt]="eventImg" style="width: 160px;height: 100px; margin-bottom: 10px;">
+                            <!-- <img src="../../../assets/noImg.png" style="width: 160px;height: 100px; margin-bottom: 10px;"> -->
                         </div>
                         <div class="gap-x-4" style="display:flex; justify-content: space-between;flex-wrap: wrap;">
-                            <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-success-solid':'btn-secondary-solid'">{{updateAct?'Submit':'Update'}}</button> 
+                            <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-success-solid':'d-none'">{{updateAct?'Submit':'Submit'}}</button> 
                             <button (click)="delete()" class="btn b-solid btn-danger-solid px-5 dk-theme-card-square" [ngStyle]="{'display':updateAct? 'none':'block'}">Delete</button> 
                             <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
                             <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>
