@@ -52,7 +52,7 @@
                             </div>
                             <div class="w-full mb-4">
                                 <label class="form-label">Set Image</label>
-                                <input type="file" formControlName="SetImg" placeholder="Set Image URL" #img (change)="imgMain($event)" class="form-input" autocomplete="off">
+                                <input type="file" formControlName="SetImg" placeholder="Set Image URL" (change)="imgMain($event)" class="form-input" autocomplete="off">
                                 <small *ngIf="errorMsg && eventLive.get('SetImg')?.invalid" class="text-red-500">Image is required</small>
                             </div>
                             <div class="w-full mb-4">
@@ -111,7 +111,7 @@
                             </div>
                             <div class="w-full mb-4">
                             <label class="form-label">Contact</label>
-                            <input type="text" formControlName="Contact" placeholder="Enter Contact Number" class="form-input" autocomplete="off" required>
+                            <input type="tel" formControlName="Contact" maxlength="13" placeholder="Enter Contact Number" class="form-input" autocomplete="off" required>
                             <small *ngIf="errorMsg && eventLive.get('Contact')?.invalid" class="text-red-500">Contact Number is required</small>
                             </div>
                             <div class="w-full mb-4">
@@ -123,11 +123,11 @@
 
                         <!-- Row 5 -->
                         <div class="flex lg:flex-row flex-col gap-x-4">
-                            <div class="w-full mb-4">
+                            <!-- <div class="w-full mb-4">
                             <label class="form-label">Event Description</label>
                             <input type="text" formControlName="EventDiscription" placeholder="Enter Additional Description" class="form-input" autocomplete="off">
                             <small *ngIf="errorMsg && eventLive.get('EventDiscription')?.invalid" class="text-red-500">Event Description is required</small>
-                            </div>
+                            </div> -->
                             <div class="w-full mb-4">
                             <label class="form-label">Event Purpose</label>
                             <input type="text" formControlName="EventPurpose" placeholder="Enter Event Purpose" class="form-input" autocomplete="off">
@@ -135,7 +135,7 @@
                             </div>
                             <div class="w-full mb-4">
                             <label class="form-label">Number of Participants</label>
-                            <input type="text" formControlName="ParticipantsNo" placeholder="Enter Number of Participants" class="form-input" autocomplete="off">
+                            <input type="number" formControlName="ParticipantsNo" maxlength="4" placeholder="Enter Number of Participants" class="form-input" autocomplete="off">
                             <small *ngIf="errorMsg && eventLive.get('ParticipantsNo')?.invalid" class="text-red-500">Number of Participants is required</small>
                             </div>
                             
@@ -160,7 +160,8 @@
                             </div>
                         </div>
                         <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':eventImg ? 'block':'none'}">
-                            <img [src]="eventImg" [alt]="eventImg" style="width: 160px;height: 100px; margin-bottom: 10px;">
+                            <!-- <img [src]="eventImg" [alt]="eventImg" style="width: 160px;height: 100px; margin-bottom: 10px;"> -->
+                            <img src="../../../assets/noImg.png" style="width: 160px;height: 100px; margin-bottom: 10px;">
                         </div>
                         <div class="gap-x-4" style="display:flex; justify-content: space-between;flex-wrap: wrap;">
                             <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-success-solid':'btn-secondary-solid'">{{updateAct?'Submit':'Update'}}</button> 
