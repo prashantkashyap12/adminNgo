@@ -135,3 +135,66 @@
 
 
 /* ID -- CLOSE */
+
+.idCardMob{
+    width: 768px;
+    height: 1020px;
+    position: relative;
+    font-family: Arial, sans-serif;
+    background-color: white;    
+}
+.idCardMob > .img1{
+    position: absolute;
+    width: 968px; 
+    height: 520px; 
+    top: 0; 
+    left: 0; 
+    z-index: 0;
+}
+.idCardMob > .img2{
+    position: absolute;
+    top: 194px;
+    left: 121px;
+    width: 140px;
+    height: 143px;
+    object-fit: cover;
+    border: 1px solid #ff5a00;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.idCardMob > h1{
+    position: absolute;
+    top: 339px;
+    left: 101px;
+    z-index: 1;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.idCardMob > .pera1{
+    position: absolute;
+    top: 369px;
+    left: 118px;
+    z-index: 1;
+}
+
+.idCardMob > .pera2{
+    position: absolute;
+    top: 394px;
+    left: 128px;
+    z-index: 1;
+}
+.idCardMob > .pera3{
+    position: absolute;
+    top: 440px;
+    left: 192px;
+    z-index: 1;
+}
+
+/* .idCardMob > .buttonPrint{
+    position: fixed;
+    top: 525px;
+    left: 31px;
+    z-index: 11;
+} */

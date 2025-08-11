@@ -1,9 +1,11 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { DocBuilderService } from '../service/doc-builder.service';
 import { url } from '../../interface/api_config';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 // import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-doc-builder',
@@ -17,12 +19,11 @@ export class DocBuilderComponent {
   loader:any = false;
   private baseUrl = new url().value;
   @ViewChild('capture1',{ static: false }) captrure1!:ElementRef; 
-  @ViewChild('capture2',{static: false}) captrure2!:ElementRef
+  @ViewChild('capture2',{static: false}) captrure2!:ElementRef;
   constructor(private _docBuildServ:DocBuilderService){}
   ngOnInit(){
     this.allot()
   }
-
   docShow:boolean = true;
   data:any =[]
   keyword="Name";
@@ -66,7 +67,7 @@ export class DocBuilderComponent {
     })
   }
 
-  // Print Format / Save PDF
+  // Print Format for PC
   print1(data:any){   
     let printCont;
     if(data=='OfferLetter'){
@@ -227,4 +228,33 @@ export class DocBuilderComponent {
       printBox.document.close();
     }
   }
+
+
+
+
+  @ViewChild('pdfContainer1') pdfContainer1!:ElementRef;
+  printx(dta:any){
+    
+    if(dta=='IdCard'){
+      let data = this.pdfContainer1.nativeElement;
+      html2canvas(data, {
+        scale: 2,
+        useCORS: true
+      }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'px',
+          format: [canvas.width, canvas.height]
+        });
+
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        pdf.save(`ID-HHS-${this.UId}.pdf`);
+      });
+    }
+
+  }
+  // working on mobile OPEN
+
+  // working on mobile CLOSE
 }

@@ -79,31 +79,13 @@
         <div class="card">
             <div style="display: flex;justify-content: space-between;align-items: center;">
                 <h2 class="card-title">Document Builder</h2>
-                <!-- <ng-autocomplete 
-                    [data]="data"
-                    [searchKeyword]="keyword"
-                    placeholder="Find Save Record..."
-                    (selected)='selectEvent($event)'
-                    [itemTemplate]="itemTemplate"
-                    [notFoundTemplate]="notFoundTemplate">                                 
-                    </ng-autocomplete>
-                    <ng-template #itemTemplate let-item>
-                    <a [innerHTML]="item.Name">{{item.Name}}</a>
-                    </ng-template>
-                    <ng-template #notFoundTemplate let-notFound>
-                    <div [innerHTML]="notFound"></div>
-                </ng-template> -->
             </div>
         </div>
         <div class="grid grid-cols-12 gap-x-4">
             <!-- DATA FORM -->
-            <div class="col-span-full" *ngIf="IsVisible">
+            <div class="col-span-full" *ngIf="IsVisible" style="display: none;">
                 <div class="card p-0">
-                    
-                   <div class="w-50 m-auto" *ngIf="!docShow" #capture2 id="capture2">
-                        <!-- <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
-                            <h3 class="text-lg card-title leading-none">Offer Letter</h3>
-                        </div> -->
+                    <div class="w-50 m-auto" *ngIf="!docShow" #capture2 id="capture2">
                         <div class="tempDesign">
                             <img src="../../../assets/offerLetter.png" alt="" class="w-100 h-100 offerLetter">
                             <div class="conent">
@@ -134,9 +116,6 @@
                         </div>
                     </div>
                     <div class="w-50 m-auto" *ngIf="docShow" #capture1 id="capture1">
-                         <!-- <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
-                            <h3 class="text-lg card-title leading-none">ID Card</h3>
-                        </div> -->
                         <div class="tempDesign" >
                             <img src="../../../assets/idCard.jpg" alt="" class="w-100 h-100">
                             <div class="content">
@@ -154,6 +133,17 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Mobile view -->
+            <div #pdfContainer1 class="idCardMob" >
+                <img src="../../../assets/idCard.jpg" class="img1">
+                <img [src]="ProfileImg" alt="profile" class="img2">
+                <h1>{{Name}}</h1>
+                <p class="pera1">{{Post}}</p>
+                <p class="pera2">+91{{contact}}</p>
+                <p class="pera3">HHS-{{UId}}</p>
+            </div>
+            <button class="btn-success-light btn b-light" style="position: fixed; top: 694px;left: 30px;" (click)="printx('IdCard')">Download</button>
         </div>
     </div>
     <!-- End Main Content -->
