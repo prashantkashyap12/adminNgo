@@ -5,7 +5,7 @@
             <div class="col-span-full card p-3 sm:p-7">
                 <div class="flex-center-between flex-col sm:flex-row items-start sm:items-center gap-3">
                     <div>
-                        <h6 class="card-title">Welcome {{authName}}! 👋</h6>
+                        <h6 class="card-title">Welcome Helping Hand Sanstha! 👋</h6>
                         <p class="card-description today">Jay Shree Ram...</p>
                     </div>
                     <!-- <div class="flex items-center gap-2 sm:gap-4 flex-wrap">
@@ -23,6 +23,86 @@
             </div>
             <!-- End Dashboard Overview Header -->
 
+
+            <!-- Start Intro -->
+            <div class="col-span-full 2xl:col-span-7 card p-0">
+                <div class="grid grid-cols-12 px-5 sm:px-12 py-11 relative overflow-hidden h-full">
+                    <div class="col-span-full md:col-span-7 self-center inline-flex flex-col 2xl:block">
+                        <p class="!leading-none text-sm lg:text-base text-gray-900 dark:text-dark-text">
+                            Today is <span class="today">{{todayDate | date:'fullDate'}}</span>
+                        </p>
+                        <h1 class="text-heading text-4xl xl:text-[42px] leading-[1.23] font-semibold mt-3">
+                            <span class="flex items-center justify-start">
+                                <span class="shrink-0">Welcome Back.</span>
+                                <span class="select-none hidden md:inline-block animate-hand-wave origin-[70%_70%]">👋</span><br>
+                            </span>
+                           {{authName}}
+                        </h1>
+                        <a href="https://helpinghandsanstha.in/" class="btn b-solid btn-primary-solid btn-lg mt-6 dk-theme-card-square">
+                            <i class="ri-add-line text-inherit"></i>
+                            Go to Website
+                        </a>
+                    </div>
+                    <div class="col-span-full md:col-span-5 flex-col items-center justify-center 2xl:block hidden md:flex">
+                        <img src="../../../assets/images/loti/loti-admin-dashboard.svg" alt="online-workshop" class="group-[.dark]:hidden">
+                    </div>
+                    <!-- Graphicla Elements -->
+                    <ul>
+                        <li class="absolute -top-[30px] left-1/2 animate-spin-slow">
+                            <img src="../../../assets/images/element/graphical-element-1.svg" alt="element">
+                        </li>
+                        <li class="absolute -bottom-[24px] left-1/4 animate-spin-slow">
+                            <img src="../../../assets/images/element/graphical-element-2.svg" alt="element">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Intro -->
+
+
+            <!-- Start Support -->
+            <div class="col-span-full lg:col-span-6 2xl:col-span-3 card px-0 order-3 2xl:order-none">
+                <div class="flex-center-between px-6 mb-7">
+                    <h6 class="card-title">Upcomming Activities</h6>
+                    <a (click)="navigateToEvent()" style="cursor: pointer;" class="btn b-solid btn-primary-solid btn-sm dk-theme-card-square">See all</a>
+                </div>
+                <div class="max-h-[350px] smooth-scrollbar" data-scrollbar  style="scroll-behavior: smooth;overflow: scroll;">
+                    <ul *ngFor="let data of eventAll_Rec" class="divide-y divide-gray-200 dark:divide-dark-border-three space-y-5 *:pt-5 overflow-hidden px-6 py-3">
+                        <li class="flex items-center gap-2.5 first:pt-0 eventLs" (click)="navigateToEvent()">
+                            <a (click)="navigateToEvent()" class="size-12 rounded-50 flex-shrink-0 overflow-hidden dk-theme-card-square">
+                                <img [src]="baseUrl+data.imgPath" alt="user" >
+                            </a>
+                            <div>
+                                <div class="leading-none text-xs text-gray-500 dark:text-dark-text-two mb-1">{{data.DatTim | date}}</div>
+                                <h6 class="leading-none text-lg text-heading font-semibold mb-2">
+                                    <a (click)="navigateToEvent()">{{data.EventName}}</a>
+                                </h6>
+                                <p class="leading-none text-xs text-gray-500 dark:text-dark-text-two font-semibold line-clamp-1">{{data.EventDescription}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Support -->
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+           
             <!-- Start Project Status Chart -->
             <!-- <div class="col-span-full sm:col-span-6 lg:col-span-4 card">
                 <div class="flex-center-between">
@@ -58,6 +138,7 @@
                     </div>
                 </div>
             </div> -->
+           
             <!-- End Project Status Chart -->
 
             <!-- Start Total Task Chart -->

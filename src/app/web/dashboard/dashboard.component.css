@@ -1,0 +1,11 @@
+.eventLs {
+   padding: 10px; 
+   cursor: pointer;
+   border-radius: 5px;
+}
+.eventLs:hover {
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    transition: ease-in-out 0.3s;
+}
+
+
