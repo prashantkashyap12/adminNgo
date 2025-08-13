@@ -100,10 +100,9 @@ export class AppComponent {
   changeLang(sel:any){
     var selc = confirm(`Do you want to change language ${sel} ?`);
     if(selc){
-      alert(sel);
-      window.location.reload();
+      this._common.language.next(sel);
     }else{
-      alert("Alright");
+      alert("Alright No Problem");
     }
   }
 }

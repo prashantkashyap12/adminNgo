@@ -6,12 +6,13 @@ import { DocBuilderService } from '../service/doc-builder.service';
 import { url } from '../../interface/api_config';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { CommonService } from '../../common.service';
 // import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-doc-builder',
   standalone: true,
   imports: [AutocompleteLibModule, CommonModule, HttpClientModule, DatePipe],
-  providers:[DocBuilderService],
+  providers:[DocBuilderService, CommonService],
   templateUrl: './doc-builder.component.html',
   styleUrl: './doc-builder.component.css'
 })
@@ -20,9 +21,12 @@ export class DocBuilderComponent {
   private baseUrl = new url().value;
   @ViewChild('capture1',{ static: false }) captrure1!:ElementRef; 
   @ViewChild('capture2',{static: false}) captrure2!:ElementRef;
-  constructor(private _docBuildServ:DocBuilderService){}
+  constructor(private _docBuildServ:DocBuilderService, private _common:CommonService){}
   ngOnInit(){
-    this.allot()
+    this.allot();
+    this._common.language.subscribe((lang:any)=>{
+      console.log(lang);
+    });
   }
   docShow:boolean = true;
   data:any =[]
@@ -234,7 +238,6 @@ export class DocBuilderComponent {
 
   @ViewChild('pdfContainer1') pdfContainer1!:ElementRef;
   printx(dta:any){
-    
     if(dta=='IdCard'){
       let data = this.pdfContainer1.nativeElement;
       html2canvas(data, {

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable, Input } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,10 @@ export class CommonService {
   token: string = '';
 
   constructor() { }
+
+  @Input() language = new BehaviorSubject<string>('en');
+
+
   ngOnInit() {
     this.token = sessionStorage.getItem('token') || '';
   }

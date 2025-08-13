@@ -18,4 +18,11 @@ export class UsePanelService {
     let url =  `${this.baseUrl}EventUserId?userId=${userId}`
     return this._http.get(url);
   }
+
+  // createId
+  createPayId(data:any):Observable<any>{
+    let url =  `${this.baseUrl}CreatePay`
+    return this._http.post(url,data);
+  }
+
 }
