@@ -2,13 +2,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsePanelService } from '../service/user-panel.service';
-
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 declare var Razorpay: any; // Ensure Razorpay is available globally
-
 @Component({
   selector: 'app-payment-form',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, ReactiveFormsModule, FormsModule, CommonModule],
   providers: [UsePanelService],
   templateUrl: './payment-form.component.html',
   styleUrl: './payment-form.component.css'
@@ -16,18 +16,21 @@ declare var Razorpay: any; // Ensure Razorpay is available globally
 export class PaymentFormComponent {
 
 
-   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-      private dialogRef: MatDialogRef<PaymentFormComponent>, private _userService: UsePanelService){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  private dialogRef: MatDialogRef<PaymentFormComponent>, private _userService: UsePanelService){}
 
-  
+
+  // Event Manager
+  eventManage!:FormGroup; 
+
+  // Payment processing
+  paymentForm!: FormGroup;
   payNow(){
-
     const formRec = new FormData();
     formRec.append('amount', '1000');
     formRec.append('UserId', this.data.UserId);
     formRec.append('Package', 'Recurring');
     formRec.append('CustomNote', 'Thank you for your donation');
-
     this._userService.createPayId(formRec).subscribe((res:any)=>{
     const razorObj = {
       // Payment details

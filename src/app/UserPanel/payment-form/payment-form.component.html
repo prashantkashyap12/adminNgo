@@ -1,1 +1,72 @@
-<button (click)="payNow()">Pay Now</button>
+@if(true){
+    <!-- Model for Event Manager  - OPEN-->
+
+  <div class="main-back">
+    <div class="container m-auto bg-white p-5 bod-3">
+      <div class="row">
+
+        <div class="col-md-12">
+        <div class="card" style="padding: 1rem;background: beige;">
+            <h2 style="margin: 0px;">Payment Form</h2>
+            <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis nihil quaerat mollitia sequi sint ipsum omnis.</span>
+        </div>
+          <form class="p-2" [formGroup]="paymentForm" (ngSubmit)="payNow()">
+            <div class="flex lg:flex-row flex-col gap-x-4">
+                <div class="w-full mb-4">
+                    <label for="full_name_data" class="form-label">Select Date</label>
+                    <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
+                </div>
+                <div class="w-full mb-4">
+                    <label for="email-6"
+                        class="form-label">Heading</label>
+                    <input type="text" formControlName="linkText1" placeholder="Enter Heading" class="form-input" autocomplete="off" required >
+                </div>
+                <div class="w-full mb-4">
+                    <label for="password-6" class="form-label">Rights</label>
+                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-input" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="flex lg:flex-row flex-col gap-x-4">
+                <div class="w-full mb-4">
+                    <label for="full_name_data" class="form-label">Select Date</label>
+                    <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
+                </div>
+                <div class="w-full mb-4">
+                    <label for="email-6"
+                        class="form-label">Heading</label>
+                    <input type="text" formControlName="linkText1" placeholder="Enter Heading" class="form-input" autocomplete="off" required >
+                </div>
+                <div class="w-full mb-4">
+                    <label for="password-6" class="form-label">Rights</label>
+                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-input" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="flex lg:flex-row flex-col gap-x-4">
+                <div class="w-full mb-4">
+                    <label for="full_name_data" class="form-label">Select Date</label>
+                    <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
+                </div>
+                <div class="w-full mb-4">
+                    <label for="email-6"
+                        class="form-label">Heading</label>
+                    <input type="text" formControlName="linkText1" placeholder="Enter Heading" class="form-input" autocomplete="off" required >
+                </div>
+                <div class="w-full mb-4">
+                    <label for="password-6" class="form-label">Rights</label>
+                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-input" autocomplete="off" required>
+                </div>
+            </div>
+            <div style="display: flex;justify-content: space-between;">
+                <button class="btn b-solid px-5 dk-theme-card-square" [ngClass]="true?'btn-secondary-solid':'btn-success-solid'">{{true?'Submit':'Update'}}</button>
+            </div>        
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+}
+@else if(false) {
+    <!-- Model for Payment Form  - OPEN -->
+    <button (click)="payNow()">Pay Now</button>
+}

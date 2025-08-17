@@ -24,10 +24,12 @@ export class PaymentAckListComponent {
     branch:"IT"
   }
   openDialog() {
-   
-    const diallogRef = this.dialog.open(PaymentFormComponent,{
-      height:'400px',
-      width:'60%',
+
+    const dialogWidth = window.innerWidth > 768 ? '100%' : '60%';
+    const dialogHeight = window.innerHeight > 768 ? '80%' : '400px';
+    const dialogRef = this.dialog.open(PaymentFormComponent,{
+      height:dialogHeight,
+      width:dialogWidth,
       position: {
         top: '1%'
       },
@@ -40,7 +42,7 @@ export class PaymentAckListComponent {
       disableClose: false
     })
 
-    diallogRef.afterClosed().subscribe(async (result) => {
+    dialogRef.afterClosed().subscribe(async (result) => {
       this.user
     })
 
