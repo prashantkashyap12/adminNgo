@@ -1,6 +1,8 @@
-@if(true){
-    <!-- Model for Event Manager  - OPEN-->
+<div *ngIf="loader" class="w-screen h-screen flex-center bg-white dark:bg-dark-card fixed inset-0 z-[9999]">
+    <img src="assets/pre-loader/bar-loader.gif" alt="loader">
+</div>
 
+@if(this.data.type =='payment'){
   <div class="main-back">
     <div class="container m-auto bg-white p-5 bod-3">
       <div class="row">
@@ -8,56 +10,38 @@
         <div class="col-md-12">
         <div class="card" style="padding: 1rem;background: beige;">
             <h2 style="margin: 0px;">Payment Form</h2>
-            <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis nihil quaerat mollitia sequi sint ipsum omnis.</span>
+            <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</span>
         </div>
           <form class="p-2" [formGroup]="paymentForm" (ngSubmit)="payNow()">
             <div class="flex lg:flex-row flex-col gap-x-4">
                 <div class="w-full mb-4">
-                    <label for="full_name_data" class="form-label">Select Date</label>
-                    <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
+                    <label for="password-6" class="form-label">Received with Thanks from -</label>
+                    <input type="text" formControlName="name" readonly class="form-input" autocomplete="off">
                 </div>
                 <div class="w-full mb-4">
-                    <label for="email-6"
-                        class="form-label">Heading</label>
-                    <input type="text" formControlName="linkText1" placeholder="Enter Heading" class="form-input" autocomplete="off" required >
-                </div>
-                <div class="w-full mb-4">
-                    <label for="password-6" class="form-label">Rights</label>
-                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-input" autocomplete="off" required>
+                    <label for="full_name_data" class="form-label">Mobile</label>
+                    <input type="text" formControlName="mobile" readonly id="name" class="form-input" placeholder="Enter Mobile" autocomplete="off" required>
                 </div>
             </div>
             <div class="flex lg:flex-row flex-col gap-x-4">
                 <div class="w-full mb-4">
-                    <label for="full_name_data" class="form-label">Select Date</label>
-                    <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
+                    <label for="full_name_data" class="form-label">Enter Amount in INR -</label>
+                    <input type="number" formControlName="amount" id="amount" class="form-input" placeholder="Enter Amount" autocomplete="off" required>
+                    <span style="color: red;" *ngIf="paymentForm.get('amount')?.invalid && paymentForm.get('amount')?.touched" class="error-text">Amount is required*</span>
                 </div>
                 <div class="w-full mb-4">
-                    <label for="email-6"
-                        class="form-label">Heading</label>
-                    <input type="text" formControlName="linkText1" placeholder="Enter Heading" class="form-input" autocomplete="off" required >
-                </div>
-                <div class="w-full mb-4">
-                    <label for="password-6" class="form-label">Rights</label>
-                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-input" autocomplete="off" required>
+                    <label for="email-6" class="form-label">Select Donate for -</label>
+                    <select name="donateFor" id="donateFor" placeholder="Select an option" formControlName="donateFor" class="form-input" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="education">Education</option>
+                        <option value="health">Health</option>
+                        <option value="environment">Environment</option>
+                    </select>
+                    <span style="color: red;" *ngIf="paymentForm.get('donateFor')?.invalid && paymentForm.get('donateFor')?.touched" class="error-text">Donation purpose is required*</span>
                 </div>
             </div>
-            <div class="flex lg:flex-row flex-col gap-x-4">
-                <div class="w-full mb-4">
-                    <label for="full_name_data" class="form-label">Select Date</label>
-                    <input type="Date" formControlName="date" id="name" class="form-input" placeholder="Select Date" autocomplete="off" required>
-                </div>
-                <div class="w-full mb-4">
-                    <label for="email-6"
-                        class="form-label">Heading</label>
-                    <input type="text" formControlName="linkText1" placeholder="Enter Heading" class="form-input" autocomplete="off" required >
-                </div>
-                <div class="w-full mb-4">
-                    <label for="password-6" class="form-label">Rights</label>
-                    <input type="text" formControlName="rights"  placeholder="Enter rights" class="form-input" autocomplete="off" required>
-                </div>
-            </div>
-            <div style="display: flex;justify-content: space-between;">
-                <button class="btn b-solid px-5 dk-theme-card-square" [ngClass]="true?'btn-secondary-solid':'btn-success-solid'">{{true?'Submit':'Update'}}</button>
+            <div style="display: flex;justify-content: center">
+                <button type="submit" class="btn b-solid btn-light-solid px-5 dk-theme-card-square" style="width: 100%;">Pay Now</button>
             </div>        
           </form>
         </div>
@@ -66,7 +50,7 @@
   </div>
 
 }
-@else if(false) {
+@else if(this.data.type =='event') {
     <!-- Model for Payment Form  - OPEN -->
     <button (click)="payNow()">Pay Now</button>
 }

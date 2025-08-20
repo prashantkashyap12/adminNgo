@@ -49,7 +49,7 @@
                         <li class="booking-card" [ngStyle]="{'background-image':'url('+ baseUrl + data.imgPath +')'}" style="height: 600px;">
                             <div class="book-container">
                                 <div class="content">
-                                    <button class="btn" >More Details</button>
+                                    <button class="btn" (click)="selectEvent(data)">More Details</button>
                                 </div>
                             </div>
                             <div class="informations-container">

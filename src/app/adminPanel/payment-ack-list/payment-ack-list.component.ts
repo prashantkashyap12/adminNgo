@@ -25,17 +25,18 @@ export class PaymentAckListComponent {
   }
   openDialog() {
 
-    const dialogWidth = window.innerWidth > 768 ? '100%' : '60%';
-    const dialogHeight = window.innerHeight > 768 ? '80%' : '400px';
+    const dialogWidth = window.innerWidth > 768 ? '100%' : '85%';
+    const dialogHeight = window.innerHeight > 768 ? '80%' : '555px';
     const dialogRef = this.dialog.open(PaymentFormComponent,{
       height:dialogHeight,
       width:dialogWidth,
       position: {
-        top: '1%'
+        top: '5%'
       },
       data: {
         "userName": sessionStorage.getItem("Name"),
         "userId": sessionStorage.getItem("userId"),
+        type: 'payment',
       },
       panelClass:'divPk',
       autoFocus: true,
