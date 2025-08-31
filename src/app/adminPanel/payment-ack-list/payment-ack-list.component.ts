@@ -4,7 +4,6 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { DashboardComponent } from '../../web/dashboard/dashboard.component';
 import { PaymentFormComponent } from '../../UserPanel/payment-form/payment-form.component';
 
 @Component({
@@ -24,7 +23,6 @@ export class PaymentAckListComponent {
     branch:"IT"
   }
   openDialog() {
-
     const dialogWidth = window.innerWidth > 768 ? '100%' : '85%';
     const dialogHeight = window.innerHeight > 768 ? '80%' : '555px';
     const dialogRef = this.dialog.open(PaymentFormComponent,{
@@ -42,7 +40,6 @@ export class PaymentAckListComponent {
       autoFocus: true,
       disableClose: false
     })
-
     dialogRef.afterClosed().subscribe(async (result) => {
       this.user
     })

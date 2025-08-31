@@ -41,13 +41,13 @@ export class EventManagerComponent {
       EventName:['', Validators.required],
       ProjectCat:['', Validators.required],
       EventDescription:['', Validators.required],
-      EventCategory:['', Validators.required],
+      EventCategory:['N/A', Validators.required],
       Locat:['', Validators.required],
       LandMark:['', Validators.required],
       OrganizerName:['', Validators.required],
       Contact:['', Validators.required],
-      Email:['', Validators.required],
-      EventPurpose:['', Validators.required],
+      Email:['admin@gmail.com', Validators.required],
+      EventPurpose:['N/A', Validators.required],
       ParticipantsNo:['', Validators.required],
       PartnerOrganizations:['', Validators.required],
       Resources:['', Validators.required],
@@ -162,7 +162,6 @@ export class EventManagerComponent {
     },(err)=>{
       console.log("Error Msg"+err);
     })
-    this.ngOnInit();
   }
 
   delVar:any;
@@ -183,7 +182,6 @@ export class EventManagerComponent {
         this.loader = false;
       })
     }
-
   }
 
   errorMsg:boolean = false;
@@ -195,8 +193,6 @@ export class EventManagerComponent {
       return;
     }
     let formData = new FormData();
-    // formData.append('userId', JSON.(this.eventLive.value.allowUser)), //
-
     this.eventLive.value.allowUser.forEach((user:any, index:any) => {
       formData.append(`userId[${index}].id`, user.id);
       formData.append(`userId[${index}].Name`, user.Name);
@@ -234,16 +230,6 @@ export class EventManagerComponent {
         alert(err);
       })
     }else{
-      // this._EvtMang.updateEvnet(formData).subscribe(res=>{
-      //   if(res.state = true){
-      //     alert("Live Event Updated Successfully");
-      //     this.ngOnInit();
-      //   }else{
-      //     alert(res.state.res);
-      //   }
-      // }, (err) =>{
-      //   alert(err);
-      // })
       this._EvtMang.AddLiveEvent(formData).subscribe(res=>{
         if(res.state){
           this.loader = false;

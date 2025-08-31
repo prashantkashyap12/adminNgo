@@ -6,6 +6,7 @@
     <!-- loader -->
     
     <!-- Start Main Content -->
+     <p>Add Event Manager</p>
     <div class="main-content group-data-[sidebar-size=lg]:xl:ml-[calc(theme('spacing.app-menu')_+_16px)] group-data-[sidebar-size=sm]:xl:ml-[calc(theme('spacing.app-menu-sm')_+_16px)] group-data-[theme-width=box]:xl:px-0 px-3 xl:px-4 ac-transition">
         <div class="card">
             <div style="display: flex;justify-content: space-between;align-items: center;">
@@ -29,14 +30,12 @@
             </div>
         </div>
         <div class="grid grid-cols-12 gap-x-4">
-            <!-- DATA FORM -->
             <div class="col-span-full">
                 <div class="card p-0">
                     <div class="flex-center-between p-6 pb-4 border-b border-gray-200 dark:border-dark-border">
                         <h3 class="text-lg card-title leading-none">Add Event Manager</h3>
                     </div>
                     <form class="p-6" [formGroup]="eventLive">
-                        <!-- Row 1 -->
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
                                 <label class="form-label">Allow User</label>
@@ -56,112 +55,100 @@
                                 <small *ngIf="errorMsg && eventLive.get('SetImg')?.invalid" class="text-red-500">Image is required</small>
                             </div>
                             <div class="w-full mb-4">
-                                <label class="form-label">Event Name</label>
-                                <input type="text" formControlName="EventName" placeholder="Enter Event Name" class="form-input" autocomplete="off" required>
-                                <small *ngIf="errorMsg && eventLive.get('EventName')?.invalid" class="text-red-500">Event Name is required</small>
-                            </div>
-                        </div>
-
-                        <!-- Row 2 -->
-                        <div class="flex lg:flex-row flex-col gap-x-4">
-                               <div class="w-full mb-4">
                                 <label class="form-label">Project Category</label>
                                 <input type="text" formControlName="ProjectCat" placeholder="Enter Project Category" class="form-input" autocomplete="off" required>
                                 <small *ngIf="errorMsg && eventLive.get('ProjectCat')?.invalid" class="text-red-500">Project Category is required</small>
+                            </div>
                         </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Event Description</label>
-                            <input type="text" formControlName="EventDescription" placeholder="Enter Event Description" class="form-input" autocomplete="off" required>
-                            <small *ngIf="errorMsg && eventLive.get('EventDescription')?.invalid" class="text-red-500">Event Description is required</small>
-                        </div>
-                        <div class="w-full mb-4">
-                            <label class="form-label">Event Category</label>
-                            <input type="text" formControlName="EventCategory" placeholder="Enter Event Category" class="form-input" autocomplete="off" required>
-                            <small *ngIf="errorMsg && eventLive.get('EventCategory')?.invalid" class="text-red-500">Event Category is required</small>
-                        </div>
-                           
-                        </div>
-
-                        <!-- Row 3 -->
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
-                            <label class="form-label">Date & Time</label>
-                            <input type="datetime-local" formControlName="DatTim" placeholder="Select Date and Time" class="form-input" autocomplete="off" required>
-                            <small *ngIf="errorMsg && eventLive.get('DatTim')?.invalid" class="text-red-500">Date and Time is required</small>
+                                <label class="form-label">Event Name</label>
+                                <input type="text" formControlName="EventName" placeholder="Enter Event Name" class="form-input" autocomplete="off"  required>
+                                <small *ngIf="errorMsg && eventLive.get('EventName')?.invalid" class="text-red-500">Event Name is required</small>
                             </div>
                             <div class="w-full mb-4">
-                            <label class="form-label">Location</label>
-                            <input type="text" formControlName="Locat" placeholder="Enter Location" class="form-input" autocomplete="off" required>
-                            <small *ngIf="errorMsg && eventLive.get('Locat')?.invalid" class="text-red-500">Location is required</small>
-                            </div>
-                            <div class="w-full mb-4">
-                            <label class="form-label">Landmark</label>
-                            <input type="text" formControlName="LandMark" placeholder="Enter Landmark" class="form-input" autocomplete="off" required>
-                            <small *ngIf="errorMsg && eventLive.get('LandMark')?.invalid" class="text-red-500">Landmark is required</small>
+                                <label class="form-label">Event Description</label>
+                                <input type="text" formControlName="EventDescription" placeholder="Enter Event Description" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('EventDescription')?.invalid" class="text-red-500">Event Description is required</small>
                             </div>
                             
                         </div>
 
-                        <!-- Row 4 -->
-                        <div class="flex lg:flex-row flex-col gap-x-4">
-                            <div class="w-full mb-4">
-                            <label class="form-label">Organizer Name</label>
-                            <input type="text" formControlName="OrganizerName" placeholder="Enter Organizer Name" class="form-input" autocomplete="off" required>
-                            <small *ngIf="errorMsg && eventLive.get('OrganizerName')?.invalid" class="text-red-500">Organizer Name is required</small>
-                            </div>
-                            <div class="w-full mb-4">
-                            <label class="form-label">Contact</label>
-                            <input type="tel" formControlName="Contact" maxlength="13" placeholder="Enter Contact Number" class="form-input" autocomplete="off" required>
-                            <small *ngIf="errorMsg && eventLive.get('Contact')?.invalid" class="text-red-500">Contact Number is required</small>
-                            </div>
-                            <div class="w-full mb-4">
-                            <label class="form-label">Email</label>
-                            <input type="email" formControlName="Email" placeholder="Enter Email" class="form-input" autocomplete="off" required>
-                            <small *ngIf="errorMsg && eventLive.get('Email')?.invalid" class="text-red-500">Email is required</small>
-                            </div>
-                        </div>
-
-                        <!-- Row 5 -->
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <!-- <div class="w-full mb-4">
-                            <label class="form-label">Event Description</label>
-                            <input type="text" formControlName="EventDiscription" placeholder="Enter Additional Description" class="form-input" autocomplete="off">
-                            <small *ngIf="errorMsg && eventLive.get('EventDiscription')?.invalid" class="text-red-500">Event Description is required</small>
+                                <label class="form-label">Event Category</label>
+                                <input type="text" formControlName="EventCategory" placeholder="Enter Event Category" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('EventCategory')?.invalid" class="text-red-500">Event Category is required</small>
                             </div> -->
                             <div class="w-full mb-4">
-                            <label class="form-label">Event Purpose</label>
-                            <input type="text" formControlName="EventPurpose" placeholder="Enter Event Purpose" class="form-input" autocomplete="off">
-                            <small *ngIf="errorMsg && eventLive.get('EventPurpose')?.invalid" class="text-red-500">Event Purpose is required</small>
+                                <label class="form-label">Organizer Name</label>
+                                <input type="text" formControlName="OrganizerName" placeholder="Enter Organizer Name" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('OrganizerName')?.invalid" class="text-red-500">Organizer Name is required</small>
                             </div>
                             <div class="w-full mb-4">
-                            <label class="form-label">Number of Participants</label>
-                            <input type="number" formControlName="ParticipantsNo" maxlength="4" placeholder="Enter Number of Participants" class="form-input" autocomplete="off">
-                            <small *ngIf="errorMsg && eventLive.get('ParticipantsNo')?.invalid" class="text-red-500">Number of Participants is required</small>
+                                <label class="form-label">Contact</label>
+                                <input type="tel" formControlName="Contact" maxlength="13" placeholder="Enter Contact Number" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('Contact')?.invalid" class="text-red-500">Contact Number is required</small>
                             </div>
-                            
+                               <div class="w-full mb-4">
+                                <label class="form-label">Event Date & Time</label>
+                                <input type="datetime-local" formControlName="DatTim" placeholder="Select Date and Time" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('DatTim')?.invalid" class="text-red-500">Date and Time is required</small>
+                            </div>
+                            <!-- <div class="w-full mb-4">
+                                <label class="form-label">Email</label>
+                                <input type="email" formControlName="Email" placeholder="Enter Email" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('Email')?.invalid" class="text-red-500">Email is required</small>
+                            </div> -->
                         </div>
 
-                        <!-- Row 6 -->
+                         <div class="flex lg:flex-row flex-col gap-x-4">
+                         
+                            <!-- <div class="w-full mb-4">
+                                <label class="form-label">Event Purpose</label>
+                                <input type="text" formControlName="EventPurpose" placeholder="Enter Event Purpose" class="form-input" autocomplete="off">
+                                <small *ngIf="errorMsg && eventLive.get('EventPurpose')?.invalid" class="text-red-500">Event Purpose is required</small>
+                            </div> -->
+                            <div class="w-full mb-4">
+                                <label class="form-label">Number of Participants</label>
+                                <input type="number" formControlName="ParticipantsNo" maxlength="4" placeholder="Enter Number of Participants" class="form-input" autocomplete="off">
+                                <small *ngIf="errorMsg && eventLive.get('ParticipantsNo')?.invalid" class="text-red-500">Number of Participants is required</small>
+                            </div>
+                        </div>
+                        
+                        <div class="flex lg:flex-row flex-col gap-x-4">
+                            
+                            <div class="w-full mb-4">
+                                <label class="form-label">Address</label>
+                                <input type="text" formControlName="Locat" placeholder="Enter Address" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('Locat')?.invalid" class="text-red-500">Address is required</small>
+                            </div>
+                            <div class="w-full mb-4">
+                                <label class="form-label">Landmark</label>
+                                <input type="text" formControlName="LandMark" placeholder="Enter Landmark" class="form-input" autocomplete="off" required>
+                                <small *ngIf="errorMsg && eventLive.get('LandMark')?.invalid" class="text-red-500">Landmark is required</small>
+                            </div>
+                        </div>
+
                         <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
-                            <label class="form-label">Partner Organizations</label>
-                            <input type="text" formControlName="PartnerOrganizations" placeholder="Enter Partner Organizations" class="form-input" autocomplete="off">
-                            <small *ngIf="errorMsg && eventLive.get('PartnerOrganizations')?.invalid" class="text-red-500">Partner Organizations is required</small>
+                                <label class="form-label">Special Guests</label>
+                                <input type="text" formControlName="PartnerOrganizations" placeholder="Enter Special Guests(Name1, Name2)" class="form-input" autocomplete="off">
+                                <small *ngIf="errorMsg && eventLive.get('PartnerOrganizations')?.invalid" class="text-red-500">Special Guests is required</small>
                             </div>
                             <div class="w-full mb-4">
-                            <label class="form-label">Resources</label>
-                            <input type="text" formControlName="Resources" placeholder="Enter Resources" class="form-input" autocomplete="off">
-                            <small *ngIf="errorMsg && eventLive.get('Resources')?.invalid" class="text-red-500">Resources is required</small>
+                                <label class="form-label">Resources</label>
+                                <input type="text" formControlName="Resources" placeholder="Enter Resources" class="form-input" autocomplete="off">
+                                <small *ngIf="errorMsg && eventLive.get('Resources')?.invalid" class="text-red-500">Resources is required</small>
                             </div>
                             <div class="w-full mb-4">
-                            <label class="form-label">Comments</label>
-                            <input type="text" formControlName="Comments" placeholder="Enter Comments" class="form-input" autocomplete="off">
-                            <small *ngIf="errorMsg && eventLive.get('Comments')?.invalid" class="text-red-500">Comments is required</small>
+                                <label class="form-label">Comments</label>
+                                <input type="text" formControlName="Comments" placeholder="Enter Comments" class="form-input" autocomplete="off">
+                                <small *ngIf="errorMsg && eventLive.get('Comments')?.invalid" class="text-red-500">Comments is required</small>
                             </div>
                         </div>
                         <div class="flex lg:flex-row flex-col gap-x-4" [ngStyle]="{'display':eventImg ? 'block':'none'}">
                             <img [src]="eventImg" [alt]="eventImg" style="width: 160px;height: 100px; margin-bottom: 10px;">
-                            <!-- <img src="../../../assets/noImg.png" style="width: 160px;height: 100px; margin-bottom: 10px;"> -->
                         </div>
                         <div class="gap-x-4" style="display:flex; justify-content: space-between;flex-wrap: wrap;">
                             <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-success-solid':'d-none'">{{updateAct?'Submit':'Submit'}}</button> 
@@ -170,7 +157,6 @@
                             <button (click)="clear()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">New Entry</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>

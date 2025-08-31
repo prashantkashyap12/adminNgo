@@ -41,11 +41,11 @@
         <div class="grid grid-cols-12">
           <div class="col-span-full">
             <div class="card p-0">
-              <div class="p-6">
+              <div class="">
                 <!-- START INFORMATION TABLE <img src="../../../assets/noImg.png" alt="">  -->
-                <div class="overflow-x-auto mt-5">
+                <div class=" mt-5">
                   <!-- Card Design  OPEN-->
-                    <ul *ngFor="let data of eventRec" style="display:inline-block">
+                    <ul *ngFor="let data of eventRec" >
                         <li class="booking-card" [ngStyle]="{'background-image':'url('+ baseUrl + data.imgPath +')'}" style="height: 600px;">
                             <div class="book-container">
                                 <div class="content">
@@ -53,8 +53,8 @@
                                 </div>
                             </div>
                             <div class="informations-container">
-                                <h2 class="title">{{data.EventName}}</h2>
-                                <p class="sub-title">{{data.EventDescription}}</p>
+                                <h2 class="title">{{data.EventName | turncateWord:13}}</h2>
+                                <p class="sub-title">{{data.EventDescription | turncateWord: 15}}</p>
                                 <p class="price">
                                 <svg class="icon" style="width:24px;height:24px" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />

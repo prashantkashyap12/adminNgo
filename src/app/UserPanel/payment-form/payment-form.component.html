@@ -52,5 +52,19 @@
 }
 @else if(this.data.type =='event') {
     <!-- Model for Payment Form  - OPEN -->
-    <button (click)="payNow()">Pay Now</button>
+   <div style="padding: 1rem;background: beige;" class="main-back">
+      <h2>Welcome to Event </h2>
+      <hr size="1">
+      <p><b>Event Name:</b> {{data.EventName}}</p>
+      <p><b>Event Type:</b> {{data.ProjectCat}}</p>
+      <p><b>Event Description:</b> {{data.EventDescription}}</p>
+      <p><b>Event Location:</b> {{data.Locat}}</p>
+      <p><b>LandMark:</b> {{data.LandMark}}</p>
+      <p><b>Organizer Name:</b> {{data.OrganizerName}}</p>
+      <p><b>Contact:</b> {{data.Contact}}</p>
+      <p><b>Special Guests:</b> {{data.PartnerOrganizations}} </p>
+      <p><b>Event Resources:</b> {{data.Resources}}</p>
+      <p><b>Special Comments:</b> {{data.Comments}}</p>
+      <p><b>Time or Date:</b> {{data.DatTim}}</p>
+   </div>
 }

@@ -23,8 +23,8 @@ $orange: #ec992c;
     .book-container {
       .content {
         opacity: 1;
-
         transform: translateY(0px);
+        padding: 15px;
       }
     }
 
@@ -55,7 +55,7 @@ ul{
   
   .booking-card{
     position: relative;
-    width: 300px;
+    width: 100%;
     display: flex;
     flex: 0 0 300px;
     flex-direction: column;
@@ -105,18 +105,13 @@ ul{
         .btn {      
           border: 3px solid white;
           padding: 10px 15px;
-          
           background: none;
-          
           text-transform: uppercase;
           font-weight: bold;
-          font-size: 1.3em;
+          font-size: 1em;
           color: white;
-          
           cursor: pointer;
-          
           transition: .3s;
-          
           &:hover {
             background: white;
             
