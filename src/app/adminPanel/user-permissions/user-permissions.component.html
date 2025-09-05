@@ -65,11 +65,11 @@
                                 <small *ngIf="this.userRec.get('designaton')?.invalid && errmsg" class="text-red-500">Please Fill Designation</small>
                             </div>
                         </div>
-                        <div class="flex lg:flex-row flex-col gap-x-4">
+                        <!-- <div class="flex lg:flex-row flex-col gap-x-4">
                             <div class="w-full mb-4">
                                 <textarea class="summernote" placeholder="Enter your Term and Conditions here...(Term1#Term2#Term3)" rows="5"></textarea>
                             </div>
-                        </div>
+                        </div> -->
                         <div style="display: flex;justify-content: space-between;">
                             <button (click)="onSubmit()" class="btn b-solid px-5 dk-theme-card-square" [ngClass]="updateAct?'btn-secondary-solid':'btn-success-solid'">{{updateAct?'Submit':'Update'}}</button>
                             <button (click)="allot()" class="btn b-solid btn-light-solid px-5 dk-theme-card-square">All List</button>
